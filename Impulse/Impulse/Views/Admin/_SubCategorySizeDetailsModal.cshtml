@@ -1,0 +1,106 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<div class="modal-header">
+    <h5 class="modal-title">Add Sub Category Size</h5>
+    <button type="button" class="btn-close" onclick="closemySubCategorySideImageListModal();" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <article class="card">
+        <div class="content-body">
+            <table>
+                <tr>
+                    <td>
+                        <h5 class="card-title">Sub Category Size Details</h5>
+                    </td>
+                    <td style="position:absolute; right: 20px;">
+                        <button class="btn btn-primary" onclick="CreateSubCategorySizeDetails(@Model.SubCategoryImageId,@Model.CategoryId,@Model.SubCategoryId,@Model.SubcategoryImageColorId);">Create Size Sub Category</button>
+                    </td>
+                </tr>
+            </table>
+            <!-- Table with stripped rows -->
+            <table class="table table-bordered"
+                   id="table"
+                   data-toggle="table"
+                   data-height="600"
+                   data-pagination="true"
+                   data-search="true">
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th>Sub Category Size Id </th>
+                        <th>Sub Category Size Status Id </th>
+                        <th>Sub Category Color ImageId  </th>
+                        <th>Sub CategoryId </th>
+                        <th>Category Id    </th>
+                        <th>Sub Category Total No Of QUantity </th>
+                        <th>Sub Category Is Size   </th>
+                        <th>Sub Category M Quantity </th>
+                        <th>Sub Category L Quantity </th>
+                        <th>Sub Category XL Quantity </th>
+                        <th>Sub Category XXL Quantity </th>
+                        <th>Sub Category XXXL Quantity </th>
+                        <th>Sub Categroy 4XL Quantity  </th>
+                        <th>Sub Category 6UK Quantity  </th>
+                        <th>Sub Category 7UK Quantity  </th>
+                        <th>Sub Category 8UK Quantity  </th>
+                        <th>Sub Category 9UK Quantity  </th>
+                        <th>Sub Category 10UK Quantity </th>
+                        <th>Sub Category 11UK Quantity </th>
+                        <th>Sub Category 12UK Quantity </th>
+                        <th>Sub Category Is Color      </th>
+                        <th>Sub Category Color Hex Code </th>
+                        <th>Sub Category Color Id     </th>
+                        <th>Is Avaliable</th>
+                        <th>Is Active  </th>
+                        <th>Created By  </th>
+                        <th>Created Date </th>
+                        <th>Updated By   </th>
+                        <th>Updated Date  </th> 
+                        <th scope="col">Edit Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var Index = 0; Index < Model.Sub_CategorySizeDetailsList.Count; Index++)
+                    {
+                    <tr>
+                        <th scope="row">@Model.Sub_CategorySizeDetailsList[Index].ID</th>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategorySizeId</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategorySizeStatusId</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryColorImageId</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryId</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].CategoryId</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryTotalNoOfQUantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryIsSize</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_M_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_L_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_XL_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_XXL_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_XXXL_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategroy_4XL_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_6UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_7UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_8UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_9UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_10UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_11UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategory_12UK_Quantity</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryIsColor</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryColorHexCode</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].SubCategoryColorId</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].IsAvaliable</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].IsActive</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].CreatedBy</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].CreatedDate</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].UpdatedBy</td>
+                        <td>@Model.Sub_CategorySizeDetailsList[Index].UpdatedDate</td>
+                        <td><button class="btn btn-danger" onclick="EditSubCategorySizeDetailsModal(@Model.Sub_CategorySizeDetailsList[Index].ID,@Model.SubCategoryImageId,@Model.CategoryId,@Model.SubCategoryId,@Model.SubcategoryImageColorId);">Edit Sub Category Size Details</button></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </article>
+</div>
+
+
+

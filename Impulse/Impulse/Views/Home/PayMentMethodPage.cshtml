@@ -1,0 +1,331 @@
+﻿@model Impulse.DAL.OrdersDetailsModel
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+    <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <script src="~/assets2/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets2/js/script3661.js"></script>
+    <script src="~/assets2/plugins/fslightbox.js"></script>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Google Tag Manager -->
+    <script>
+    (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2TXFLD');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Type some info">
+    <meta name="author" content="Type name">
+
+    <title>Website layout sample </title>
+
+    <!-- Bootstrap css -->
+    <link href="css/bootstrap3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Custom css -->
+    <link href="css/ui3661.css?v=2.0" rel="stylesheet" type="text/css" />
+    <link href="css/responsive3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2TXFLD"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+    <header class="section-header">
+            @{Html.RenderPartial("~/Views/Shared/_ECommerceHeaderLayout.cshtml",Model.UsersModel);}
+    </header>
+    
+
+    @*<header class="section-header">
+            <section class="header-main">
+                <div class="container">
+                    <div class="row gy-3 align-items-center">
+                        <div class="col-4">
+                            <a href="../index-2.html" class="brand-wrap">
+                                <img class="logo" height="40" src="images/logo.svg">
+                            </a> <!-- brand-wrap end.// -->
+                        </div>
+                        <div class="col-8">
+                            <div class="float-end">
+                                <a href="#" class="btn btn-light">
+                                    <i class="fa fa-user  me-1"></i>  Sign in
+                                </a>
+                            </div>
+                        </div> <!-- col end.// -->
+                    </div> <!-- row end.// -->
+                </div> <!-- container end.// -->
+            </section> <!-- header-main end.// -->
+        </header>*@
+    <!-- section-header end.// -->
+    <!-- ============== SECTION PAGETOP ============== -->
+    @*
+            <section class="bg-primary padding-y-sm">
+            <div class="container">
+                <ol class="breadcrumb ondark steps">
+                    <li class="breadcrumb-item"> <a href="#">1. Home</a>  </li>
+                    <li class="breadcrumb-item"> <a href="#">2. Shopping cart</a>  </li>
+                    <li class="breadcrumb-item active"> 3. Order info  </li>
+                    <li class="breadcrumb-item"> 4. Payment   </li>
+                </ol>
+            </div> <!-- container //  -->
+        </section>
+    *@
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    <!-- ============== SECTION ============== -->
+    <section class="padding-y bg-light">
+        <div class="container">
+            <main class="col-xl-8 col-lg-8">
+                @*<article class="card mb-4">
+                        <div class="content-body">
+                            <div class="float-end">
+                                <a href="#" class="btn btn-outline-primary">Register</a>
+                                <a href="#" class="btn btn-primary">Sign in</a>
+                            </div>
+                            <h5>Have an account?</h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        </div>
+                    </article>*@
+
+                <!-- ============== COMPONENT CHECKOUT =============== -->
+                <article class="card">
+                    <div class="content-body">
+                        <h5 class="card-title" style="position:relative; left:250px;">Payment Method</h5>
+                        <div class="col-lg-4 mb-3" style="position:relative; left:250px;">
+                            <div class="box box-check">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="PaymentMethodName" onclick="OpenModelForUPIQR();" value="3">
+                                    <b class="border-oncheck"></b>
+                                    <span class="form-check-label">
+                                        UPI Payment  <br>
+                                    </span>
+                                </label>
+                            </div>
+                        </div><!-- col end.// -->
+                        <div class="col-lg-4 mb-3" style="position:relative; left:250px;">
+                            <div class="box box-check">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="PaymentMethodName" value="2">
+                                    <b class="border-oncheck"></b>
+                                    <span class="form-check-label">
+                                        Cash On Delivery  <br>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-3" style="position:relative; left:250px;">
+                            <div class="box box-check">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="PaymentMethodName" value="1" checked>
+                                    <b class="border-oncheck"></b>
+                                    <span class="form-check-label">
+                                        None <br>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="float-end" style="position:relative; right:350px;">
+                            <a class="btn btn-light" href="@Url.Action("AddToCart","Home")">Cancel</a>
+                            <button class="btn btn-success" onclick="onclickContinueforPaymentMethod();">Continue</button>
+                        </div>
+                    </div> <!-- card-body end.// -->
+                </article> <!-- card end.// -->
+                <!-- ============== COMPONENT CHECKOUT .// =============== -->
+            </main> <!-- col.// -->
+            <br><br>
+        </div> <!-- container .//  -->
+    </section>
+    <!-- ============== SECTION END// ============== -->
+
+
+
+    <div class="container">
+        <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="section-footer bg-primary footer-dark">
+        <div class="container">
+            <section class="footer-main padding-y">
+                <div class="row">
+                    <aside class="col-12 col-sm-12 col-lg-3">
+                        <article class="me-lg-4">
+                            <img src="images/logo-white.webp" class="logo-footer">
+                            <p class="mt-3"> © 2018- 2021 Templatemount. <br> All rights reserved. </p>
+                        </article>
+                    </aside>
+                    <aside class="col-6 col-sm-4 col-lg-2">
+                        <h6 class="title">Store</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#">About us</a></li>
+                            <li> <a href="#">Find store</a></li>
+                            <li> <a href="#">Categories</a></li>
+                            <li> <a href="#">Blogs</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-6 col-sm-4 col-lg-2">
+                        <h6 class="title">Information</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#">Help center</a></li>
+                            <li> <a href="#">Money refund</a></li>
+                            <li> <a href="#">Shipping info</a></li>
+                            <li> <a href="#">Refunds</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-6 col-sm-4  col-lg-2">
+                        <h6 class="title">Support</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#"> Help center </a></li>
+                            <li> <a href="#"> Documents </a></li>
+                            <li> <a href="#"> Account restore </a></li>
+                            <li> <a href="#"> My Orders </a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-12 col-sm-12 col-lg-3">
+                        <h6 class="title">Newsletter</h6>
+                        <p>Stay in touch with latest updates about our products and offers </p>
+
+                        <form class="mb-3">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Email">
+                                <button class="btn btn-light" type="submit">
+                                    Join
+                                </button>
+                            </div> <!-- input-group.// -->
+                        </form>
+                    </aside>
+                </div> <!-- row.// -->
+            </section>  <!-- footer-top.// -->
+            <hr class="my-0">
+            <section class="footer-bottom d-flex justify-content-lg-between">
+                <div>
+                    <i class="fab fa-lg fa-cc-visa"></i>
+                    <i class="fab fa-lg fa-cc-amex"></i>
+                    <i class="fab fa-lg fa-cc-mastercard"></i>
+                    <i class="fab fa-lg fa-cc-paypal"></i>
+                </div>
+                <nav class="dropup">
+                    <button class="dropdown-toggle btn text-white d-flex align-items-center py-0" type="button" data-bs-toggle="dropdown">
+                        <img src="images/flags/flag-usa.webp" class="me-2" height="20">
+                        <span>English</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Russian</a></li>
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">Spanish</a></li>
+                    </ul>
+                </nav>
+
+            </section>
+        </div> <!-- container end.// -->
+    </footer>
+
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="js/script3661.js?v=2.0"></script>
+
+</body>
+
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+</html>
+<script>
+
+     var UserId = @Html.Raw(Json.Encode(Model.UsersModel.UserId));
+    var WistListCount = @Html.Raw(Json.Encode(Model.UsersModel.WistListCount));
+    var AddToCartCount = @Html.Raw(Json.Encode(Model.UsersModel.AddToCartCount));
+    var OrderListCount = @Html.Raw(Json.Encode(Model.UsersModel.OrderListCount));
+
+    if (AddToCartCount == null) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = '0';
+    } else if (AddToCartCount != null && AddToCartCount != undefined) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = AddToCartCount;
+    }
+
+    if (WistListCount != null && WistListCount != undefined) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = WistListCount;
+    } else if (WistListCount == null) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = '0';
+    }
+
+    if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+    else if (OrderListCount == null)
+    {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    }
+
+
+    function OpenModelForUPIQR() {
+        debugger;
+
+    }
+
+
+    function onclickContinueforPaymentMethod() {
+        debugger;
+        var PaymentMethodSelectionId = $('input[name="PaymentMethodName"]:checked').val();
+        var Data = @Html.Raw(Json.Encode(Model));
+        Data.PaymentMethodSelectionId = PaymentMethodSelectionId;
+        Data.IsPayment = true;
+        var baseUrl = '@Url.Action("OnClickPaymentMethodContinue","Home")';
+        var queryString = $.param(Data);
+        window.location = baseUrl + '?' + queryString;
+    }
+
+
+
+</script>

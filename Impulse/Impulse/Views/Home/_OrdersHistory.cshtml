@@ -1,0 +1,75 @@
+﻿@model Impulse.DAL.OrdersPageModel
+<h5 class="card-title">Order History (@Model.OrdersDetailsList.Count) </h5>
+<!--  ======== item order ======== -->
+@for (var Index = 0; Index < Model.OrdersDetailsList.Count; Index++)
+{
+    <article class="card border-primary mb-4">
+        <div class="card-body">
+            <header class="d-lg-flex">
+                <div class="flex-grow-1">
+                    <h6 class="mb-0">
+                        Order ID :
+                        @Model.OrdersDetailsList[Index].OrderId <i class="dot"></i>
+                        <span class="text-success">Pending</span>
+                    </h6>
+                    <span class="text-muted">Date: @Model.OrdersDetailsList[Index].CreatedDate</span>
+                </div>
+                <div>
+                    <a href="#" class="btn btn-sm btn-outline-danger">Cancel order</a>
+                    @*<a href="#" class="btn btn-sm btn-primary">Track order</a>*@
+                </div>
+            </header>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="mb-0 text-muted">Contact</p>
+                    <p class="m-0">
+                        @Model.UsersModel.UserFirstName   @Model.UsersModel.UserLastName <br>  Phone: @Model.UsersModel.UserMobileNumber <br> Email: @Model.UsersModel.Email
+                    </p>
+                </div> <!-- col.// -->
+                <div class="col-lg-4 border-start">
+                    <p class="mb-0 text-muted">Shipping address</p>
+                    <p class="m-0">
+                        <br>
+                        @Model.UsersModel.UserAddress
+                    </p>
+                </div> <!-- col.// -->
+                <div class="col-lg-4 border-start">
+                    <p class="mb-0 text-muted">Payment</p>
+                    <p class="m-0">
+                        <span class="text-success">@Model.OrdersDetailsList[Index].PaymentMethodSelectionName</span> <br>
+                        @*Shipping fee:  $56 <br>*@
+                        Total paid:  @Model.OrdersDetailsList[Index].SubCategoryTotalPrice
+                    </p>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+            <hr>
+            <ul class="row">
+                <li class="col-xl-4  col-lg-6">
+                    <figure class="itemside mb-3">
+                        <div class="aside">
+                            @*<img width="72" height="72" src="images/items/1.webp" class="img-sm rounded border">*@
+                        </div>
+                        <figcaption class="info">
+                            <p class="title">@Model.OrdersDetailsList[Index].Sub_CategoryName</p>
+                            <strong> @Model.OrdersDetailsList[Index].SubCategoryQauntity x @Model.OrdersDetailsList[Index].SubCategoryPrice </strong>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div> <!-- card-body .// -->
+    </article>
+}
+<script>
+    var OrderListCount = @Html.Raw(Json.Encode(Model.UsersModel.OrderListCount));
+    alert('OrderListCount');
+    alert(OrderListCount);
+    if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+    else if (OrderListCount == null) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    }
+</script>

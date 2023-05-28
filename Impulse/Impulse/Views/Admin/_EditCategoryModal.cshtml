@@ -1,0 +1,65 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<div class="modal-header">
+    <h5 class="modal-title">Edit Category</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <article class="card">
+        <div class="content-body">
+            <h5 class="card-title">Category</h5>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label class="form-label">Category Name*</label>
+                    <input type="text" class="form-control" id="CategoryNameId" placeholder="Type here" value="@Model.CategoryModel.CategoryName">
+                </div> <!-- col end.// -->
+                <div class="col-6">
+                    <label class="form-label">Category Type</label>
+                    <input type="text" class="form-control" id="CategoryType" placeholder="Type here" value="@Model.CategoryModel.CategoryType">
+                </div> <!-- col end.// -->
+                <div class="col-6">
+                    <label for="" class="form-label">Category Type Mapping*</label>
+                    @Html.DropDownListFor(m => m.CategoryModel.CategoryTypeId, ViewBag.CategoryTypeDropDown as SelectList, "--Select Category Type--", new { @class = "form-select", @id = "CategoryTypeId", @autocomplete = "off" })
+                </div>
+                <!-- col end.// -->
+            </div> <!-- row.// -->
+            <h5 class="card-title">Active Status</h5>
+            <div class="row mb-3">
+                <div class="col-lg-4 mb-3">
+                    <div class="box box-check">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" value="true" name="dostavka">
+                            <b class="border-oncheck"></b>
+                            <span class="form-check-label">
+                                Active <br>
+                            </span>
+                        </label>
+                    </div>
+                </div> <!-- col end.// -->
+                <div class="col-lg-4 mb-3">
+                    <div class="box box-check">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" value="false" name="dostavka">
+                            <b class="border-oncheck"></b>
+                            <span class="form-check-label">
+                                DeActive <br>
+                            </span>
+                        </label>
+                    </div>
+                </div> <!-- col end.// -->
+            </div> <!-- row end.// -->
+        </div> <!-- card-body end.// -->
+    </article>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+    <button class="btn btn-danger" onclick="EditCategory(@Model.CategoryModel.Id,@Model.CategoryModel.CategoryId);">Edit</button>
+</div>
+<script>
+    $(document).ready(function () {
+        debugger;
+        $("input[name=dostavka][value='@Html.Raw(Json.Encode(Model.CategoryModel.IsActive))']").prop("checked", true);
+    });
+</script>
+
+
+

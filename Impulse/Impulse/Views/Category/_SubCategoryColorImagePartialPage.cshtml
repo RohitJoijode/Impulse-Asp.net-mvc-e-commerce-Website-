@@ -1,0 +1,9 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<h4 class="title text-dark" id="SelectedColorId">Choose Color</h4>
+<div class="aside">
+    @for (var Image = 0; Image < Model.Sub_CategoryImageModelList.Count; Image++)
+    {
+        <img width="60" height="60" src='@Model.Sub_CategoryImageModelList[Image].SubCategoryImagePath' class='img-sm img-thumbnail' alt="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorName" id="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorId" onClick="OnClickColorImage(this);">
+    }
+</div>
+

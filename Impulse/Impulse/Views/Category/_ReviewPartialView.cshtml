@@ -1,0 +1,400 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+<div class="container">
+    <!-- =================== REVIEW Filter ====================== -->
+    @*
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Ratings</h5>
+                <label class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="" checked>
+                    <span class="form-check-label">
+                        <ul class="rating-stars">
+                            <li class="stars-active" style="width: 100%;">
+                                <img src="bootstrap5-ecommerce/images/misc/stars-active.svg" alt="Stars">
+                            </li>
+                            <li>
+                                <img src="bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                            </li>
+                        </ul>
+                    </span>
+                </label> <!-- form-check end.// -->
+                <label class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="" checked>
+                    <span class="form-check-label">
+                        <ul class="rating-stars">
+                            <li class="stars-active" style="width: 80%;">
+                                <img src="bootstrap5-ecommerce/images/misc/stars-active.svg" alt="Stars">
+                            </li>
+                            <li>
+                                <img src="bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                            </li>
+                        </ul>
+                    </span>
+                </label>
+                <label class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="" checked>
+                    <span class="form-check-label">
+                        <ul class="rating-stars">
+                            <li class="stars-active" style="width: 60%;">
+                                <img src="bootstrap5-ecommerce/images/misc/stars-active.svg" alt="">
+                            </li>
+                            <li>
+                                <img src="bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                            </li>
+                        </ul>
+                    </span>
+                </label>
+                <!-- form-check end.// -->
+                <label class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="" checked>
+                    <span class="form-check-label">
+                        <ul class="rating-stars">
+                            <li class="stars-active" style="width: 40%;">
+                                <img src="bootstrap5-ecommerce/images/misc/stars-active.svg" alt="">
+                            </li>
+                            <li>
+                                <img src="bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                            </li>
+                        </ul>
+                    </span>
+                </label> <!-- form-check end.// -->
+            </div>
+            <!-- card-body end.// -->
+        </div>
+    *@
+    <!-- =================== REVIEW Filter ====================== -->
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- =================== COMPONENT REVIEW ====================== -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Reviews (@Model.SubCategoryReviewAndStarsList.Count) </h5>
+                    <hr>
+                    @for (var Index = 0; Index < Model.SubCategoryReviewAndStarsList.Count; Index++)
+                    {
+                <blockquote class="border-bottom">
+                    @*<div class="float-lg-end d-flex mb-3">
+            <button class="btn btn-light btn-sm float-end ">
+                <i class="fa fa-ellipsis-v">
+                </i>
+            </button>
+        </div>*@
+                    @if (Model.SubCategoryReviewAndStarsList[Index].UserId == Model.userId)
+                    {
+                        <div class="float-lg-end d-flex mb-3">
+                            <button class="btn btn-light btn-sm float-end " data-bs-toggle="popover" title="Delete Review" data-bs-trigger="hover" onclick="DeleteReviewByUserId(@Model.SubCategoryReviewAndStarsList[Index].Id);">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    }
+
+                    <div class="icontext">
+                        <div class="text">
+                            <h6 class="mb-0">
+                                @Model.SubCategoryReviewAndStarsList[Index].UserFullName
+                            </h6>
+
+                            <div class="rating-wrap">
+                                @if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 5)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                }
+                                else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 4)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                }
+                                else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 3)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                }
+                                else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 2)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                }
+                                else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 1)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                }
+
+
+                                @*<ul class="rating-stars">
+
+                        @if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 5)
+                        {
+
+                            <li class="stars-active" style="width: 100%;">
+                                <img src="~/assets2/images/misc/stars-active.svg" alt="">
+                            </li>
+                        }
+                        else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 4)
+                        {
+                            <li class="stars-active" style="width: 80%;">
+                                <img src="~/assets2/images/misc/stars-active.svg" alt="">
+                            </li>
+                        }
+                        else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 3)
+                        {
+                            <li class="stars-active" style="width: 60%;">
+                                <img src="~/assets2/images/misc/stars-active.svg" alt="">
+                            </li>
+                        }
+                        else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 2)
+                        {
+                            <li class="stars-active" style="width: 30%;">
+                                <img src="~/assets2/images/misc/stars-active.svg" alt="">
+                            </li>
+                        }
+                        else if (Model.SubCategoryReviewAndStarsList[Index].GivenStars == 1)
+                        {
+                            <li class="stars-active" style="width: 10%;">
+                                <img src="~/assets2/images/misc/stars-active.svg" alt="">
+                            </li>
+                        }
+                    </ul>*@
+
+                                @*<small class="label-rating text-muted"> Purchased on Wed, May 12 </small>*@
+                            </div>
+                        </div>
+                    </div>
+                    <!-- icontext.// --> <div class="mt-3">
+                        <p> @Model.SubCategoryReviewAndStarsList[Index].ReviewMessage</p>
+                    </div>
+                </blockquote>
+                    }
+
+                </div>
+            </div>
+            <!-- =================== COMPONENT REVIEW .// ================== -->
+            <!-- =================== COMPONENT REVIEW ====================== -->
+            <!-- =================== COMPONENT REVIEW .// ================== -->
+        </div> <!-- col.// -->
+        <div class="col-lg-4">
+            <!-- =================== COMPONENT SELLER ====================== -->
+            <article class="card">
+                <div class="card-body">
+                    @if (Model.IsReviewEdit == false)
+                    {
+                        <a class="btn w-100 btn-primary-light" onclick="OnClickWriteReview();">Write review</a>
+                    }
+                    else if (Model.IsReviewEdit == true)
+                    {
+                        <a class="btn w-100 btn-primary-light" onclick="OnClickWriteReview();">Edit review</a>
+                    }
+                    <br />
+                    <br />
+                    <a class="btn w-100 btn-primary-light" onclick="ResetReviewSubcategoryPage();">Reset Review</a>
+
+                    @*<div class="rating-wrap mt-3">
+                <ul class="rating-stars stars-lg">
+                    <li style="width:80%" class="stars-active">
+                        <img src="/bootstrap5-ecommerce/images/misc/stars-active.svg" alt="">
+                    </li>
+                    <li>
+                        <img height="520" src="/bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                    </li>
+                </ul>
+        </div>*@
+                    <div class="rating-wrap mt-3">
+                        <h4>Rating Filter</h4>
+                        <section class='rating-widget'>
+                            <!-- Rating Stars Box -->
+                            <div class='rating-stars text-center'>
+                                <ul id='starsFilter'>
+                                    <li class='star' name="stars" title='Poor' data-value='1'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' name="stars" title='Fair' data-value='2'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' name="stars" title='Good' data-value='3'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' name="stars" title='Excellent' data-value='4'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' name="stars" title='WOW!!!' data-value='5'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- rating-wrap.// -->
+                    <p class="mt-1 text-muted"> @Model.SubCategoryReviewAndStarsList.Count reviews </p>
+                    @*<div class="small-space text-center">
+            <span>4.1 out of 5 stars</span>
+        </div>*@
+                    <div style="width:600px" id="StarsGridChartId">
+                        @*<div class="small-space text-center">
+                <span>4.1 out of 5 stars</span>
+            </div>*@
+                        <table class="small-space" id="histogramTable">
+                        </table>
+                    </div>
+
+
+
+                    <!--<table class="table table-borderless table-sm">
+    <tr valign="middle">
+        <td width="50"> 5 star </td>
+        <td>
+            <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 95%;" aria-valuenow="25" aria-valuemax="100"></div>
+            </div>-->
+                    <!-- progress .// -->
+                    <!--</td>
+        <td width="50"> 95 % </td>
+    </tr>
+    <tr valign="middle">
+        <td> 4 star </td>
+        <td>
+            <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemax="100"></div>
+            </div>-->
+                    <!-- progress .// -->
+                    <!--</td>
+        <td> 80 % </td>
+    </tr>
+    <tr valign="middle">
+        <td> 3 star </td>
+        <td>
+            <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemax="100"></div>
+            </div>-->
+                    <!-- progress .// -->
+                    <!--</td>
+        <td> 35 % </td> </tr>
+    <tr valign="middle">
+            <td> 2 star </td>
+            <td> <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 13%;" aria-valuenow="13" aria-valuemax="100"></div> </div>-->
+                    <!-- progress .// -->
+                    <!--</td>
+    <td> 13 % </td>
+    </tr>
+            <tr valign="middle">
+            <td> 1 star </td>
+            <td>
+             <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width:15%;" aria-valuenow="5" aria-valuemax="100"></div>
+             </div>-->
+                    <!-- progress .// -->
+                    <!--</td> <td> 15 % </td> </tr>
+    </table>-->
+                </div>
+            </article><!-- =================== COMPONENT SELLER .// ================== -->
+        </div> <!-- col.// -->
+    </div> <!-- row .// -->
+</div>
+<script>
+    /*Filter For Star*/
+
+    $(document).ready(function () {
+
+        $('[data-bs-toggle="popover"]').popover();
+
+        var SelectedStarCount = @Html.Raw(Json.Encode(Model.SelectedStarCount));
+         if (SelectedStarCount != null && SelectedStarCount != undefined) {
+                $('#starsFilter li').load('change', function () {
+                    debugger;
+                    var onStar = SelectedStarCount;
+                    var stars = $(this).parent().children('li.star');
+                    for (i = 0; i < onStar; i++) {
+                        $(stars[i]).addClass('selected');
+                    }
+                });
+         }
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#starsFilter li').on('mouseover', function () {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function (e) {
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                }
+                else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function () {
+            $(this).parent().children('li.star').each(function (e) {
+                $(this).removeClass('hover');
+            });
+        });
+
+        /* 2. Action to perform on click */
+        $('#starsFilter li').on('click',function () {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var StarsFilterRatingValue = parseInt($('#starsFilter li.selected').last().data('value'), 10);
+            $.ajax({
+                type: "POST",
+                url: "/Category/StarsFilterRating?SubCategoryId=" + SubCategoryId + "&StarsFilterRating=" + StarsFilterRatingValue,
+                contentType: "application/json;charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    debugger
+                    if (response != null) {
+                        $('#ReviewPartialGridId').empty();
+                        $('#ReviewPartialGridId').html(response);
+                    }
+                },
+            });
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/Category/GetStarsGridChart?SubCategoryId=" + SubCategoryId,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#StarsGridChartId').empty();
+                    $('#StarsGridChartId').html(response.StringReponse);
+                }
+            },
+        });
+    });
+
+    /*Filter For Star*/
+</script>
+
+

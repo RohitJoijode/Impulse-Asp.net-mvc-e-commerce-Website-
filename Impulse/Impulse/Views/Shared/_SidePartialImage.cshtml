@@ -1,0 +1,16 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<article class="gallery-wrap gallery-vertical">
+    <a class="img-big-wrap img-thumbnail bg-light" id="MainImageId">
+        <img height="800" src="@Model.Sub_CategoryImageModel.SubCategoryImagePath" id="expandedImg" alt="@Model.Sub_CategoryImageModel.SubcategoryImageColorId" onclick="OpenImageModel(this);" class="mix-blend-multiply">
+    </a>
+    <!-- img-big-wrap.// -->
+    <div class="thumbs-wrap mb-3">
+        @for (var Index = 0; Index < Model.SubCategoryImageList.Count;Index++)
+        {
+            <a class="item-thumb">
+                <img width="150" height="150" src="@Model.SubCategoryImageList[Index].SubCategoryImagePath" onmouseover="myFunction(this);">
+            </a>
+        }
+    </div>
+</article>
+

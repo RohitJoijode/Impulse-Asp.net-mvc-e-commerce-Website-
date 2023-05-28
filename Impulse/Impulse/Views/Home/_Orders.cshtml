@@ -1,0 +1,209 @@
+﻿@model Impulse.DAL.OrdersPageModel
+<style>
+
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        color: #455A64;
+        padding-left: 0px;
+        margin-top: 30px
+    }
+
+        #progressbar li {
+            list-style-type: none;
+            font-size: 13px;
+            width: 33.33%;
+            float: left;
+            position: relative;
+            font-weight: 400;
+            color: #455A64 !important;
+        }
+
+        #progressbar #step1:before {
+            content: "1";
+            color: #fff;
+            width: 29px;
+            margin-left: 15px !important;
+            padding-left: 11px !important;
+        }
+
+
+        #progressbar #step2:before {
+            content: "2";
+            color: #fff;
+            width: 29px;
+        }
+
+        #progressbar #step3:before {
+            content: "3";
+            color: #fff;
+            width: 29px;
+            margin-right: 15px !important;
+            padding-right: 11px !important;
+        }
+
+        #progressbar li:before {
+            line-height: 29px;
+            display: block;
+            font-size: 12px;
+            background: #455A64;
+            border-radius: 50%;
+            margin: auto;
+        }
+
+        #progressbar li:after {
+            content: '';
+            width: 121%;
+            height: 2px;
+            background: #455A64;
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 15px;
+            z-index: -1;
+        }
+
+        #progressbar li:nth-child(2):after {
+            left: 50%;
+        }
+
+        #progressbar li:nth-child(1):after {
+            left: 25%;
+            width: 121%;
+        }
+
+        #progressbar li:nth-child(3):after {
+            left: 25% !important;
+            width: 50% !important;
+        }
+
+        #progressbar li.active:before,
+        #progressbar li.active:after {
+            background: #4bb8a9;
+        }
+
+</style>
+<h5 class="card-title"> Your orders (@Model.OrdersDetailsList.Count)</h5>
+<!--  ======== item order ======== -->
+@for (var Index = 0; Index < Model.OrdersDetailsList.Count; Index++)
+{
+    <article class="card border-primary mb-4">
+        <div class="card-body">
+            <header class="d-lg-flex">
+                <div class="flex-grow-1">
+                    <h6 class="mb-0">
+                        Order ID :
+                        @Model.OrdersDetailsList[Index].OrderId <i class="dot"></i>
+                        <span class="text-success">On Process</span>
+                    </h6>
+                    <span class="text-muted">Date: @Model.OrdersDetailsList[Index].CreatedDate</span>
+                </div>
+                <div>
+                    <a class="btn btn-sm btn-outline-danger" onclick="OnClickCancelOrders(@Model.OrdersDetailsList[Index].OrderId,2);">Cancel order</a>
+                </div>
+            </header>
+            <hr>
+            @*<div class="row px-3">
+            <div class="col">
+                <ul id="progressbar">
+                    <li class="step0 active" id="step1">PLACED</li>
+                    <li class="step0 active text-center" id="step2">SHIPPED</li>
+                    <li class="step0 active text-muted text-right" id="step3">
+                        <div style="position:absolute;right:2px;">
+                            DELIVERED
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
+            <article class="card">
+                <div class="card-body">
+                    <div class="mt-4 mx-auto text-center" style="max-width:600px">
+                        <svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="round-check">
+                                    <circle id="Oval" fill="#D3FFD9" cx="48" cy="48" r="48"></circle>
+                                    <circle id="Oval-Copy" fill="#87FF96" cx="48" cy="48" r="36"></circle>
+                                    <polyline id="Line" stroke="#04B800" stroke-width="4" stroke-linecap="round" points="34.188562 49.6867496 44 59.3734993 63.1968462 40.3594229"></polyline>
+                                </g>
+                            </g>
+                        </svg> <div class="my-3">
+                            <h4>Thank you for order</h4>
+                            @*<p>Some information will be written here, bla bla lorem ipsum you enter into any new area of science, you almost always find yourself</p>*@
+                        </div>
+                    </div>
+                    <ul class="steps-wrap mx-auto" style="max-width: 600px">
+                        <li class="step active">
+                            <span class="icon">1</span> <span class="text">Order received</span>
+                        </li> <!-- step.// -->
+                        <li class="step ">
+                            <span class="icon">2</span>
+                            <span class="text">Confirmation</span>
+                        </li> <!-- step.// -->
+                        <li class="step ">
+                            <span class="icon">3</span>
+                            <span class="text">Delivery</span>
+                        </li> <!-- step.// -->
+                    </ul>
+                    <!-- tracking-wrap.// --> <br>
+                </div>
+            </article>
+
+
+
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="mb-0 text-muted">Contact</p>
+                    <p class="m-0">
+                        @Model.UsersModel.UserFirstName   @Model.UsersModel.UserLastName <br>  Phone: @Model.UsersModel.UserMobileNumber <br> Email: @Model.UsersModel.Email
+                    </p>
+                </div> <!-- col.// -->
+                <div class="col-lg-4 border-start">
+                    <p class="mb-0 text-muted">Shipping address</p>
+                    <p class="m-0">
+                        <br>
+                        @Model.UsersModel.UserAddress
+                    </p>
+                </div> <!-- col.// -->
+                <div class="col-lg-4 border-start">
+                    <p class="mb-0 text-muted">Payment</p>
+                    <p class="m-0">
+                        <span class="text-success"> @Model.OrdersDetailsList[Index].PaymentMethodSelectionName </span><br>
+                        @*Shipping fee:  $56 <br>*@
+                        Total paid:  @Model.OrdersDetailsList[Index].SubCategoryTotalPrice
+                    </p>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+            <hr>
+            <ul class="row">
+                <li class="col-xl-4  col-lg-6">
+                    <figure class="itemside mb-3">
+                        <div class="aside">
+                            @*<img width="72" height="72" src="images/items/1.webp" class="img-sm rounded border">*@
+                        </div>
+                        <figcaption class="info">
+                            <p class="title">@Model.OrdersDetailsList[Index].Sub_CategoryName</p>
+                            <strong> @Model.OrdersDetailsList[Index].SubCategoryQauntity x @Model.OrdersDetailsList[Index].SubCategoryPrice </strong>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div> <!-- card-body .// -->
+    </article>
+}_
+<script>
+    var OrderListCount = @Html.Raw(Json.Encode(Model.UsersModel.OrderListCount));
+    alert('OrderListCount');
+    alert(OrderListCount);
+    if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+    else if (OrderListCount == null) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    }
+</script>
+
+

@@ -1,0 +1,1044 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<!==================== Start Color Selection CSS ====================================!>
+<style>
+    .radio-tile-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .radio-tile-group .input-container {
+            position: relative;
+            margin: 0.9rem;
+        }
+
+            .radio-tile-group .input-container .radio-button {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                cursor: pointer;
+            }
+
+    .radio-tile {
+        border: 1px solid #eea236;
+    }
+
+    .radio-tile-group .input-container .radio-tile-edit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        font-size: 12px;
+        border-radius: 5px;
+        padding: 0.2rem;
+        transition: transform 300ms ease;
+        height: 25px;
+    }
+
+    @@media (min-width: 375px) and (max-width: 812px) {
+        .radio-tile-group .input-container .radio-tile {
+            margin-inline: 18px;
+        }
+    }
+
+    .radio-tile-group .input-container .radio-button:checked + .radio-tile {
+        border: 3px solid #2980b9;
+        font-size: 12px;
+        color: #797979;
+        transform: scale(1.05, 1.05);
+    }
+
+        .radio-tile-group .input-container .radio-button:checked + .radio-tile .icon svg {
+            fill: white;
+            background-color: #2980b9;
+        }
+
+    .radio-tile-group .input-container .radio-button:checked + .radio-tile-edit {
+        border: 3px solid black;
+        /* font-size: 12px; */
+        color: #797979;
+        transform: scale(1.05, 1.05);
+    }
+
+    /*Image On Click CSS*/
+    input {
+        display: none;
+    }
+
+    label {
+        display: inline-block;
+        width: 60px;
+        height: 80px;
+        position: relative;
+        border: 4px solid transparent;
+    }
+
+    input:checked + label {
+        border: 3px solid #f00;
+        border-radius: 10px;
+    }
+    /*Image On Click CSS*/
+</style>
+<style>
+    .small-space {
+        margin-bottom: 10px;
+    }
+
+    .rating-number {
+        padding: 1px 3px;
+    }
+
+    .letter-space {
+        display: inline-block;
+        width: .385em;
+    }
+
+    .histoBar {
+        width: 70%;
+    }
+
+    .histo-meter {
+        border-radius: 1px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.1);
+        overflow: hidden;
+        background: #f2f2f2;
+        background: -webkit-linear-gradient(top,#eee,#f6f6f6);
+        background: linear-gradient(to bottom,#eee,#f6f6f6);
+        background-color: #f3f3f3;
+        height: 17px
+    }
+
+    .histo-meter-filled {
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05);
+        border-radius: 1px;
+        background: #ffba00;
+        background: -webkit-linear-gradient(top,#ffce00,#ffa700);
+        background: linear-gradient(to bottom,#ffce00,#ffa700);
+        background-color: #ffce00;
+        transition: width .5s ease;
+        float: left;
+        font-size: 0;
+        height: 100%;
+    }
+
+    .ButtonInstagram {
+        color: transparent;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!---CDN Link for Sweet Alert On Delivery --->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!---CDN Link for Sweet Alert On Delivery --->
+<!---CDN Link for ToolTip --->
+@*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.css" rel="stylesheet" />*@
+<!---CDN Link for ToolTip --->
+@*<img src="~/assets2/images/LediesTShirt/61dIxdWFNbL._AC_UL320_.jpg" />
+     <img src="~/assets2/images/LediesTShirt/71lfkb3mbKL._UY550_.jpg" />
+    <img src="/assets2/images/LediesTShirt/61dwl22UMeL._UL1280_.jpg" />
+    <img src="/assets2/images/LediesTShirt/ladies-v-neck-t-shirts-1598417398-5564925.jpeg" />
+    <a href="~/assets2/images/LediesTShirt/p1981738.avif">~/assets2/images/LediesTShirt/p1981738.avif</a>
+*@
+<head>
+    <meta property="og:title" content="How to change the address bar color in Chrome, Firefox, Opera, Safari" />
+    <meta property="og:description" content="How to change the address bar color in Chrome, Firefox, Opera, Safari" />
+    <meta property="og:url" content="http://webdevelopmentscripts.com/64-how-to-change-the-address-bar-color-in-chrome-firefox-opera-safari" />
+    <meta property="og:image" content="http://webdevelopmentscripts.com/post-images/685b-change-browser-address-bar-color-chrome-android.jpeg" />
+</head>
+    <!==================== End Color Selection CSS ====================================!>
+<section class="padding-y bg-white shadow-sm">
+    <div class="container">
+        <div class="row">
+            <aside class="col-lg-6" id="SideImageDisplayId">
+                @*
+                    <article class="gallery-wrap gallery-vertical">
+                    <a class="img-big-wrap img-thumbnail bg-light" id="MainImageId">
+                        <img height="520" src="/assets2/images/DefualtImage/default-user-icon-8.jpg" id="expandedImg" class="mix-blend-multiply">
+                    </a>    
+                    <!-- img-big-wrap.// -->
+                    <div class="thumbs-wrap mb-3">
+                        <a class="item-thumb">
+                            <img width="80" height="80" src="/assets2/images/LediesTShirt/61dIxdWFNbL._AC_UL320_.jpg" onmouseover="myFunction(this);">
+                        </a>
+                        <a class="item-thumb">
+                            <img width="80" height="80" src="/assets2/images/LediesTShirt/71lfkb3mbKL._UY550_.jpg" onmouseover="myFunction(this);">
+                        </a>
+                        <a class="item-thumb">
+                            <img width="80" height="80" src="/assets2/images/LediesTShirt/61dwl22UMeL._UL1280_.jpg" onmouseover="myFunction(this);">
+                        </a>
+                        <a class="item-thumb">
+                            <img width="80" height="80" src="/assets2/images/LediesTShirt/ladies-v-neck-t-shirts-1598417398-5564925.jpeg" onmouseover="myFunction(this);">
+                        </a>
+                    </div>
+                </article>
+                *@
+            </aside>
+            <div class="col-lg-6">
+                <article class="ps-lg-3">
+                    <h4 class="title text-dark">@Model.SubCategoryModel.Sub_CategoryName</h4>
+                    @if (Model.SubCategoryModel.StockStatusId == 1)
+                    {
+                        <h4 class="text-success">
+                            <i class="fa fa-check"></i>
+                            In Stock
+                        </h4>
+                    }
+                    else if (Model.SubCategoryModel.StockStatusId == 2)
+                    {
+                        <h4 class="text-danger">
+                            <i class="fa fa-times"></i>
+                            Out Of Stock
+                        </h4>
+                    }
+                    <div class="rating-wrap my-3">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active">
+                                <img src="/assets2/bootstrap5-ecommerce/images/misc/stars-active.svg" alt="">
+                            </li>
+                            <li>
+                                <img src="/assets2/bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                            </li>
+                        </ul>
+                        <button class="badge bg-warning"><i class="fa fa-star">  @Model.SubCategoryModel.AvgStar</i></button>
+                        <i class="dot">
+                        </i>
+                        <span class="label-rating text-muted">@Model.SubCategoryModel.ReivewCount (Star & Review Given by Customer)</span>
+                        @*<span class="label-rating text-muted">
+                <i class="fa fa-comment"></i> 0 reviews
+            </span>*@
+                        <i class="dot">
+                        </i>
+                        <span class="label-rating text-muted">
+                            <i class="fa fa-shopping-basket"></i> @Model.SubCategoryModel.SubCategoryOrdersCount orders
+                        </span>
+                    </div>
+
+                    <div class="mb-4">
+                        <var class="price h5" id="PriceId">₹ @Model.SubCategoryModel.Sub_Category_Price</var>
+                        <del class="price-old">₹ @Model.SubCategoryModel.Sub_Category_StrickOutPrice</del>
+                        <var class="price h5">(-10%)</var>
+                        <span>/Include All Tax </span>
+                    </div>
+                    <!-- rating-wrap.// -->
+                    <hr>
+                    <div class="row gx-2 mb-4">
+                        @if (Model.userId != null)
+                        {
+                            <div class="col-auto">
+                                <a class="btn btn-primary w-100" onclick="OnClickAddToCartSubCategoryPage();">
+                                    <i class="me-2 fa fa-shopping-basket"></i>
+                                    Add to cart
+                                </a>
+                            </div>
+                        }
+                        <div class="col-auto">
+                            <a class="btn btn-light btn-icon" onclick="OnClickWishListSubCategoryPage();">
+                                <i class="fas fa-heart"></i>
+                            </a>
+                        </div>
+                        <!-- col.// -->
+                        <div class="col-auto">
+                            <a class="btn btn-primary btn-icon" data-bs-html="true" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-title="Share With Friends"  onclick="shareOnFacebook();">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                        </div> <!-- col.// -->
+                        <div class="col-auto">
+                            <a class="btn btn-primary btn-icon" style="background-color:#25D366" role="button" data-bs-html="true" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-title="Share On WhatApp"  onclick="shareOnWhatsApp()();">
+                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        @*<div class="col-auto">
+                            <a class="btn btn-primary btn-icon ButtonInstagram" role="button" data-bs-html="true" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-title="Share On Instagram"  onclick="shareOnFacebook();">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn btn-primary btn-icon" style="background-color: #FFFFFF;color: #000000;" role="button" data-bs-html="true" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-title="Copy Link" onclick="Copy();">
+                                <i class="fas fa-copy" aria-hidden="true"></i>
+                            </a>
+                        </div>*@
+                    </div>
+                    <h4 class="title text-dark">Product Details</h4>
+                    <dl class="row">
+                        @if (Model.SubCategoryModel.Sub_Category_IsCare_Instructions == true)
+                        {
+                            <dt class="col-3">Care Instructions:</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_Care_Instructions</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsOccasionType == true)
+                        {
+                            <dt class="col-3">Occasion Type</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_OccasionType</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsClosureType == true)
+                        {
+                            <dt class="col-3">Closure Type</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_ClosureType</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsItemWeight == true)
+                        {
+                            <dt class="col-3">Item Weight</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_ItemWeight</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsItemPackageQuantity == true)
+                        {
+                            <dt class="col-3">Item Package Quantity</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_ItemPackageQuantity</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsNoOfItem == true)
+                        {
+                            <dt class="col-3">Number Of Item</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Categor_NoOfItem</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsRiseStyle == true)
+                        {
+                            <dt class="col-3">Rise Style</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_RiseStyle</dd>
+                        }
+                        @if (Model.SubCategoryModel.Sub_Category_IsStrapType == true)
+                        {
+                            <dt class="col-3">Strap Type</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_category_StrapType</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsItemForm == true)
+                        {
+                            <dt class="col-3">Item Form</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_category_ItemForm</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsPaperFinish == true)
+                        {
+                            <dt class="col-3">Paper Finish</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_PaperFinish</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsNetQuantity == true)
+                        {
+                            <dt class="col-3">Net Quantity</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_NetQuantity</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsNeckStyle == true)
+                        {
+                            <dt class="col-3">Neck Style</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_NeckStyle</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsStyle == true)
+                        {
+                            <dt class="col-3">Style</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_Style</dd>
+                        }
+
+                        @if (Model.SubCategoryModel.Sub_Category_IsOrigin == true)
+                        {
+                            <dt class="col-3">Origin</dt>
+                            <dd class="col-9">@Model.SubCategoryModel.Sub_Category_Origin</dd>
+                        }
+                    </dl>
+                    @if (Model.SubCategoryModel.Sub_Category_IsDeliveryPinCheck == true)
+                    {
+                        <div class="mb-6" id="SubCategorySizeGridId">
+                            <h4 class="title text-dark">Check Here Delivery Availability</h4>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="PinCodeId" placeholder="Pin Code" aria-label="" />
+                            </div>
+                            <hr />
+                            <div class="col-4">
+                                <button class="btn btn-primary" onclick="DeliveryPinCheck();">Check</button>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.SubCategoryModel.Sub_Category_IsColor == true)
+                    {
+                        <div class="mb-3" id="SubCategoryColorImageGridId">
+                            <h4 class="title text-dark" id="SelectedColorId">Choose Color</h4>
+                            <div class="aside">
+                                @for (var Image = 0; Image < Model.Sub_CategoryImageModelList.Count; Image++)
+                                {
+                                    <input type="radio" id="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorId" name="ColorSelectionId" value="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorId" />
+                                    <label for="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorId">
+                                        <img tabindex="0" title='@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorName' @*style="opacity: 0.2"*@ src='@Model.Sub_CategoryImageModelList[Image].SubCategoryImagePath' role="button" data-bs-html="true" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-content="<h2>₹ @Model.SubCategoryModel.Sub_Category_Price</h2>" class='img-sm img-thumbnail' alt="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorName" id="@Model.Sub_CategoryImageModelList[Image].SubcategoryImageColorId" onClick="OnClickColorImage(this,@Model.Sub_CategoryImageModelList[Image].SubCategoryImageId);">
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.userId != null)
+                    {
+                        if(Model.SubCategoryModel.Sub_Category_IsSize == true)
+                        {
+                            <div class="mb-3" id="SubCategorySizeGridId">
+                                <h4 class="title text-dark">Choose Size</h4>
+                                <div class="col-2">
+                                    @Html.DropDownListFor(m => m.SizeId, ViewBag.SizeDropDownList as SelectList, "--Select Size--", new { @class = "form-select", @id = "SizeId", @onChange = "getOnchangeSizeDropDowndataList();", @onmousemove = "showIE6Tooltip();", @onmouseout = "hideIE6Tooltip();", @autocomplete = "off" })
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @if (Model.userId != null)
+                    {
+                        <div class="mb-3" id="SubCategorySizeGridId">
+                            <h4 class="title text-dark">Choose Quantity</h4>
+                            <div class="col-2">
+                                <select class="form-select" id="SubCategoryQuantityId">
+                                    <option>Select Quantity</option>
+                                    <option>0</option>
+                                </select>
+                            </div>
+                        </div>
+                    }
+                       <div class="mb-3">
+                            <h4 class="title text-dark">About Product</h4>
+                            <ul class="list-check">
+                                @for (var Index = 0; Index < Model.SubCategoryAboutItemList.Count; Index++)
+                                {
+                                    <li>@Model.SubCategoryAboutItemList[Index].AboutItemDecription</li>
+                                }
+                            </ul>
+                        </div>
+                        <!-- price-wrap.// -->
+                        @*
+                <div class="row gx-2 mb-4">
+                    <div class="col-auto">
+                        <a href="#" class="btn btn-primary w-100">
+                            <i class="me-2 fa fa-shopping-basket"></i>
+                            Add to cart
+                        </a>
+                    </div>
+                    <!-- col.// -->
+                    <div class="col">
+                        <a href="#" class="btn btn-light btn-icon">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div> <!-- col.// -->
+            </div>
+                        *@ <!-- row.// -->
+                    </article>
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- container .// -->
+</section>
+<!-- ============================== -->
+<!-- ################################ -->
+<section class="padding-y bg-light" id="ReviewPartialGridId">
+</section>
+<!-- =================== COMPONENT REVIEW .// ================== -->
+<script>
+
+    function shareOnFacebook() {
+        debugger;
+        const navUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href);
+        window.open(navUrl,'_blank');
+    }
+
+    function shareOnWhatsApp() {
+        debugger;
+        var LinkTextToShare = 'https://web.whatsapp.com/send?l=en&text=' + encodeURIComponent(window.location.href); // This URL For Desktop
+        var LinkTextToShare1 = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href); // This URL For Mobile
+        window.open(LinkTextToShare,"_blank");
+        //window.open(LinkTextToShare,"_blank");
+    }
+
+    function Copy() {
+        debugger;
+        var Copytext = window.location.href.toString();
+        alert(Copytext);
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(Copytext);
+        alert('Copied');
+    }
+
+    var SubCategoryId= @Html.Raw(Json.Encode(Model.SubCategoryModel.Sub_CategoryId));
+    var Sub_Category_DefaultColorId = @Html.Raw(Json.Encode(Model.SubCategoryModel.Sub_Category_DefaultColorId));
+    var SubCategorySelectedImageId = @Html.Raw(Json.Encode(Model.SubCategoryModel.SubCategorySelectedImageId));
+    var WistListSubCategoryIdsForCookies = @Html.Raw(Json.Encode(Model.UsersModel.WistListSubCategoryIdsForCookies));
+    var SubCategoryImageId = null;
+
+
+    var UserId = @Html.Raw(Json.Encode(Model.UsersModel.UserId));
+    var WistListCount = @Html.Raw(Json.Encode(Model.UsersModel.WistListCount));
+    var AddToCartCount = @Html.Raw(Json.Encode(Model.UsersModel.AddToCartCount));
+    var OrderListCount = @Html.Raw(Json.Encode(Model.UsersModel.OrderListCount));
+
+    if (AddToCartCount == null) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = '0';
+    } else if (AddToCartCount != null && AddToCartCount != undefined) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = AddToCartCount;
+    }
+
+    if (WistListCount == null) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = '0';
+    } else if (WistListCount != null && WistListCount != undefined) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = WistListCount;
+    }
+
+    if (WistListSubCategoryIdsForCookies != null && WistListSubCategoryIdsForCookies != undefined) {
+        if (WistListSubCategoryIdsForCookies != "0") {
+            document.getElementById('WishlistButtonCountId').innerHTML = "";
+            document.getElementById('WishlistButtonCountId').innerHTML = WistListSubCategoryIdsForCookies;
+        } else {
+            document.getElementById('WishlistButtonCountId').innerHTML = "";
+            document.getElementById('WishlistButtonCountId').innerHTML = WistListSubCategoryIdsForCookies;
+        }
+    }
+
+    if (OrderListCount == null) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    } else if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+
+    function OnClickAddToCartSubCategoryPage() {
+        debugger;
+        var data = {};
+        data.Quantity = $('#SubCategoryQuantityId').val();
+        data.Sub_Category_SizeId = $('#SizeId option:selected').val();
+        var PriceString = $('#PriceId').text();
+        data.Sub_Category_Price = PriceString.replace('₹', '');
+        data.Sub_Category_ColorId = $('input[name="ColorSelectionId"]:checked').val();
+        data.Sub_CategoryId = SubCategoryId;
+        data.IsAddToCart = true;
+        var baseUrl = '@Url.Action("OnClickOnSubCategoryPageForAddToList","Category")';
+        var queryString = $.param(data);
+        window.location = baseUrl + '?' + queryString;
+    }
+
+    function OnClickWishListSubCategoryPage() {
+        debugger;
+        var data = {};
+        data.Quantity = $('#SubCategoryQuantityId').val();
+        data.Sub_Category_SizeId = $('#SizeId option:selected').val();
+        var PriceString = $('#PriceId').text();
+        data.Sub_Category_Price = PriceString.replace('₹','');
+        data.Sub_Category_ColorId = $('input[name="ColorSelectionId"]:checked').val();
+        data.Sub_CategoryId = SubCategoryId;
+        data.IsWishList = true;
+        var baseUrl = '@Url.Action("OnClickOnSubCategoryPageForWishList","Category")';
+        var queryString = $.param(data);
+        window.location = baseUrl + '?' + queryString;
+    }
+
+    $(document).ready(function () {
+        $('[data-bs-toggle="popover"]').popover();
+    });
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+            'customClass': 'custom-tooltip',
+        })
+    })
+
+    function DeliveryPinCheck() {
+        var PinCode = $('#PinCodeId').val();
+        $.ajax({
+            type: "POST",
+            url: "/Category/DeliveryPinCheck?PinCode=" + PinCode,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    if (response == "true") {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Delivery Applicable'
+                        })
+
+                    } else if (response == "false")
+                    {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Delivery Not Applicable'
+                        })
+                    }
+                 }
+            },
+        });
+    }
+
+
+    if (Sub_Category_DefaultColorId != null) {
+        debugger;
+        var InputColorId = "";
+        var InputColorId = "#"+Sub_Category_DefaultColorId;
+        $(InputColorId).trigger('click');
+        var data = {};
+        data.id = Sub_Category_DefaultColorId;
+        OnClickColorImage(data,SubCategorySelectedImageId);
+    }
+
+    function showIE6Tooltip(e) {
+        if (!e) { var e = window.event; }
+        var obj = e.srcElement;
+        var objHeight = obj.offsetHeight;
+        var optionCount = obj.options.length;
+        var eX = e.offsetX;
+        var eY = e.offsetY;
+
+        //vertical position within select will roughly give the moused over option...
+        var hoverOptionIndex = Math.floor(eY / (objHeight / optionCount));
+
+        var tooltip = document.getElementById('ie6SelectTooltip');
+        tooltip.innerHTML = obj.options[hoverOptionIndex].title;
+        tooltip.style.display = 'block';
+    }
+
+    function hideIE6Tooltip(e) {
+        var tooltip = document.getElementById('ie6SelectTooltip');
+        tooltip.innerHTML = '';
+        tooltip.style.display = 'none';
+    }
+
+    function OpenImageModel(ImageId) {
+        debugger;
+        /*Image  Model funcationality*/
+        $.ajax({
+            type: "POST",
+            url: "/Category/SubCategorySidePartialImageDisplayPage?SubCategoryId=" + SubCategoryId + '&Sub_Category_DefaultColorId=' + parseInt(ImageId.alt),
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myImageModal').modal({
+                       backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myImageModal').modal('show');
+                    $('#ImageDisplayModelId').empty();
+                    $('#ImageDisplayModelId').html(response);
+                }
+            },
+        });
+    //$.ajax({
+    //        type: "POST",
+    //    url: "/Category/OpenImageModelInSubcategoryPage",
+    //        data: JSON.stringify(SubCategoryReviewAndStarsModel),
+    //        contentType: "application/json;charset=utf-8",
+    //        dataType: "html",
+    //        success: function (response) {
+    //            debugger
+    //            if (response != null) {
+    //                $('#myImageModal').modal({
+    //                    backdrop: 'static',
+    //                    keyboard: true,
+    //                    show: true
+    //                });
+    //                $('#myImageModal').modal('show');
+    //                $('#ReviewPartialGridId').empty();
+    //                $('#ReviewPartialGridId').html(response);
+    //            }
+    //        },
+    //    });
+    }
+
+    function getOnchangeSizeDropDowndataList() { //ImageId Parameter
+        debugger;
+        try {
+            var SubCategorySizeId = $('#SizeId option:selected').val();
+            var ImageId = SubCategoryImageId;
+            $.ajax({
+                type: "POST",
+                url: "/Category/GetSubCategorySizeDetails?SubCategoryId=" + SubCategoryId + '&SubCategorySizeId=' + SubCategorySizeId + '&SubCategoryImageId=' + ImageId,
+                dataType: "json",
+                success: function (response) {
+                    debugger
+                    if (response.Sub_CategorySizeDetailsList != null) {
+                        alert('response');
+                        console.log(response);
+                        debugger;
+                        var getOnchangeSizeDropDowndataList = response.Sub_CategorySizeDetailsList;
+
+                        if (getOnchangeSizeDropDowndataList.length != 0) {
+                            if (getOnchangeSizeDropDowndataList[0].CategoryId == 4)//Cloths
+                            {
+                                if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 1) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_M_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_M_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_M_Quantity == index) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                } else if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 2) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_L_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_L_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_L_Quantity == index) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                } else if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 3) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_XL_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_XL_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_XL_Quantity == index) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                } else if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 4) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_XXL_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_XXL_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_XXL_Quantity == index) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                }
+                                else if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 5) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_XXXL_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_XXXL_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                        }
+                                        if (getOnchangeSizeDropDowndataList[0].SubCategory_XXXL_Quantity == index) {
+                                            return false;
+                                        }
+                                    }
+
+                                }
+                                else if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 6) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategroy_4XL_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategroy_4XL_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategroy_4XL_Quantity == index) {
+                                                return false;
+                                            }
+                                        }
+
+                                    }
+                                } else {
+                                    $('#SubCategoryQuantityId').empty();
+                                    $('#SubCategoryQuantityId').html('<option>--Select Quantity--</option>');
+                                    $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>0</option>');
+                                }
+                            } else {
+                                $('#SubCategoryQuantityId').empty();
+                                $('#SubCategoryQuantityId').html('<option>--Select Quantity--</option>');
+                                $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>0</option>');
+                            }
+
+                            if (getOnchangeSizeDropDowndataList[0].CategoryId == 5) {
+                                $('#SubCategoryQuantityId').empty();
+                                $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 1) {
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_6UK_Quantity != undefined) {
+                                        $('#SubCategoryQuantityId').empty();
+                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_6UK_Quantity; index++) {
+                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_6UK_Quantity == index) {
+                                                return false;
+                                            }
+                                        }
+                                    }
+
+                                } else
+
+                                    if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 2) {
+                                        if (getOnchangeSizeDropDowndataList[0].SubCategory_7UK_Quantity != undefined) {
+                                            $('#SubCategoryQuantityId').empty();
+                                            $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                            for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_7UK_Quantity; index++) {
+                                                $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                                if (getOnchangeSizeDropDowndataList[0].SubCategory_7UK_Quantity == index) {
+                                                    return false;
+                                                }
+                                            }
+                                        }
+                                    } else
+
+                                        if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 3) {
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_8UK_Quantity != undefined) {
+                                                $('#SubCategoryQuantityId').empty();
+                                                $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                                for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_8UK_Quantity; index++) {
+                                                    $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_8UK_Quantity == index) {
+                                                        return false;
+                                                    }
+                                                }
+                                            }
+                                        } else
+
+                                            if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 4) {
+                                                if (getOnchangeSizeDropDowndataList[0].SubCategory_9UK_Quantity != undefined) {
+                                                    $('#SubCategoryQuantityId').empty();
+                                                    $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                                    for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_9UK_Quantity; index++) {
+                                                        $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                                        if (getOnchangeSizeDropDowndataList[0].SubCategory_9UK_Quantity == index) {
+                                                            return false;
+                                                        }
+                                                    }
+                                                }
+                                            } else
+
+                                                if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 5) {
+                                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_10UK_Quantity != undefined) {
+                                                        $('#SubCategoryQuantityId').empty();
+                                                        $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                                        for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_10UK_Quantity; index++) {
+                                                            $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_10UK_Quantity == index) {
+                                                                return false;
+                                                            }
+                                                        }
+                                                    }
+                                                } else
+
+                                                    if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 6) {
+                                                        if (getOnchangeSizeDropDowndataList[0].SubCategory_11UK_Quantity != undefined) {
+                                                            $('#SubCategoryQuantityId').empty();
+                                                            $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                                            for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_11UK_Quantity; index++) {
+                                                                $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                                                if (getOnchangeSizeDropDowndataList[0].SubCategory_11UK_Quantity == index) {
+                                                                    return false;
+                                                                }
+                                                            }
+                                                        }
+                                                    } else
+
+                                                        if (getOnchangeSizeDropDowndataList[0].SubCategorySizeId == 7) {
+                                                            if (getOnchangeSizeDropDowndataList[0].SubCategory_12UK_Quantity != undefined) {
+                                                                $('#SubCategoryQuantityId').empty();
+                                                                $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                                                                for (var index = 0; index <= getOnchangeSizeDropDowndataList[0].SubCategory_12UK_Quantity; index++) {
+                                                                    $('#SubCategoryQuantityId').append('<option value= ' + index + '>' + index + '</option>');
+                                                                    if (getOnchangeSizeDropDowndataList[0].SubCategory_12UK_Quantity == index) {
+                                                                        return false;
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            $('#SubCategoryQuantityId').empty();
+                                                            $('#SubCategoryQuantityId').html('<option>--Select Quantity--</option>');
+                                                            $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>0</option>');
+                                                        }
+                            } else {
+                                $('#SubCategoryQuantityId').empty();
+                                $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>--Select Quantity--</option>');
+                            }
+                        } else {
+                            $('#SubCategoryQuantityId').empty();
+                            $('#SubCategoryQuantityId').html('<option>--Select Quantity--</option>');
+                            $('#SubCategoryQuantityId').html('<option value= ' + 0 + '>0</option>');
+                        }
+                      }
+                    }
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    function OnClickWriteReview() {
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: true
+        });
+        $('#myModal').modal('show');
+    }
+
+    function myFunction(imgs) {
+        //$('#SelectedColorId').html('');
+        //$('#SelectedColorId').html("Choose Color :- " + imgs.alt);
+        var expandImg = document.getElementById("expandedImg");
+        var imgText = document.getElementById("imgtext");
+        expandImg.src = imgs.src;
+        imgText.innerHTML = imgs.alt;
+        expandImg.parentElement.style.display = "block";
+    }
+
+    function OnClickColorImage(imgs,ImageModelId) {
+        SubCategoryImageId = null;
+        var SubCategoryIdForOnClickImage = SubCategoryId;
+        var SubCategoryColorIdForOnClickImage = imgs.id;
+        SubCategoryImageId = ImageModelId;
+        /*Side Image funcationality*/
+        $.ajax({
+            type: "POST",
+            url: "/Category/SubCategorySidePartialImageDisplayPage?SubCategoryId=" + SubCategoryIdForOnClickImage + '&Sub_Category_DefaultColorId=' + SubCategoryColorIdForOnClickImage,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#SideImageDisplayId').empty();
+                    $('#SideImageDisplayId').html(response);
+                    //$('#SideImageDisplayId').show();
+                    //$('#SelectedColorId').html('');
+                    //$('#SelectedColorId').html("Choose Color :- " + imgs.alt);
+                }
+            },
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/Category/GetNoOfSizeDataByImageId?SubCategoryId=" + SubCategoryId + '&SubCategoryImageId=' + ImageModelId,
+            dataType: "Json",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    if (response.Sub_CategorySizeDetailsList != null) {
+                        if (response.SizeList != null) {
+                            $('#SubCategoryQuantityId').empty();
+                            $('#SubCategoryQuantityId').html("<option value='0'>0</option>");
+                            $('#SizeId').empty();
+                            $('#SizeId').html("<option value='0'>--Select size --</option>");
+                            for (var Index = 0; Index <= response.SizeList.length; Index++) {
+                                var res = response.Sub_CategorySizeDetailsList.find(SizeDetails => SizeDetails.SubCategorySizeId === response.SizeList[Index].SizeId);
+                                if (res != null) {
+                                    $('#SizeId').append("<option value='" + res.SubCategorySizeId + "'>" + res.SubcategorySizeName + "</option>")
+                                    res = null;
+                                } else {
+                                    //title = 'See Availabe Size'
+                                    $('#SizeId').append("<option style='Background:red;color:white' title = 'Size Not Available' value='" + response.SizeList[Index].SizeId + "'disabled>" + response.SizeList[Index].SizeName + "</option>");
+                                }
+
+                                if (response.SizeList.length == Index) {
+                                    return false;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            },
+        });
+        /*Side Image funcationality*/
+    }
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Category/SubCategorySidePartialImageDisplayPage?SubCategoryId=" + SubCategoryId + '&Sub_Category_DefaultColorId=' + Sub_Category_DefaultColorId,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#SideImageDisplayId').empty();
+                    $('#SideImageDisplayId').html(response);
+                    $('#SideImageDisplayId').show();
+                }
+            },
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/Category/ReviewPartialView?SubCategoryId=" + SubCategoryId,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#ReviewPartialGridId').empty();
+                    $('#ReviewPartialGridId').html(response);
+                    $('#ReviewPartialGridId').show();
+                }
+            },
+        });
+    });
+
+    function ResetReviewSubcategoryPage() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Category/ReviewPartialView?SubCategoryId=" + SubCategoryId,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#ReviewPartialGridId').empty();
+                    $('#ReviewPartialGridId').html(response);
+                    $('#ReviewPartialGridId').show();
+                }
+            },
+        });
+    }
+
+    function DeleteReviewByUserId(ReviewId) {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Category/DeleteReview?SubCategoryId=" + SubCategoryId + '&ReviewId=' + ReviewId,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#ReviewPartialGridId').empty();
+                    $('#ReviewPartialGridId').html(response);
+                    $('#ReviewPartialGridId').show();
+                }
+            },
+        });
+    }
+
+</script>
+

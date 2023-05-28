@@ -1,0 +1,29 @@
+﻿@model List<Impulse.DAL.SubCategoryModel>
+<header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+    <strong class="d-block py-2">No Of Result :- (@Model.Count) </strong>
+</header>
+
+<div class="row">
+    @for (var Index = 0; Index < Model.Count; Index++)
+    {<!-- ========= content items ========= -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <figure class="card card-product-grid">
+                                <div class="img-wrap">
+                                    <img src="@Model[Index].Sub_CategoryImagePath">
+                                </div>
+                                <figcaption class="info-wrap border-top">
+                                    <div class="price-wrap">
+                                        <strong class="price">₹ @Model[Index].Sub_Category_Price</strong>
+                                        @*<del class="price-old">$170.00</del>*@
+                                    </div> <!-- price-wrap.// -->
+                                    <p class="title mb-2">@Model[Index].Sub_CategoryDescription</p>
+
+                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                                    <a href="#" class="btn btn-light btn-icon"> <i class="fa fa-heart"></i> </a>
+                                </figcaption>
+                            </figure>
+                        </div> <!-- ========= content items .// ========= -->
+    }
+</div>
+

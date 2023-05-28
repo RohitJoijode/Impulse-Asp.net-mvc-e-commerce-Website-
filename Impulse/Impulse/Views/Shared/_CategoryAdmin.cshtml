@@ -1,0 +1,62 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
+<script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+<table>
+    <tr>
+        <td>
+            <h5 class="card-title">Category</h5>
+        </td>
+        <td style="position:absolute; right: 20px;">
+            <button class="btn btn-primary" onclick="CreateCategory();">Create</button>
+        </td>
+    </tr>
+</table>
+<!-- Table with stripped rows -->
+<table class="table table-striped"
+  id="table"
+  data-toggle="table"
+  data-height="600"
+  data-pagination="true"
+  data-search="true"
+       >
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">CategoryId</th>
+            <th scope="col">CategoryName</th>
+            <th scope="col">CategoryTypeId</th>
+            <th scope="col">CategoryType</th>
+            <th scope="col">IsActive</th>
+            <th scope="col">CreatedBy</th>
+            <th scope="col">CreatedDate</th>
+            <th scope="col">UpdatedBy</th>
+            <th scope="col">UpdatedDate</th>
+            <th scope="col">CurrencyId</th>
+            <th scope="col">CurrencyName</th>
+            <th scope="col">CurrencySymbol</th>
+            <th scope="col">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var Index = 0; Index < Model.CategoryList.Count; Index++)
+        {
+            <tr>
+                <th scope="row">@Model.CategoryList[Index].Id</th>
+                <td>@Model.CategoryList[Index].CategoryId</td>
+                <td>@Model.CategoryList[Index].CategoryName</td>
+                <td>@Model.CategoryList[Index].CategoryTypeId</td>
+                <td>@Model.CategoryList[Index].CategoryType</td>
+                <td>@Model.CategoryList[Index].IsActive</td>
+                <td>@Model.CategoryList[Index].CreatedBy</td>
+                <td>@Model.CategoryList[Index].CreatedDate</td>
+                <td>@Model.CategoryList[Index].UpdatedBy</td>
+                <td>@Model.CategoryList[Index].UpdatedDate</td>
+                <td>@Model.CategoryList[Index].CurrencyId</td>
+                <td>@Model.CategoryList[Index].CurrencyName</td>
+                <td>@Model.CategoryList[Index].CurrencySymbol</td>
+                <td><button class="btn btn-danger" onclick="EditCategoryModal(@Model.CategoryList[Index].Id,@Model.CategoryList[Index].CategoryId);">Edit</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- End Table with stripped rows -->

@@ -1,0 +1,42 @@
+﻿@model List<Impulse.DAL.SubCategoryModel>
+
+            <div class='container'>
+                <header class='section-heading'>
+                <h3 class='section-title'>Top Deals</h3>
+                </header>
+                <div class='row'>
+                @for(var index = 0;index < Model.Count();index++)
+                {
+                        <div class='col-lg-3 col-md-6 col-sm-6'>
+                        <figure class='card card-product-grid'>
+                        <div class='img-wrap'>
+                            <img src ='/assets2/images/DefualtImage/default-user-icon-8.jpg'>
+                         </div>
+                         <figcaption class='info-wrap border-top'>
+                         <div class='price-wrap'>
+                            <span class='price'> + Model[index].Sub_Category_Price + </span>
+                         </div>
+                        @if(Model[index].Sub_Category_IsColor == true)
+                        {
+                            <div>
+                                <strong>Available Colors</strong>
+                            </div>
+                            <input type='radio' style='margin: 3px;' id='Yellow' name='colors' value='Yellow'>
+                            <input type='radio' style='margin: 3px;' id='Green' name='colors' value='Green'>
+                            <input type='radio' style='margin: 3px;' id='auto' name='colors' value='auto'>
+                            <input type='radio' style='margin: 3px;' id='Red' name='colors' value='Red'>
+                        }
+                    <a href='/Home/SubcategoryPage?SubcategoryId=Model[index].Sub_CategoryId' class='title mb-2'>Model[index].Sub_CategoryDescription</a>);
+                    <a class='btn btn-primary' onClick='OnClickAddToCart(Model[index].Sub_CategoryId,Model[index].CategoryId);'>Add to cart</a>
+                    <a class='btn btn-light btn-icon' onClick='OnClickWishList(Model[index].Sub_CategoryId + "," + Model[index].CategoryId + ");'> <i class='fa fa-heart'></i></a>
+                    </figcaption>
+                    </figure>
+                    </div>
+                }
+                </div>
+                <div class='row'>
+                <div class='text-end'>
+                    <a href='/Home/categoryPage?categoryId=6' class='btn btn-primary'>See More</a>
+                </div>
+                </div>
+                </div>

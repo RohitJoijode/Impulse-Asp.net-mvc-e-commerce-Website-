@@ -1,0 +1,231 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<div class="modal-header">
+    <h5 class="modal-title">Add Sub Category Size</h5>
+    <button type="button" class="btn-close" onclick="closemyCategoryModal();" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <article class="card">
+        <div class="content-body">
+            <h5 class="card-title">Add Sub Category Size</h5>
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="form-label">Category</h5>
+                    @Html.DropDownListFor(x => x.CategoryId, ViewBag.GetCategoryDropDownList as SelectList, "--Select Category--", new { @id = "CategoryId", @Class = "form-select", @onchange = "GetCaseCadingDropdownForSubCategoryByCategoryId();", @disabled = "true" });
+                </div> <!-- col end.// -->
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category Name</h5>
+                    @Html.DropDownListFor(x => x.SubCategoryId,
+                                                                                        new List<SelectListItem> {
+                                                                                        new SelectListItem { Value = "0" , Text = "--Select Sub Category--" },
+                                                                                     },
+                                                                                new { @class = "form-select", @id = "SubCategoryId", @disabled = "true" })
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Color</h5>
+                    @Html.DropDownListFor(x => x.SubcategoryImageColorId, ViewBag.GetColorDropDownList as SelectList, "--Select Color--", new { @id = "ColorId", @Class = "form-select", @disabled = "true" });
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Size</h5>
+                    @Html.DropDownListFor(x => x.SubCategorySizeDetailsModel.SubCategorySizeId, ViewBag.GetSizeDropDownList as SelectList, "--Select Size--", new { @id = "SizeId", @Class = "form-select" });
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category M Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_M_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category L Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_L_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category XL Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_XL_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category XXL Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_XXL_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category XXXL Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_XXXL_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 4XL Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_4XL_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 6UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_6UK_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 7UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_7UK_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 8UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_8UK_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 9UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_9UK_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 10UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_10UK_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 11UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_11UK_QuantityId" placeholder="Type here">
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">Sub Category 12UK Quantity</h5>
+                    <input type="text" class="form-control" name="lorem" id="SubCategory_12UK_QuantityId" placeholder="Type here">
+                </div>
+                <!-- col end.// -->
+            </div> <!-- row.// -->
+
+            <h5 class="card-title">Is Color</h5>
+            <div class="row">
+                <div class="col-lg-4 mb-3">
+                    <div class="box box-check">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" value="true" name="IsColorName">
+                            <b class="border-oncheck"></b>
+                            <span class="form-check-label">
+                                Active <br>
+                            </span>
+                        </label>
+                    </div>
+                </div> <!-- col end.// -->
+                <div class="col-lg-4 mb-3">
+                    <div class="box box-check">
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" value="false" name="IsColorName">
+                            <b class="border-oncheck"></b>
+                            <span class="form-check-label">
+                                DeActive <br>
+                            </span>
+                        </label>
+                    </div>
+                </div> <!-- col end.// -->
+            </div>
+            <h5 class="card-title">Is Size</h5>
+            <div class="col-lg-4 mb-3">
+                <div class="box box-check">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="true" name="IsSizeName">
+                        <b class="border-oncheck"></b>
+                        <span class="form-check-label">
+                            Active <br>
+                        </span>
+                    </label>
+                </div>
+            </div> <!-- col end.// -->
+            <div class="col-lg-4 mb-3">
+                <div class="box box-check">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="false" name="IsSizeName">
+                        <b class="border-oncheck"></b>
+                        <span class="form-check-label">
+                            DeActive <br>
+                        </span>
+                    </label>
+                </div>
+            </div> <!-- col end.// -->
+            <h5 class="card-title">Is Available</h5>
+            <div class="col-lg-4 mb-3">
+                <div class="box box-check">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="true" name="IsAvailableName">
+                        <b class="border-oncheck"></b>
+                        <span class="form-check-label">
+                            Active <br>
+                        </span>
+                    </label>
+                </div>
+            </div> <!-- col end.// -->
+            <div class="col-lg-4 mb-3">
+                <div class="box box-check">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="false" name="IsAvailableName">
+                        <b class="border-oncheck"></b>
+                        <span class="form-check-label">
+                            DeActive <br>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <h5 class="card-title">Is Active</h5>
+            <div class="col-lg-4 mb-3">
+                <div class="box box-check">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="true" name="IsActiveName">
+                        <b class="border-oncheck"></b>
+                        <span class="form-check-label">
+                            Active <br>
+                        </span>
+                    </label>
+                </div>
+            </div> <!-- col end.// -->
+            <div class="col-lg-4 mb-3">
+                <div class="box box-check">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="false" name="IsActiveName">
+                        <b class="border-oncheck"></b>
+                        <span class="form-check-label">
+                            DeActive <br>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <!-- row end.// -->
+            <!-- row end.// -->
+        </div>
+<!-- row end.// -->
+ <!-- card-body end.// -->
+    </article>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary" onclick="SaveSubCategorySizeDetails(@Model.CategoryId,@Model.SubCategoryId,@Model.SubCategoryImageId,@Model.SubcategoryImageColorId);">Save</button>
+</div>
+<script>
+     function GetCaseCadingDropdownForSubCategoryByCategoryId() {
+        debugger;
+        Data = {};
+        var CategoryId = $('#CategoryId :selected').val();
+        Data.CategoryId = CategoryId;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetCaseCadingDropdownForSubCategoryByCategoryId",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (Response) {
+                $("#SubCategoryId").empty();
+                $("#SubCategoryId").html("<option>--Select Sub Category--</option>");
+                if (Response != null) {
+                    debugger;
+                    if (Response.SubCategoryList != null) {
+                        $.each(Response.SubCategoryList, function (data, value) {
+                            if (value.Sub_CategoryId == @Html.Raw(Json.Encode(Model.SubCategoryId))) {
+                                $("#SubCategoryId").append($("<option selected></option>").val(value.Sub_CategoryId).html(value.Sub_CategoryName));
+                            } else {
+                                $("#SubCategoryId").append($("<option></option>").val(value.Sub_CategoryId).html(value.Sub_CategoryName));
+                            }
+                        })
+                    }
+                }
+            }
+        });
+    }
+
+    if (SubCategoryId != null) {
+        GetCaseCadingDropdownForSubCategoryByCategoryId();
+    }
+
+</script>
+
+
+
+
+

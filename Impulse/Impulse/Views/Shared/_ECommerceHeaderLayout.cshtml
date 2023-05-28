@@ -1,0 +1,236 @@
+﻿@model Impulse.DAL.UsersModel
+
+<style>
+    .autocomplete-suggestions {
+        border: 1px solid #998;
+        background: #FFF;
+        overflow: auto;
+    }
+
+    .autocomplete-suggestions {
+        padding: 0px 5px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .autocomplete-selected {
+        background: #90abd0;
+    }
+
+    .autocomplete-suggestions strong {
+        font-weight: normal;
+        color: #3399FF;
+    }
+
+    .autocomplete-group {
+        padding: 2px 5px;
+    }
+
+    .autocomplete-group strong {
+            display: block;
+            border-bottom: 1px solid #000;
+    }
+</style>
+<link rel="stylesheet" href="https://maxcdn.boostrapcdn.com/boostrap/3.3.5/css/boostrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
+<section class="header-main">
+    <div class="container">
+        <div class="row gy-3 align-items-center">
+            <div class="col-lg-2 col-sm-4 col-4">
+                <a href="../index-2.html" class="navbar-brand">
+                </a> <!-- brand end.// -->
+            </div>
+            <div class="order-lg-last col-lg-5 col-sm-8 col-8 ">
+                <div class="float-end">
+                    @if (Model.UserId != null)
+                    {
+                        <a href="/LogIn/LogOut" class="btn btn-light" data-bs-toggle="popover" data-bs-html="true" title="Log In" data-bs-content="<h5>@Model.UserFullName</h5>" data-bs-trigger="hover">
+                            <i class="fa fa-user"></i><span class="ms-1 d-none d-sm-inline-block">Log Out</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/LogIn/LogIn" class="btn btn-light" data-bs-toggle="popover" data-bs-html="true" title="Click Here And Go To Log In Page" @*data-bs-content="<h6>If You New User</h6><a href='/LogIn/LogIn'>Click Here For Register User</a>"*@ data-bs-trigger="hover">
+                            <i class="fa fa-user"></i><span class="ms-1 d-none d-sm-inline-block">Log In</span>
+                        </a>
+                    }
+
+                    <a href="/Home/WishListCart" class="btn btn-light" data-bs-toggle="popover" data-bs-html="true" title="Wish List" data-bs-trigger="hover">
+                        <i class="fa fa-heart"></i>
+                        <span class="ms-1 d-none d-sm-inline-block">Wishlist</span>
+                        <span class="badge bg-danger badge-number" id="WishlistButtonCountId">0</span>
+
+                    </a>
+                    <a href="/Home/AddToCart" class="btn btn-light" data-bs-toggle="popover" data-bs-html="true" title="My Cart" data-bs-trigger="hover">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="ms-1">My cart</span>
+                        <span class="badge bg-primary badge-number" id="MyCartButtonCountId">0</span>
+                    </a>
+                    <a href="/Home/OrderPage" class="btn btn-light" style="position: absolute; right: 60px;" data-bs-toggle="popover" data-bs-html="true" title="Orders" data-bs-trigger="hover">
+                        @*<i class="fa fa-shopping-cart"></i>*@
+                        <span class="ms-1">Orders</span>
+                        <span class="badge bg-success badge-number" id="OrderPageCountId">0</span>
+                    </a>
+                </div>
+            </div> <!-- col end.// -->
+            <!-- Search Filter.// -->
+            <div class="col-lg-5 col-md-12 col-12">
+                @using (Html.BeginForm("SearchPage", "Home", FormMethod.Post))
+                {
+                        <a href="/Home/HomePage"><img width="80" height="60" style="position:absolute;left:50px;top:6px;" src="/assets2/images/CompanyLogo/RoadMartLogo.png"></a>
+                        <input style="position:absolute;left:160px;" class="btn btn-danger" type="button" id="search-speech" value="Loading" disabled />
+                        <div class="input-group" style="position:relative;left:100px;">
+                            @Html.TextBox("AutoCompleteSearch", "", new { @class = "form-control AutoCompleteSearchClass", @id = "AutoCompleteSearchId", @placeholder = "Search", @style = "width:55%" })
+                            <div>
+                                <span class="label label-default" id="selected_option" />
+                            </div>
+                            @Html.DropDownListFor(m => m.CategoryId, ViewBag.CategoryListForDropDown as SelectList, "-- ALL --", new { @class = "form-select", @id = "CategoryListForDropDownForSearchFilterId" })
+                            <button class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div> <!-- input-group end.// -->
+                        }
+                </div>
+            <!-- Search Filter.// -->
+        </div> <!-- row end.// -->
+        </div> <!-- container end.// -->
+</section> <!-- header-main end.// -->
+<nav class="navbar navbar-light bg-white border-top navbar-expand-lg">
+    <div class="container">
+        <button class="navbar-toggler border" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_main">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- collapse end.// -->
+    </div> <!-- container end.// -->
+</nav> <!-- navbar end.// -->
+
+<script>
+
+
+    var voice = {
+        // (A) INIT SPEECH RECOGNITION
+        sform: null, // HTML SEARCH FORM
+        sfield: null, // HTML SEARCH FIELD
+        sbtn: null, // HTML VOICE SEARCH BUTTON
+        recog: null, // SPEECH RECOGNITION OBJECT
+        init: function () {
+            // (A1) GET HTML ELEMENTS
+            voice.sfrom = document.getElementById("search-form");
+            voice.sfield = document.getElementById("AutoCompleteSearchId");
+            voice.sbtn = document.getElementById("search-speech");
+
+            // (A2) GET MICROPHONE ACCESS
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then((stream) => {
+                    // (A3) SPEECH RECOGNITION OBJECT + SETTINGS
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    voice.recog = new SpeechRecognition();
+                    voice.recog.lang = "en-US";
+                    voice.recog.continuous = false;
+                    voice.recog.interimResults = false;
+
+                    // (A4) POPUPLATE SEARCH FIELD ON SPEECH RECOGNITION
+                    voice.recog.onresult = (evt) => {
+                        let said = evt.results[0][0].transcript.toLowerCase();
+                        voice.sfield.value = said;
+                        // voice.sform.submit();
+                        // OR RUN AN AJAX/FETCH SEARCH
+                        voice.stop();
+                    };
+
+                    // (A5) ON SPEECH RECOGNITION ERROR
+                    voice.recog.onerror = (err) => { console.error(err); };
+
+                    // (A6) READY!
+                    voice.sbtn.disabled = false;
+                    voice.stop();
+                })
+                .catch((err) => {
+                    console.error(err);
+                    voice.sbtn.value = "Please enable access and attach microphone.";
+                });
+        },
+
+        // (B) START SPEECH RECOGNITION
+        start: () => {
+            voice.recog.start();
+            voice.sbtn.onclick = voice.stop;
+            voice.sbtn.value = "Speak Now Or Click Again To Cancel";
+        },
+
+        //// (C) STOP/CANCEL SPEECH RECOGNITION
+        stop: () => {
+            voice.recog.stop();
+            voice.sbtn.onclick = voice.start;
+            voice.sbtn.value = "Press To Speak";
+        }
+    };
+    window.addEventListener("DOMContentLoaded", voice.init);
+
+    $(document).ready(function () {
+        $('[data-bs-toggle="popover"]').popover();
+    });
+    var arrayReturn = [];
+     $.ajax({
+        type: 'POST',
+        async: true,
+        dataType: 'JSON',
+         url: '/Category/GetAutoCompleteSearchFilter',
+        success:
+            function (Data) {
+                //alert('New');
+                debugger;
+                //var data = [];
+                for (var i = 0, len = Data.length; i < len;i++)
+                {
+                    var id = (Data[i].Id).toString();
+                    arrayReturn.push({ 'value': Data[i].SubCategoryKeyWordsName,'data': id });
+                }
+                loadSuggestions(arrayReturn);
+            },
+    });
+
+
+    //$.ajax({
+    //    url: "",
+    //    async: true,
+    //    dataType: 'json',
+    //    success: function (data) {
+    //        for (var i = 0, len = data.length; i < len; i < len; i++)
+    //        {
+    //            var id = (data[i].id).tostring();
+    //            arrayReturn.push({ 'value': data[i].categroyId, 'data': id });
+    //        }
+    //      loadSuggestions(arrayReturn);
+    //    }
+    //});
+
+    function loadSuggestions(option) {
+        debugger;
+        $('#AutoCompleteSearchId').autocomplete(
+            {
+                lookup: option,
+                onselect: function (suggestion) {
+                    $('#selected_option').html(suggestion.value)
+                }
+            }
+        );
+    };
+
+    //function SearchFilteResult() {
+    //    debugger;
+    //    var AutoCompleteSearch = "";
+    //    $('#AutoCompleteSearchId').change(function () {
+    //        AutoCompleteSearch = this.value;
+    //    }).change();
+    //    return $.ajax({
+    //        //url: '@@Url.Action("SearchPage","Home")',
+    //        data: { SearchResult: AutoCompleteSearch },
+    //        type: 'POST',
+    //        dataType: 'html'
+    //    });
+    //};
+
+
+</script>

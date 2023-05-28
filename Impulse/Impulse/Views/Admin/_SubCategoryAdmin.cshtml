@@ -1,0 +1,173 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
+<script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+<style>
+    .headerClass {
+        margin: 10px;
+    }
+
+</style>
+<table>
+    <tr>
+        <td>
+            <h5 class="card-title">Sub Category</h5>
+        </td>
+        <td style="position:absolute; right: 20px;">
+            <button class="btn btn-primary" onclick="CreateSubCategory();">Create Sub Category</button>
+        </td>
+    </tr>
+</table>
+<!-- Table with stripped rows -->
+<table class="table table-striped"
+       id="table"
+       data-toggle="table"
+       data-height="600"
+       data-pagination="true"
+       data-search="true">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">CategoryId</th>
+            <th scope="col">CategoryName</th>
+            <th scope="col">CategoryTypeId</th>
+            <th scope="col">CategoryTypeName</th>
+            <th scope="col">Sub CategoryId</th>
+            <th scope="col">Sub Category Name</th>
+            <th scope="col">Sub Category Description</th>
+            <th scope="col">Sub Category IsCare_Instructions</th>
+            <th scope="col">Sub Category Care_Instructions</th>
+            <th scope="col">Sub Category IsOccasionType</th>
+            <th scope="col">Sub Category OccasionType</th>
+            <th scope="col">Sub Category IsClosureType</th>
+            <th scope="col">Sub Category ClosureType</th>
+            <th scope="col">Sub Category IsItemWeight</th>
+            <th scope="col">Sub Category ItemWeight</th>
+            <th scope="col">Sub Category IsItemPackageQuantity</th>
+            <th scope="col">Sub Category ItemPackageQuantity</th>
+            <th scope="col">Sub Category IsNoOfItem</th>
+            <th scope="col">Sub Categor  NoOfItem</th>
+            <th scope="col">Sub Category IsRiseStyle</th>
+            <th scope="col">Sub Category RiseStyle</th>
+            <th scope="col">Sub Category IsStrapType</th>
+            <th scope="col">Sub category StrapType</th>
+            <th scope="col">Sub Category IsItemForm</th>
+            <th scope="col">Sub category ItemForm</th>
+            <th scope="col">Sub Category IsPaperFinish</th>
+            <th scope="col">Sub Category PaperFinish</th>
+            <th scope="col">Sub Category IsNetQuantity</th>
+            <th scope="col">Sub Category NetQuantity</th>
+            <th scope="col">Sub Category IsNeckStyle</th>
+            <th scope="col">Sub Category NeckStyle</th>
+            <th scope="col">Sub Category IsStyle</th>
+            <th scope="col">Sub Category Style</th>
+            <th scope="col">Sub Category IsOrigin</th>
+            <th scope="col">Sub Category Origin</th>
+            <th scope="col">Sub Category IsSize</th>
+            <th scope="col">Sub Category Size</th>
+            <th scope="col">Sub Category IsColor</th>
+            <th scope="col">Sub Category DefaultColorId</th>
+            <th scope="col">Sub Category AvailableNoOfColor</th>
+            <th scope="col">Sub Category IsInclusiveTax</th>
+            <th scope="col">Sub Category Image Path</th>
+            <th scope="col">Sub Category Image</th>
+            <th scope="col">Sub Category Quantity</th>
+            <th scope="col">Sub Category Price</th>
+            <th scope="col">IsActive</th>
+            <th scope="col">CreatedBy</th>
+            <th scope="col">CreatedDate</th>
+            <th scope="col">UpdatedBy</th>
+            <th scope="col">UpdatedDate</th>
+            <th scope="col">Sub_Category IsTopDeal</th>
+            <th scope="col">Sub_Category IsRecommended</th>
+            <th scope="col">Sub_Category IsStrickOutPrice</th>
+            <th scope="col">IsDisplayHomePage</th>
+            <th scope="col">Sub_Category_IsBrand</th>
+            <th scope="col">BrandName</th>
+            <th scope="col">Sub Category IsStockStatus</th>
+            <th scope="col">StockStatusId</th>
+            <th scope="col">StockStatusName</th>
+            <th scope="col">Sub Category IsDiscount</th>
+            <th scope="col">Sub Category Discount Percentage</th>
+            <th scope="col">Sub Category IsDeliveryFree</th>
+            <th scope="col">Sub Category DeliveryDescription</th>
+            <th scope="col">Sub Category IsDeliveryPinCheck</th>
+            <th scope="col">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var Index = 0; Index < Model.SubCategoryList.Count; Index++)
+        {
+        <tr>
+            <th scope="row">@Model.SubCategoryList[Index].Id</th>
+            <td>@Model.SubCategoryList[Index].CategoryId</td>
+            <td>@Model.SubCategoryList[Index].CategoryName</td>
+            <td>@Model.SubCategoryList[Index].CategoryTypeId</td>
+            <td>@Model.SubCategoryList[Index].CategoryTypeName</td>
+            <td>@Model.SubCategoryList[Index].Sub_CategoryId</td>
+            <td>@Model.SubCategoryList[Index].Sub_CategoryName</td>
+            <td>@Model.SubCategoryList[Index].Sub_CategoryDescription</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsCare_Instructions</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Care_Instructions</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsOccasionType</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_OccasionType</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsClosureType</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_ClosureType</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsItemWeight</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_ItemWeight</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsItemPackageQuantity</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_ItemPackageQuantity</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsNoOfItem</td>
+            <td>@Model.SubCategoryList[Index].Sub_Categor_NoOfItem</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsRiseStyle</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_RiseStyle</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsStrapType</td>
+            <td>@Model.SubCategoryList[Index].Sub_category_StrapType</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsItemForm</td>
+            <td>@Model.SubCategoryList[Index].Sub_category_ItemForm</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsPaperFinish</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_PaperFinish</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsNetQuantity</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_NetQuantity</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsNeckStyle</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_NeckStyle</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsStyle</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Style</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsOrigin</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Origin</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsSize</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Size</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsColor</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_DefaultColorId</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_AvailableNoOfColor</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsInclusiveTax</td>
+            <td>@Model.SubCategoryList[Index].Sub_CategoryImagePath</td>
+            <td>
+                  <img style="height:100px;width:100px;" src="@Model.SubCategoryList[Index].Sub_CategoryImagePath" />  
+            </td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Quantity</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Price</td>
+            <td>@Model.SubCategoryList[Index].IsActive</td>
+            <td>@Model.SubCategoryList[Index].CreatedBy</td>
+            <td>@Model.SubCategoryList[Index].CreatedDate</td>
+            <td>@Model.SubCategoryList[Index].UpdatedBy</td>
+            <td>@Model.SubCategoryList[Index].UpdatedDate</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsTopDeal</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsRecommended</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsStrickOutPrice</td>
+            <td>@Model.SubCategoryList[Index].IsDisplayHomePage</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsBrand</td>
+            <td>@Model.SubCategoryList[Index].BrandName</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsStockStatus</td>
+            <td>@Model.SubCategoryList[Index].StockStatusId</td>
+            <td>@Model.SubCategoryList[Index].StockStatusName</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsDiscount</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_Discount_Percentage</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsDeliveryFree</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_DeliveryDescription</td>
+            <td>@Model.SubCategoryList[Index].Sub_Category_IsDeliveryPinCheck</td>
+            <td><button class="btn btn-danger" onclick="EdiSubCategoryModal(@Model.SubCategoryList[Index].Id,@Model.SubCategoryList[Index].Sub_CategoryId);">Edit</button></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<!-- End Table with stripped rows -->

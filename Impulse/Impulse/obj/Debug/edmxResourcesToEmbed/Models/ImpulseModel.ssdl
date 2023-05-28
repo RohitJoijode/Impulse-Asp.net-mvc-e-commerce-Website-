@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ImpulseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SaveGeneratedOTPForRegisterUserDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OTP" Type="varchar" MaxLength="50" />
+    <Property Name="UserFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="UserLastName" Type="varchar" MaxLength="50" />
+    <Property Name="UserRole" Type="bigint" />
+    <Property Name="UserAddress" Type="varchar" MaxLength="500" />
+    <Property Name="UserMobileNumber" Type="varchar" MaxLength="50" />
+    <Property Name="UserStatus" Type="varchar" MaxLength="50" />
+    <Property Name="UserEmailId" Type="varchar" MaxLength="50" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="100" />
+    <Property Name="UserConfirmPassword" Type="varchar" MaxLength="100" />
+    <Property Name="IsKeepMeUpToDateOnNews" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="UserFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="UserLastName" Type="varchar" MaxLength="50" />
+    <Property Name="UserAddress" Type="varchar" MaxLength="100" />
+    <Property Name="UserRole" Type="int" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="50" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="100" />
+    <Property Name="UserMobileNumber" Type="varchar" MaxLength="50" />
+    <Property Name="UserStatus" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsKeepMeUpToDateOnNews" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="ImpulseModelStoreContainer">
+    <EntitySet Name="SaveGeneratedOTPForRegisterUserDetail" EntityType="Self.SaveGeneratedOTPForRegisterUserDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

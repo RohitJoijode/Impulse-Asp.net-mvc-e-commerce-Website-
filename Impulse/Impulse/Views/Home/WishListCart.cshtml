@@ -1,0 +1,706 @@
+﻿@model Impulse.DAL.UsersModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <style>
+        .card-title {
+            color: #db0075;
+        }
+
+        .card-text {
+            color: #17E6E6;
+        }
+
+        .list-inline-item {
+            color: #ffd700
+        }
+
+        .price {
+            color: #9B1B30;
+        }
+
+        .btn-pink {
+            background-color: #fcb2b2 !important;
+        }
+    </style>
+    <!--Begin Script Added On (2-1-2022)-->
+    @*<link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+        <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+        <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+        <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />*@
+    <!--EndScript Added On (2-1-2022)-->
+    <!--Start Jquery UI CDN Link-->
+    @*<script src="jquery-3.6.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>*@
+    <!--End Jquery UI CDN Link-->
+
+    <!--Start E-Commerce Files -->
+    <link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+    <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <script src="~/assets2/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets2/js/script3661.js"></script>
+    <script src="~/assets2/plugins/fslightbox.js"></script>
+    <!--End E-Commerce Files -->
+    <!--Start Jquery UI CDN Link-->
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--End Jquery UI CDN Link-->
+    <!--Start LogIn Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="~/assets/css/style.css" rel="stylesheet">
+    <!--End LogIn Files -->
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2TXFLD');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Type some info">
+    <meta name="author" content="Type name">
+
+    <title>Website layout sample </title>
+
+    <!-- Bootstrap css -->
+    <link href="css/bootstrap3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Custom css -->
+    <link href="css/ui3661.css?v=2.0" rel="stylesheet" type="text/css" />
+    <link href="css/responsive3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2TXFLD"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="section-header">
+        @{Html.RenderPartial("~/Views/Shared/_ECommerceHeaderLayout.cshtml");}
+    </header>
+    <!-- section-header end.// -->
+    <!-- ============== SECTION PAGETOP ============== -->
+    <section class="bg-primary padding-y-sm">
+        <div class="container">
+            <ol class="breadcrumb ondark mb-0">
+                <li class="breadcrumb-item"><a href="/Home/HomePage">Home</a></li>
+                <li class="breadcrumb-item active">Your Wish List Shopping cart</li>
+            </ol>
+        </div> <!-- container //  -->
+    </section>
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    <section class="padding-y bg-light">
+        <div class="container" id="WistListGridId">
+            <!--<article class="card card-product-list">
+                <div class="row g-0">
+                    <aside class="col-xl-3 col-lg-4 col-md-12 col-12">
+                        <a href="#" class="img-wrap"> <img src="bootstrap5-ecommerce/images/items/10.webp"> </a>
+                    </aside>--> <!-- col.// -->
+                    <!--<div class="col-xl-6 col-lg col-md-7 col-sm-7 border-start">
+                        <div class="card-body">
+                            <a href="#" class="title"> T-shirt for Men Blue Cotton Base </a>
+                            <div class="rating-wrap mb-2">
+                                <ul class="rating-stars">
+                                    <li class="stars-active" style="width: 90%;">
+                                        <img src="bootstrap5-ecommerce/images/misc/stars-active.svg" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                                    </li>
+                                </ul>
+                                <span class="label-rating text-warning">4.5</span>
+                                <i class="dot"></i>
+                                <span class="label-rating text-muted">154 orders</span>
+                            </div>-->
+                            <!-- rating-wrap.// -->
+                            <!--<p class="text-muted"> The largest Apple Watch display yet. Electrical heart sensor. Re-engineered Digital Crown with hapti </p>
+                            <p class="my-2">
+                                <span class="btn btn-outline-primary"> Metallic Material </span>
+                                <span class="btn btn-outline-primary"> Pink Color </span>
+                                <span class="btn btn-outline-primary"> 64 GB </span>
+                            </p>
+                        </div>--> <!-- card-body.// -->
+                    <!--</div>--> <!-- col.// -->
+                    <!--<aside class="col-xl-3 col-lg-auto col-md-5 col-sm-5">
+                        <div class="info-aside">
+                            <div class="price-wrap">
+                                <span class="price h5"> $140 </span>
+                                <del class="price-old"> $198</del>
+                            </div>-->
+                            <!-- info-price-detail // -->
+                            <!--<p class="text-success">Free shipping</p>
+                            <br>
+                            <a href="#" class="btn btn-primary"> Buy this </a>
+                            <a href="#" class="btn btn-outline-danger btn-icon">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <p class="mb-0 mt-3">
+                                <a href="#" class="btn btn-primary"> Add To Cart </a>
+                            </p>
+                        </div>--> <!-- info-aside.// -->
+                    <!--</aside>--> <!-- col.// -->
+                <!--</div>
+            </article>-->
+            <!--<article class="card card-product-list">
+                <div class="row g-0">
+                    <aside class="col-xl-3 col-lg-4 col-md-12 col-12">
+                        <a href="#" class="img-wrap"> <img src="bootstrap5-ecommerce/images/items/12.webp"> </a>
+                    </aside>-->
+                    <!-- col.// -->
+                    <!--<div class="col-xl-6 col-lg col-md-7 col-sm-7 border-start">
+                        <div class="card-body">
+                            <a href="#" class="title"> Mens T-shirt Cotton Base Layer Slim </a>
+                            <div class="rating-wrap mb-2">
+                                <ul class="rating-stars">
+                                    <li class="stars-active" style="width: 90%;">
+                                        <img src="bootstrap5-ecommerce/images/misc/stars-active.svg" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="bootstrap5-ecommerce/images/misc/starts-disable.svg" alt="">
+                                    </li>
+                                </ul>
+                                <span class="label-rating text-warning">4.5</span>
+                                <i class="dot"></i> <span class="label-rating text-muted">154 orders</span>
+                            </div>--> <!-- rating-wrap.// -->
+                            <!--<p class="text-muted"> The largest Apple Watch display yet. Electrical heart sensor. Re-engineered Digital Crown with hapti </p>
+                            <p class="my-2">
+                                <span class="btn btn-outline-primary"> Metallic Material </span>
+                                <span class="btn btn-outline-primary"> Pink Color </span>
+                                <span class="btn btn-outline-primary"> 64 GB </span>
+                            </p>
+                        </div>--> <!-- card-body.// -->
+                    <!--</div>--> <!-- col.// -->
+                    <!--<aside class="col-xl-3 col-lg-auto col-md-5 col-sm-5">
+                        <div class="info-aside">
+                            <div class="price-wrap">
+                                <span class="price h5"> $90 </span>
+                                <del class="price-old"> $198</del>
+                            </div>--> <!-- info-price-detail // -->
+                            <!--<p class="text-success">Free shipping</p>
+                            <br>
+                            <a href="#" class="btn btn-primary"> Buy this </a>
+                            <a href="#" class="btn btn-outline-danger btn-icon">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <p class="mb-0 mt-3">
+                                <a href="#" class="btn btn-primary"> Add To Cart </a>
+                            </p>
+                        </div>--> <!-- info-aside.// -->
+                    <!--</aside>--> <!-- col.// -->
+                <!--</div> 
+            </article>-->
+        </div>
+    </section>
+    <!-- =================== COMPONENT CART+SUMMARY ====================== -->
+    @*
+
+        <div class="row">
+            <div class="col-lg-9">
+                    <div class="card">
+                    <div class="content-body">
+                        <h4 class="card-title mb-4">Your Wish List shopping cart</h4>
+                        <article class="row gy-3 mb-4">
+                            <div class="col-lg-5">
+                                <figure class="itemside me-lg-5">
+                                    <div class="aside"><img src="images/items/11.webp" class="img-sm img-thumbnail"></div>
+                                    <figcaption class="info">
+                                        <a href="#" class="title">Winter jacket for men and lady</a>
+                                        <p class="text-muted"> Yellow, Jeans </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-auto">
+                                <select style="width: 100px" class="form-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-sm-4 col-6">
+                                <div class="price-wrap lh-sm">
+                                    <var class="price h6">$1156.00</var>  <br>
+                                    <small class="text-muted"> $460.00 / per item </small>
+                                </div> <!-- price-wrap .// -->
+                            </div>
+                            <div class="col-lg col-sm-4">
+                                <div class="float-lg-end">
+                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                                    <a href="#" class="btn btn-icon btn-light"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
+                        </article> <!-- row.// -->
+
+                        <article class="row gy-3 mb-4">
+                            <div class="col-lg-5">
+                                <figure class="itemside me-lg-5">
+                                    <div class="aside"><img src="images/items/12.webp" class="img-sm img-thumbnail"></div>
+                                    <figcaption class="info">
+                                        <a href="#" class="title">Mens T-shirt Cotton Base</a>
+                                        <p class="text-muted"> Blue, Medium </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-auto">
+                                <select style="width: 100px" class="form-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option selected>4</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-sm-4 col-6">
+                                <div class="price-wrap lh-sm">
+                                    <var class="price h6">$44.80</var>  <br>
+                                    <small class="text-muted"> $12.20 / per item </small>
+                                </div> <!-- price-wrap .// -->
+                            </div>
+                            <div class="col-lg col-sm-4">
+                                <div class="float-lg-end">
+                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                                    <a href="#" class="btn btn-icon btn-light"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
+                        </article> <!-- row.// -->
+
+                        <article class="row gy-3 mb-4">
+                            <div class="col-lg-5">
+                                <figure class="itemside me-lg-5">
+                                    <div class="aside"><img src="images/items/13.webp" class="img-sm img-thumbnail"></div>
+                                    <figcaption class="info">
+                                        <a href="#" class="title">Blazer Suit Dress Jacket for Men</a>
+                                        <p class="text-muted"> XL size, Jeans, Blue </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-auto">
+                                <select style="width: 100px" class="form-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option selected>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-sm-4 col-6">
+                                <div class="price-wrap lh-sm">
+                                    <var class="price h6">$1156.00</var>  <br>
+                                    <small class="text-muted"> $460.00 / per item </small>
+                                </div> <!-- price-wrap .// -->
+                            </div>
+                            <div class="col-lg col-sm-4">
+                                <div class="float-lg-end">
+                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                                    <a href="#" class="btn btn-icon btn-light"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
+                        </article> <!-- row.// -->
+
+                    </div> <!-- card-body .// -->
+                    <!-- card-body.// -->
+                </div> <!-- card.// -->
+            </div> <!-- col.// -->
+        </div>
+
+
+    *@ <!-- row.// -->
+
+
+   
+
+    <!-- =================== COMPONENT 1 CART+SUMMARY .//END  ====================== -->
+    <br><br>
+
+
+    <!-- ==============Begin Showing Modal For Log In// ============== -->
+    @using (Html.BeginForm("Submit", "LogIn", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                    </div>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                                    </div>
+                                    <table class="col-12">
+                                        <tr>
+                                            <td>
+                                                <label for="yourUsername">Username</label>
+                                                @Html.TextBoxFor(m => m.UserName, new { @name = "username", @type = "text", @id = "UserName", @class = "form-control", @Placeholder = "example@gmail.com" })
+                                                @Html.ValidationMessageFor(m => m.UserName)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="yourPassword">Password</label>
+                                                @Html.TextBoxFor(m => m.UserPassword, new { @name = "password", @type = "password", @id = "UserPassword", @class = "form-control", @Placeholder = "Password" })
+                                                @Html.ValidationMessageFor(m => m.UserPassword)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <hr />
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">LogIn</button>
+                                    </div>
+                                    <div class="col-12" style="padding-top:3px;">
+                                        <button class="btn btn-danger w-100" type="button" onclick="closeModalForLogIn();">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <footer class="section-footer bg-primary footer-dark">
+        <div class="container">
+            <section class="footer-main padding-y">
+                <div class="row">
+                    <aside class="col-12 col-sm-12 col-lg-3">
+                        <article class="me-lg-4">
+                            <img src="images/logo-white.webp" class="logo-footer">
+                            <p class="mt-3"> © 2018- 2021 Templatemount. <br> All rights reserved. </p>
+                        </article>
+                    </aside>
+                    <aside class="col-6 col-sm-4 col-lg-2">
+                        <h6 class="title">Store</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#">About us</a></li>
+                            <li> <a href="#">Find store</a></li>
+                            <li> <a href="#">Categories</a></li>
+                            <li> <a href="#">Blogs</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-6 col-sm-4 col-lg-2">
+                        <h6 class="title">Information</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#">Help center</a></li>
+                            <li> <a href="#">Money refund</a></li>
+                            <li> <a href="#">Shipping info</a></li>
+                            <li> <a href="#">Refunds</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-6 col-sm-4  col-lg-2">
+                        <h6 class="title">Support</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#"> Help center </a></li>
+                            <li> <a href="#"> Documents </a></li>
+                            <li> <a href="#"> Account restore </a></li>
+                            <li> <a href="#"> My Orders </a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-12 col-sm-12 col-lg-3">
+                        <h6 class="title">Newsletter</h6>
+                        <p>Stay in touch with latest updates about our products and offers </p>
+
+                        <form class="mb-3">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Email">
+                                <button class="btn btn-light" type="submit">
+                                    Join
+                                </button>
+                            </div> <!-- input-group.// -->
+                        </form>
+                    </aside>
+                </div> <!-- row.// -->
+            </section>  <!-- footer-top.// -->
+            <hr class="my-0">
+            <section class="footer-bottom d-flex justify-content-lg-between">
+                <div>
+                    <i class="fab fa-lg fa-cc-visa"></i>
+                    <i class="fab fa-lg fa-cc-amex"></i>
+                    <i class="fab fa-lg fa-cc-mastercard"></i>
+                    <i class="fab fa-lg fa-cc-paypal"></i>
+                </div>
+                <nav class="dropup">
+                    <button class="dropdown-toggle btn text-white d-flex align-items-center py-0" type="button" data-bs-toggle="dropdown">
+                        <img src="images/flags/flag-usa.webp" class="me-2" height="20">
+                        <span>English</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Russian</a></li>
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">Spanish</a></li>
+                    </ul>
+                </nav>
+
+            </section>
+        </div> <!-- container end.// -->
+    </footer>
+
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="js/script3661.js?v=2.0"></script>
+
+</body>
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+</html>
+<script>
+    @*var AddToCartSubCategoryIdsForCookies = @Html.Raw(Json.Encode(Model.AddToCartSubCategoryIdsForCookies));
+        if (AddToCartSubCategoryIdsForCookies != null && AddToCartSubCategoryIdsForCookies != undefined) {
+            var AddToCartCookesSubCatogryList = AddToCartSubCategoryIdsForCookies.split(',');
+            console.log("AddToCartCookesSubCatogryList",AddToCartCookesSubCatogryList);
+            document.getElementById('MyCartButtonCountId').innerHTML = "";
+            document.getElementById('MyCartButtonCountId').innerHTML = AddToCartCookesSubCatogryList.length;
+    }*@
+
+    var UserId = @Html.Raw(Json.Encode(Model.UserId));
+    var WistListSubCategoryIdsForCookies = @Html.Raw(Json.Encode(Model.WistListSubCategoryIdsForCookies));
+    var WistListList = @Html.Raw(Json.Encode(Model.WistList));
+    var WistListCount = @Html.Raw(Json.Encode(Model.WistListCount));
+    var AddToCartCount = @Html.Raw(Json.Encode(Model.AddToCartCount));
+    var OrderListCount = @Html.Raw(Json.Encode(Model.OrderListCount));
+
+    if (AddToCartCount == null) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = '0';
+    } else if (AddToCartCount != null && AddToCartCount != undefined) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = AddToCartCount;
+    }
+
+    if (OrderListCount == null) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    } else if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+
+
+    function ShowModalForLogIn() {
+        debugger;
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: true
+        });
+        $('#myModal').modal('show');
+    }
+
+    function closeModalForLogIn() {
+        debugger;
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myModal').modal('hide');
+    }
+
+    //alert('WistListSubCategoryIdsForCookies');
+    //alert(WistListSubCategoryIdsForCookies);
+
+    if (WistListSubCategoryIdsForCookies != null && WistListSubCategoryIdsForCookies != undefined) {
+        if (WistListSubCategoryIdsForCookies != null && WistListSubCategoryIdsForCookies != undefined) {
+            if (WistListSubCategoryIdsForCookies != "0") {
+                document.getElementById('WishlistButtonCountId').innerHTML = "";
+                document.getElementById('WishlistButtonCountId').innerHTML = WistListSubCategoryIdsForCookies;
+            }
+      }
+
+        function GetCookiesWistListOnWistListPage() {
+            $.ajax({
+                url: '/Category/GetCookiesWistListOnWistListPage',
+                type: 'POST',
+                dataType: 'JSON',
+                //data: JSON.stringify({'WistList' : WistListList}),
+                contentType: "application/json;charset=utf-8",
+                success:
+                    function (response) {
+                        alert(response.IsSuccess);
+                        console.log(response.StringReponse);
+                        if (response.IsSuccess == true) {
+                            $('#WistListGridId').empty();
+                            $('#WistListGridId').html(response.StringReponse);
+                        }
+                    },
+            });
+        }
+
+         $(document).ready(function () {
+                GetCookiesWistListOnWistListPage();
+         });
+
+    } else if (WistListCount != null && WistListCount != undefined) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = WistListCount;
+
+        $(document).ready(function () {
+            debugger;
+            GetWistListDataOnWistListPage1();
+        });
+    }
+
+    function GetWistListDataOnWistListPage1() {
+        debugger;
+            $.ajax({
+            url: '/Category/GetWistListDataOnWistListPage',
+            type: 'POST',
+            dataType: 'JSON',
+            //data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            success:
+                function (response) {
+                    alert(response.IsSuccess);
+                    if (response.IsSuccess == true) {
+                        $('#WistListGridId').empty();
+                        $('#WistListGridId').html(response.StringReponse);
+                        document.getElementById('WishlistButtonCountId').innerHTML = "";
+                        document.getElementById('WishlistButtonCountId').innerHTML = response.WishListCount;
+                        document.getElementById('MyCartButtonCountId').innerHTML = "";
+                        document.getElementById('MyCartButtonCountId').innerHTML = response.AddToCartCount;
+                    }
+                },
+        });
+    }
+
+    function OnClickAddToCart(SC,WistListUniqueId,Sub_Category_Price,Sub_Category_ColorId,Sub_Category_SizeId) {
+        debugger;
+        try {
+            var Data = {};
+            if (UserId == null) {
+                ShowModalForLogIn();
+                return false;
+            }
+            Data.Id = WistListUniqueId;
+            Data.Sub_CategoryId = SC;
+            var quantityId =  $('#QuantityId' + WistListUniqueId + ' option:selected').val();
+            Data.Quantity = parseInt(quantityId);
+            Data.Sub_Category_Price = Sub_Category_Price;
+            Data.Sub_Category_ColorId = Sub_Category_ColorId;
+            Data.Sub_Category_SizeId = Sub_Category_SizeId;
+            Data.IsWishList = true;
+            $.ajax({
+                url: '/Category/SaveToAddToCartOnWistListPage',
+                type: 'POST',
+                dataType: 'JSON',
+                data: JSON.stringify(Data),
+                contentType: "application/json;charset=utf-8",
+                success:
+                    function (response) {
+                        if (response.IsSuccess == true) {
+                            GetWistListDataOnWistListPage1();
+                        }
+                    },
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    function OnClickDeleteWishListItem(SC,UniqueDeletedId) {
+        debugger;
+        if (WistListSubCategoryIdsForCookies != null && WistListSubCategoryIdsForCookies != undefined) {
+            document.getElementById('WishlistButtonCountId').innerHTML = "";
+            document.getElementById('WishlistButtonCountId').innerHTML = WistListSubCategoryIdsForCookies;
+            debugger;
+           
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                data: JSON.stringify({
+                    'WistList': WistListList,
+                    'WishListCookiesId': UniqueDeletedId
+                }),
+                contentType: "application/json;charset=utf-8",
+                url: '/Category/DeleteWishListItemFromWishListPage',
+                success:
+                    function (response) {
+                        alert(response.IsSuccess);
+                        if (response.IsSuccess == true) {
+                            debugger;
+                            if (response.WishListCount == 0) {
+                                document.getElementById('WishlistButtonCountId').innerHTML = "";
+                                document.getElementById('WishlistButtonCountId').innerHTML = response.WishListCount;
+                                var Data = [];
+                                var GetSubcategoryId = {};
+                                for (var Index = 0; Index < 0; Index++) {
+                                    GetSubcategoryId.SubCategoryId = 0;
+                                    Data.push(GetSubcategoryId);
+                                    GetSubcategoryId = {};
+                                }
+                            } else {
+                                WistListSubCategoryIdsForCookies = response.StringReponse;
+                                document.getElementById('WishlistButtonCountId').innerHTML = "";
+                                document.getElementById('WishlistButtonCountId').innerHTML = WistListSubCategoryIdsForCookies;
+                            }
+                            GetCookiesWistListOnWistListPage();
+                        }
+                    },
+            });
+        } else {
+                    var Data = {};
+                    Data.SubCategoryId = SC.toString();
+                    Data.UniqueId = UniqueDeletedId.toString();
+                    $.ajax({
+                        url: '/Category/UpdateWistListDataForWistListPage',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: JSON.stringify(Data),
+                        contentType: "application/json;charset=utf-8",
+                        success:
+                            function (response) {
+                                alert(response.IsSuccess);
+                                console.log(response.StringReponse);
+                                if (response.IsSuccess == true) {
+                                    $('#WistListGridId').empty();
+                                    $('#WistListGridId').html(response.StringReponse);
+                                    document.getElementById('WishlistButtonCountId').innerHTML = "";
+                                    document.getElementById('WishlistButtonCountId').innerHTML = response.WishListCount;
+                                    document.getElementById('MyCartButtonCountId').innerHTML = "";
+                                    document.getElementById('MyCartButtonCountId').innerHTML = response.AddToCartCount;
+                                }
+                            },
+                    });
+        }
+    }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,72 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
+<script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+<style>
+    .headerClass {
+        margin: 10px;
+    }
+</style>
+<table>
+    <tr>
+        <td>
+            <h5 class="card-title">Sub Category Size Image</h5>
+        </td>
+        
+    </tr>
+</table>
+<!-- Table with stripped rows -->
+<table class="table table-striped"
+       id="table"
+       data-toggle="table"
+       data-height="600"
+       data-pagination="true"
+       data-search="true">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th>Sub Category Image Id  </th>
+            <th>Subc ategory Image Color Id </th>
+            <th>Sub category Image Color Name</th>
+            <th>Sub Category Color Hex Code </th>
+            <th>CategoryId </th>
+            <th>Category Name</th>
+            <th>Sub Category Id</th>
+            <th>Sub Category Name</th>
+            <th>Sub Category Image Path </th>
+            <th>Sub Category Image</th>
+            <th>IsActive   </th>
+            <th>CreatedBy  </th>
+            <th>CreatedDate </th>
+            <th>UpdatedBy  </th>
+            <th>UpdatedDate </th>
+            <th scope="col">Add Size Wise Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var Index = 0; Index < Model.Sub_CategoryImageModelList.Count; Index++)
+        {
+            <tr>
+                <th scope="row">@Model.Sub_CategoryImageModelList[Index].Id</th>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubCategoryImageId</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubcategoryImageColorId</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubcategoryImageColorName</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubCategoryColorHexCode</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].CategoryId</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].CategoryName</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubCategoryId</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubCategoryName</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].SubCategoryImagePath</td>
+                <td>
+                    <img tabindex="0" src='@Model.Sub_CategoryImageModelList[Index].SubCategoryImagePath' style="height: 100px; width: 100px; ">
+                </td>
+                <td>@Model.Sub_CategoryImageModelList[Index].IsActive</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].CreatedBy</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].CreatedDate</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].UpdatedBy</td>
+                <td>@Model.Sub_CategoryImageModelList[Index].UpdatedDate</td>
+                <td><button class="btn btn-primary" onclick="AddSubCategorySizeDetailsModal(@Model.Sub_CategoryImageModelList[Index].Id,@Model.Sub_CategoryImageModelList[Index].SubCategoryImageId,@Model.Sub_CategoryImageModelList[Index].CategoryId,@Model.Sub_CategoryImageModelList[Index].SubCategoryId,@Model.Sub_CategoryImageModelList[Index].SubcategoryImageColorId);">Add Size Wise Price</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- End Table with stripped rows -->

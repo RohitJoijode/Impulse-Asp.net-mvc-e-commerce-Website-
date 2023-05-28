@@ -1,0 +1,451 @@
+﻿@model Impulse.DAL.UsersModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <!--Begin Script Added On (2-1-2022)-->
+    @*<link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+        <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+        <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+        <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />*@
+    <!--StartScript Added On (2-1-2022)-->
+    <!--Start Jquery UI CDN Link-->
+    @*<script src="jquery-3.6.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>*@
+    <!--End Jquery UI CDN Link-->
+    <!--Start E-Commerce Files -->
+    <link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+    <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <script src="~/assets2/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets2/js/script3661.js"></script>
+    <script src="~/assets2/plugins/fslightbox.js"></script>
+    <!--End E-Commerce Files -->
+    <!--Start Jquery UI CDN Link-->
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--End Jquery UI CDN Link-->
+    <!--Start LogIn Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="~/assets/css/style.css" rel="stylesheet">
+    <!--End LogIn Files -->
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2TXFLD');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Type some info">
+    <meta name="author" content="Type name">
+
+    <title>Website layout sample </title>
+
+    <!-- Bootstrap css -->
+    <link href="css/bootstrap3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Custom css -->
+    <link href="css/ui3661.css?v=2.0" rel="stylesheet" type="text/css" />
+    <link href="css/responsive3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2TXFLD"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="section-header">
+        @{Html.RenderPartial("~/Views/Shared/_ECommerceHeaderLayout.cshtml");}
+    </header>
+    <!-- section-header end.// -->
+    <!-- ============== SECTION PAGETOP ============== -->
+    <section class="bg-primary padding-y-sm">
+        <div class="container">
+            <ol class="breadcrumb ondark mb-0">
+                <li class="breadcrumb-item"><a href="/Home/HomePage">Home</a></li>
+                <li class="breadcrumb-item active">Your Shopping cart</li>
+            </ol>
+        </div> <!-- container //  -->
+    </section>
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    @if (Model.UserId != null)
+    {
+        <section class="padding-y bg-light">
+            <!--<div class="container" id="AddToCartGridId">-->
+            <!-- =================== COMPONENT CART+SUMMARY ====================== -->
+            <!-- row.// -->
+            <!-- =================== COMPONENT 1 CART+SUMMARY .//END  ====================== -->
+            <!--</div>--> <!-- container .//  -->
+            <div class="container" id="AddToCartGridId">
+
+            </div>
+        </section>
+    }
+    else
+    {
+        <main class="col-lg-9  col-xl-9" style="padding:30px;">
+            <article class="card">
+                <table class="content-body">
+                    <tr>
+                        <td>
+                            <h6>Please Sign In For showing Order</h6>
+                        </td>
+                        <td>
+                            <a href="/LogIn/LogIn" class="btn btn-primary">Sign In</a>
+                        </td>
+                    </tr>
+                </table>
+            </article>
+        </main>
+    }
+
+
+    <!-- ==============Begin Show Payment Selection Dialog Box// ============== -->
+    <div class="container">
+        <div class="container">
+            <div class="modal fade" id="ShowPaymentMethodDialogBoxId" role="dialog" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                    </div>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Select Payment Method</h5>
+                                    </div>
+                                    <table class="col-12">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" id="UPIPaymentId" />
+                                                <label for="UPIPaymentLabel">UPI Payment</label>
+                                              </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" id="PayOnDeliveryId" />
+                                                <label for="yourUsername">Pay On Delivery</label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <hr />
+                                    <div class="col-12">
+                                        @*<button class="btn btn-primary w-100" type="submit">LogIn</button>*@
+                                    </div>
+                                    <div class="col-12" style="padding-top:3px;">
+                                        <button class="btn btn-danger w-100" type="button" onclick="ClosePaymentMethodDialogBox();">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==============End Show Payment Selection Dialog Box// ============== -->
+    <!-- ==============Begin Showing Modal For Validation Message// ============== -->
+    <div class="container">
+        <div class="modal fade" id="myModalMessage" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <strong id="ModalMessageId"></strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="ModalMessageclose();" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==============End Showing Modal For Validation Message// ============== -->
+
+
+
+    <footer class="section-footer bg-primary footer-dark">
+        <div class="container">
+            <section class="footer-main padding-y">
+                <div class="row">
+                    <aside class="col-12 col-sm-12 col-lg-3">
+                        <article class="me-lg-4">
+                            <img src="images/logo-white.webp" class="logo-footer">
+                            <p class="mt-3"> © 2018- 2021 Templatemount. <br> All rights reserved. </p>
+                        </article>
+                    </aside>
+                    <aside class="col-6 col-sm-4 col-lg-2">
+                        <h6 class="title">Store</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#">About us</a></li>
+                            <li> <a href="#">Find store</a></li>
+                            <li> <a href="#">Categories</a></li>
+                            <li> <a href="#">Blogs</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-6 col-sm-4 col-lg-2">
+                        <h6 class="title">Information</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#">Help center</a></li>
+                            <li> <a href="#">Money refund</a></li>
+                            <li> <a href="#">Shipping info</a></li>
+                            <li> <a href="#">Refunds</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-6 col-sm-4  col-lg-2">
+                        <h6 class="title">Support</h6>
+                        <ul class="list-menu">
+                            <li> <a href="#"> Help center </a></li>
+                            <li> <a href="#"> Documents </a></li>
+                            <li> <a href="#"> Account restore </a></li>
+                            <li> <a href="#"> My Orders </a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-12 col-sm-12 col-lg-3">
+                        <h6 class="title">Newsletter</h6>
+                        <p>Stay in touch with latest updates about our products and offers </p>
+
+                        <form class="mb-3">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Email">
+                                <button class="btn btn-light" type="submit">
+                                    Join
+                                </button>
+                            </div> <!-- input-group.// -->
+                        </form>
+                    </aside>
+                </div> <!-- row.// -->
+            </section>  <!-- footer-top.// -->
+            <hr class="my-0">
+            <section class="footer-bottom d-flex justify-content-lg-between">
+                <div>
+                    <i class="fab fa-lg fa-cc-visa"></i>
+                    <i class="fab fa-lg fa-cc-amex"></i>
+                    <i class="fab fa-lg fa-cc-mastercard"></i>
+                    <i class="fab fa-lg fa-cc-paypal"></i>
+                </div>
+                <nav class="dropup">
+                    <button class="dropdown-toggle btn text-white d-flex align-items-center py-0" type="button" data-bs-toggle="dropdown">
+                        <img src="images/flags/flag-usa.webp" class="me-2" height="20">
+                        <span>English</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Russian</a></li>
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">Spanish</a></li>
+                    </ul>
+                </nav>
+
+            </section>
+        </div> <!-- container end.// -->
+    </footer>
+
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="js/script3661.js?v=2.0"></script>
+
+</body>
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+</html>
+<script>
+
+
+    function ModalMessageclose() {
+        debugger;
+        $('#myModalMessage').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myModalMessage').modal('hide');
+    }
+
+    function OnchangeQuantityForAddToCart(AddToListUniqueid) {
+        debugger;
+        var quantity = $('#QuantityId' + AddToListUniqueid + ' option:selected').val();
+        var Data = {};
+        Data.quantity = parseInt(quantity);
+        Data.AddToListUniqueid = parseInt(AddToListUniqueid);
+        $.ajax({
+            url: '/Category/OnchangeQuantityForAddToCart',
+            type: 'POST',
+            dataType: 'JSON',
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            success:
+                function (response) {
+                    if (response.IsSuccess == true) {
+                        $('#AddToCartGridId').empty();
+                        $('#AddToCartGridId').html(response.StringReponse);
+                    }
+                },
+        });
+    }
+
+    function ShowModalMessage(message) {
+        debugger;
+        $('#myModalMessage').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: true
+        });
+        $('#myModalMessage').modal('show');
+        document.getElementById("ModalMessageId").innerHTML = "";
+        document.getElementById("ModalMessageId").innerHTML = message;
+    }
+
+    //function ShowPaymentMethodDialogBox() {
+    //    $('#ShowPaymentMethodDialogBoxId').modal({
+    //        backdrop: 'static',
+    //        keyboard: true,
+    //        show: true
+    //    });
+    //    $('#ShowPaymentMethodDialogBoxId').modal('show');
+    //}
+
+    //function ClosePaymentMethodDialogBox() {
+    //    debugger;
+    //    $('#ShowPaymentMethodDialogBoxId').modal({
+    //        backdrop: 'static',
+    //        keyboard: true,
+    //        show: false
+    //    });
+    //    $('#ShowPaymentMethodDialogBoxId').modal('hide');
+    //}
+    var UserId = @Html.Raw(Json.Encode(Model.UserId));
+    var WistListCount = @Html.Raw(Json.Encode(Model.WistListCount));
+    var AddToCartCount = @Html.Raw(Json.Encode(Model.AddToCartCount));
+    var OrderListCount = @Html.Raw(Json.Encode(Model.OrderListCount));
+
+    if (AddToCartCount == null) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = '0';
+    } else if (AddToCartCount != null && AddToCartCount != undefined) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = AddToCartCount;
+    }
+
+
+    if (WistListCount == null) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = '0';
+    } else if (WistListCount != null && WistListCount != undefined) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = WistListCount;
+    }
+
+    if (OrderListCount == null) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    } else if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+
+        $(document).ready(function () {
+            debugger;
+            GetAddToCartDataOnAddToCartPage();
+        });
+
+        function GetAddToCartDataOnAddToCartPage() {
+            debugger;
+            $.ajax({
+                url: '/Category/GetAddToCartDataOnAddToCartPage',
+                type: 'POST',
+                dataType: 'JSON',
+                contentType: "application/json;charset=utf-8",
+                success:
+                    function (response) {
+                        alert(response.IsSuccess);
+                        if (response.IsSuccess == true) {
+                            $('#AddToCartGridId').empty();
+                            $('#AddToCartGridId').html(response.StringReponse);
+                            document.getElementById('MyCartButtonCountId').innerHTML = "";
+                            document.getElementById('MyCartButtonCountId').innerHTML = response.AddToCartCount;
+                        }
+                    },
+            });
+        }
+
+    function OnClickBuyItem(SC, AddToCartId) {
+        debugger;
+
+        var SubCategoryQauntity = parseFloat($('#QuantityDropDownId' + AddToCartId + ' option:selected').val());
+        if (SubCategoryQauntity == 0) {
+            ShowModalMessage("Please Select Qauntity,if you found only 0 Qauntity it's Means Stock Not Avaliable In Our Store...")
+            return false;
+        }
+
+        var Data = {};
+        Data.SubCategoryId = SC.toString();
+        Data.AddToCartUniqueId = AddToCartId.toString();
+        Data.SubCategoryQauntity = parseFloat($('#QuantityDropDownId' + AddToCartId + ' option:selected').val());
+        var SubCategoryPriceId = 'SubCategoryPriceId' + AddToCartId;
+        Data.SubCategoryPrice = parseFloat($('#' + SubCategoryPriceId + '').text());
+
+        var baseUrl = '@Url.Action("PayMentMethodPage","Home")';
+        var queryString = $.param(Data);
+        window.location = baseUrl + '?' + queryString;
+    }
+
+
+    function OnClickDeleteItemOnAddToCartPage(SC,AddToCartUniqueId) {
+        debugger;
+        var Data = {};
+        Data.SubCategoryId = SC.toString();
+        Data.UniqueId = AddToCartUniqueId.toString();
+        $.ajax({
+            url: '/Category/DeleteAddToCartItem',
+            type: 'POST',
+            dataType: 'JSON',
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            success:
+                function (response) {
+                    alert(response.IsSuccess);
+                    console.log(response.StringReponse);
+                    if (response.IsSuccess == true) {
+                        GetAddToCartDataOnAddToCartPage();
+                    }
+                },
+        });
+    }
+
+
+</script>

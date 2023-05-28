@@ -1,0 +1,743 @@
+﻿@model Impulse.DAL.UsersModel
+@{
+        Layout = null;
+}
+    <!DOCTYPE HTML>
+    <html lang="en">
+    <!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+    <!-- Added by HTTrack -->
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+    <head>
+        <link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+        <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+        <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+        <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+        <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />
+        <script src="~/assets2/js/bootstrap.bundle.min.js"></script>
+        <script src="~/assets2/js/script3661.js"></script>
+        <script src="~/assets2/plugins/fslightbox.js"></script>
+        <script src="jquery-3.6.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-M2TXFLD');</script>
+        <!-- End Google Tag Manager -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Type some info">
+        <meta name="author" content="Type name">
+        <title>Website layout sample </title>
+        <!-- Bootstrap css -->
+        <link href="css/bootstrap3661.css?v=2.0" rel="stylesheet" type="text/css" />
+        <!-- Custom css -->
+        <link href="css/ui3661.css?v=2.0" rel="stylesheet" type="text/css" />
+        <link href="css/responsive3661.css?v=2.0" rel="stylesheet" type="text/css" />
+        <!-- Font awesome 5 -->
+        <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2TXFLD"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+
+        <header class="section-header">
+            @{Html.RenderPartial("~/Views/Shared/_ECommerceHeaderLayout.cshtml");}
+        </header>
+
+        @if (Model.UserId != null)
+        {
+            <!-- End Google Tag Manager (noscript) -->
+            <!--Below Commentd Tag-->
+            <!--Above Commentd Tag-->
+            <!-- section-header end.// -->
+            <!-- ============== SECTION PAGETOP ============== -->
+            <!-- ============== SECTION PAGETOP END// ============== -->
+            <!-- ============== SECTION ============== -->
+            <section class="padding-y bg-light">
+                <div class="container">
+                    <div class="row">
+                        <main class="col-xl-8 col-lg-8">
+                            <!-- ============== COMPONENT CHECKOUT =============== -->
+                            <article class="card">
+                                <div class="content-body">
+                                    <h5 class="card-title">Edit User Profile</h5>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label">First name*</label>
+                                            <input type="text" class="form-control" id="FirstNameId" autocomplete="off" placeholder="Type here" value="@Model.UserFirstName">
+                                        </div> <!-- col end.// -->
+                                        <div class="col-6">
+                                            <label class="form-label">Last name*</label>
+                                            <input type="text" class="form-control" id="LastNameId" autocomplete="off" placeholder="Type here" value="@Model.UserLastName">
+                                        </div> <!-- col end.// -->
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label">Phone*</label>
+                                            <input type="text" id="PhoneId" class="form-control" autocomplete="off" placeholder="+91" value="@Model.UserMobileNumber">
+                                        </div> <!-- col end.// -->
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label">Email*</label>
+                                            <input type="text" class="form-control" id="EmailId" autocomplete="off" placeholder="example@gmail.com" value="@Model.Email" disabled>
+                                        </div> <!-- col end.// -->
+                                    </div> <!-- row.// -->
+                                    <label class="form-check mb-3">
+                                        <input class="form-check-input KeepMeUpToDateOnNewsClass" type="checkbox" autocomplete="off" value="" id="IsKeepMeUpToDateOnNewsId">
+                                        <span class="form-check-label">Keep me up to date on news </span>
+                                    </label>
+                                    <hr class="my-4">
+                                    <h5 class="card-title">User Type</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="box box-check">
+                                                <label class="form-check">
+                                                    <input class="form-check-input" value="Buyer" type="radio" autocomplete="off" name="dostavka" checked>
+                                                    <b class="border-oncheck"></b>
+                                                    <span class="form-check-label">
+                                                        Buyer<br>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div> <!-- col end.// -->
+                                        <!-- col end.// -->
+                                    </div> <!-- row end.// -->
+
+                                    <div class="row">
+                                        <div class="col-sm-8 mb-3">
+                                            <label for="" class="form-label">Address*</label>
+                                            <input type="text" class="form-control" id="AddressId" autocomplete="off" placeholder="Type here" value="@Model.UserAddress">
+                                        </div> <!-- col end.// -->
+
+                                        <div class="col-sm-4 mb-3">
+                                            <label for="" class="form-label">Country*</label>
+                                            @Html.DropDownListFor(m => m.UserCoutryId, ViewBag.CountryList as SelectList, "--Select Country--", new { @class = "form-select", @id = "CountryId", @onchange = "GetStateListByCountryId()", @autocomplete = "off" })
+                                        </div>
+                                        <div class="col-sm-4 mb-3">
+                                            <label for="" class="form-label">State*</label>
+                                            <select class="form-select" id="StateId" aria-label="State*" autocomplete="off" onchange="GetCityListByCountryIdAndStateId();">
+                                                <option value="0">--Select State --</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4 mb-3">
+                                            <label for="" class="form-label">City*</label>
+                                            <select class="form-select" autocomplete="off" id="CityId" aria-label="City*">
+                                                <option value="0">--Select City --</option>
+                                            </select>
+                                        </div> <!-- col end.// -->
+                                        <!-- col end.// -->
+                                        <div class="col-sm-4 col-6 mb-3">
+                                            <label for="" class="form-label">Pin code*</label>
+                                            <input type="text" class="form-control" autocomplete="off" id="PinCodeId" placeholder="" value="@Model.UserPincode">
+                                        </div> <!-- col end.// -->
+                                        <!-- col end.// -->
+                                    </div> <!-- row.// -->
+                                    <!-- col end.// -->
+                                    <div class="float-end">
+                                        <button class="btn btn-light" onclick="CancelRegisterDetails()">Cancel</button>
+                                        <button class="btn btn-success" onclick="UpdateRegistrationForm();">Submit</button>
+                                    </div>
+
+                                </div> <!-- card-body end.// -->
+                            </article> <!-- card end.// -->
+                            <!-- ============== COMPONENT CHECKOUT .// =============== -->
+
+                        </main> <!-- col.// -->
+                        <aside class="col-xl-4 col-lg-4">
+                            <!-- ============== COMPONENT SUMMARY =============== -->
+                            <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
+                                <hr>
+                            </article>
+                            <!-- ============== COMPONENT SUMMARY .// =============== -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+
+                    <br><br>
+
+                </div> <!-- container .//  -->
+            </section>
+            <!-- ============== SECTION END// ============== -->
+            <!-- ==============Begin Modal // ============== -->
+            <div class="container">
+                <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                        </div>
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <strong>Please Insert OTP,OTP You Get from User email</strong>
+                                <input type="text" class="form-control" id="OTPId" placeholder="Type here OTP">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="OkModal();">Ok</button>
+                                <button type="button" class="btn btn-danger" onclick="closeModal();" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ==============End Modal // ============== -->
+            <!-- ==============Begin Showing Modal For Validation Message// ============== -->
+            <div class="container">
+                <div class="modal fade" id="myModalMessage" role="dialog" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <strong id="ModalMessageId"></strong>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" onclick="ModalMessageclose();" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ==============End Showing Modal For Validation Message// ============== -->
+        }
+        else
+        {
+            <main class="col-lg-9  col-xl-9" style="padding:30px;">
+                <article class="card">
+                    <table class="content-body">
+                        <tr>
+                            <td>
+                                <h6>Please Sign In For showing Order</h6>
+                            </td>
+                            <td>
+                                <a href="/LogIn/LogIn" class="btn btn-primary">Sign In</a>
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            </main>
+        }
+
+
+
+        <footer class="section-footer bg-primary footer-dark">
+            <div class="container">
+                <section class="footer-main padding-y">
+                    <div class="row">
+                        <aside class="col-12 col-sm-12 col-lg-3">
+                            <article class="me-lg-4">
+                                <img src="~/images/logo-white.webp" class="logo-footer">
+                                <p class="mt-3"> © 2018- 2021 Templatemount. <br> All rights reserved. </p>
+                            </article>
+                        </aside>
+                        <aside class="col-6 col-sm-4 col-lg-2">
+                            <h6 class="title">Store</h6>
+                            <ul class="list-menu">
+                                <li> <a href="#">About us</a></li>
+                                <li> <a href="#">Find store</a></li>
+                                <li> <a href="#">Categories</a></li>
+                                <li> <a href="#">Blogs</a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-6 col-sm-4 col-lg-2">
+                            <h6 class="title">Information</h6>
+                            <ul class="list-menu">
+                                <li> <a href="#">Help center</a></li>
+                                <li> <a href="#">Money refund</a></li>
+                                <li> <a href="#">Shipping info</a></li>
+                                <li> <a href="#">Refunds</a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-6 col-sm-4  col-lg-2">
+                            <h6 class="title">Support</h6>
+                            <ul class="list-menu">
+                                <li> <a href="#"> Help center </a></li>
+                                <li> <a href="#"> Documents </a></li>
+                                <li> <a href="#"> Account restore </a></li>
+                                <li> <a href="#"> My Orders </a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-12 col-sm-12 col-lg-3">
+                            <h6 class="title">Newsletter</h6>
+                            <p>Stay in touch with latest updates about our products and offers </p>
+
+                            <form class="mb-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="Email">
+                                    <button class="btn btn-light" type="submit">
+                                        Join
+                                    </button>
+                                </div> <!-- input-group.// -->
+                            </form>
+                        </aside>
+                    </div> <!-- row.// -->
+                </section>  <!-- footer-top.// -->
+                <hr class="my-0">
+                <section class="footer-bottom d-flex justify-content-lg-between">
+                    <div>
+                        <i class="fab fa-lg fa-cc-visa"></i>
+                        <i class="fab fa-lg fa-cc-amex"></i>
+                        <i class="fab fa-lg fa-cc-mastercard"></i>
+                        <i class="fab fa-lg fa-cc-paypal"></i>
+                    </div>
+                    <nav class="dropup">
+                        <button class="dropdown-toggle btn text-white d-flex align-items-center py-0" type="button" data-bs-toggle="dropdown">
+                            <img src="images/flags/flag-usa.webp" class="me-2" height="20">
+                            <span>English</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Russian</a></li>
+                            <li><a class="dropdown-item" href="#">Arabic</a></li>
+                            <li><a class="dropdown-item" href="#">Spanish</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </div> <!-- container end.// -->
+        </footer>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <!-- Custom js -->
+        <script src="js/script3661.js?v=2.0"></script>
+    </body>
+    <!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+</html>
+    <script>
+
+    var UserId = @Html.Raw(Json.Encode(Model.UserId));
+    var WistListCount = @Html.Raw(Json.Encode(Model.WistListCount));
+    var AddToCartCount = @Html.Raw(Json.Encode(Model.AddToCartCount));
+    var OrderListCount = @Html.Raw(Json.Encode(Model.OrderListCount));
+
+    if (AddToCartCount == null) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = '0';
+    } else if (AddToCartCount != null && AddToCartCount != undefined) {
+        document.getElementById('MyCartButtonCountId').innerHTML = "";
+        document.getElementById('MyCartButtonCountId').innerHTML = AddToCartCount;
+    }
+
+    if (WistListCount != null && WistListCount != undefined) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = WistListCount;
+    } else if (WistListCount == null) {
+        document.getElementById('WishlistButtonCountId').innerHTML = "";
+        document.getElementById('WishlistButtonCountId').innerHTML = '0';
+    }
+
+    if (OrderListCount != null && OrderListCount != undefined) {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = OrderListCount;
+    }
+    else if (OrderListCount == null)
+    {
+        document.getElementById('OrderPageCountId').innerHTML = "";
+        document.getElementById('OrderPageCountId').innerHTML = '0';
+    }
+
+    var RegisterGeneratedOTP = "";
+
+    function CancelRegisterDetails() {
+        debugger;
+        $('#FirstNameId').val('');
+        $('#LastNameId').val('');
+        $('#PhoneId').val('');
+        $('#PasswordId').val('');
+        $('#ConfirmPasswordId').val('');
+        $('#IsKeepMeUpToDateOnNewsId').prop('checked', false);
+        $('#AddressId').val('');
+        $('#CountryId').get(0).selectedIndex = 0;
+        $('#StateId').get(0).selectedIndex = 0;
+        $('#CityId').get(0).selectedIndex = 0;
+        $('#PinCodeId').val('');
+    }
+
+        var UserCoutryId =  @Html.Raw(Json.Encode(Model.UserCoutryId));
+        var UserStateId =  @Html.Raw(Json.Encode(Model.UserStateId));
+        var UserCityId =  @Html.Raw(Json.Encode(Model.UserCityId));
+
+
+        GetStateListByCountryId(UserCoutryId);
+        GetCityListByCountryIdAndStateId(UserCoutryId,UserStateId);
+
+    function GetStateListByCountryId(CountryId) {
+        debugger;
+        Data = {};
+        if (CountryId != null && CountryId != undefined) {
+            Data.CountryId = CountryId;
+        } else {
+            Data.CountryId = $('#CountryId :selected').val();;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Register/GetStateListByCountryId",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (Response) {
+                $("#StateId").empty();
+                $("#StateId").append($("<option></option>").val(0).html('-- Select State --'));
+                $("#CityId").empty();
+                $("#CityId").append($("<option></option>").val(0).html('-- Select City --'));
+                if (Response != null) {
+                    $.each(Response, function (data, value) {
+                        $("#StateId").append($("<option></option>").val(value.Id).html(value.StateName));
+                    })
+                    if (UserStateId != null) {
+                        $("#StateId").val(UserStateId);
+                    }
+                }
+            }
+        });
+    }
+
+
+    function GetCityListByCountryIdAndStateId(CountryId,StateId) {
+        debugger;
+        alert('CountryId');
+        alert(CountryId);
+
+        alert('StateId');
+        alert(StateId);
+
+        Data = {};
+        if (CountryId != null && CountryId != undefined) {
+            Data.CountryId = CountryId;
+        } else {
+            Data.CountryId = $('#CountryId :selected').val();;
+        }
+
+        if (StateId != null && StateId != undefined) {
+            Data.StateId = StateId;
+        } else {
+            Data.StateId = $('#StateId :selected').val();
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Register/GetCityListByCountryIdAndStateId",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (Response) {
+                if (Response != null) {
+                    $("#CityId").empty();
+                    $("#CityId").append($("<option></option>").val(0).html('-- Select City --'));
+                    $.each(Response, function (data, value) {
+                        $("#CityId").append($("<option></option>").val(value.Id).html(value.CityName));
+                    })
+
+                    if (UserCityId != null) {
+                        $("#CityId").val(UserCityId);
+                    }
+
+                }
+            }
+        });
+    }
+
+    function UpdateRegistrationForm() {
+        debugger;
+        /*document.getElementById("ConfirmPasswordErrorId").innerHTML = "";*/
+        RegisterGeneratedOTP = "";
+        var Data = {};
+        var Firstname = $('#FirstNameId').val();
+        var LastName = $('#LastNameId').val();
+        var Phone = $('#PhoneId').val();
+        var KeepMeUpToDateOnNews = false;
+        if ($('#IsKeepMeUpToDateOnNewsId').is(":checked")) {
+            KeepMeUpToDateOnNews = true;
+        } else {
+            KeepMeUpToDateOnNews = false;
+        }
+        var UserType = $('input[name="dostavka"]:checked').val();
+        var Email = $('#EmailId').val();
+        var Address = $('#AddressId').val();
+        var Country = $('#CountryId :selected').val();
+        var State = $('#StateId :selected').val();
+        var City = $('#CityId :selected').val();
+        var PinCode = $('#PinCodeId').val();
+        var password = $('#PasswordId').val();
+        var confirmPassword = $('#ConfirmPasswordId').val();
+
+        Data.Firstname = Firstname;
+        if (Data.Firstname == "") {
+            ShowModalMessage("Please Insert First Name");
+            return false;
+        }
+
+        Data.LastName = LastName;
+        if (Data.LastName == "") {
+            ShowModalMessage("Please Insert Last Name Field");
+            return false;
+        }
+
+        Data.Phone = Phone;
+        alert(Data.Phone);
+        if (Data.Phone == "") {
+            ShowModalMessage("Please Insert Phone Number Field");
+            return false;
+        }
+
+        Data.Email = Email;
+        if (Data.Email == "") {
+            ShowModalMessage("Please Insert Email Field");
+            return false;
+        }
+
+        Data.password = password;
+        alert(Data.password);
+        if (Data.password == "") {
+            ShowModalMessage("Please Insert Password Field");
+            return false;
+        }
+
+        Data.confirmPassword = confirmPassword;
+        alert(Data.confirmPassword);
+        if (Data.confirmPassword == "") {
+            ShowModalMessage("Please Insert Confirm Password Field");
+            return false;
+        }
+
+        if (password != confirmPassword) {
+            ShowModalMessage("Passwords do not match.");
+            return false;
+        }
+
+        Data.UserType = UserType;
+        if (Data.UserType == undefined) {
+            ShowModalMessage("Please Select User");
+            return false;
+        }
+        //alert(Data.UserType);
+
+        Data.Address = Address;
+        if (Data.Address == "") {
+            ShowModalMessage("Please Insert Address Field");
+            return false;
+        }
+
+        Data.UserCoutryId = Country;
+        if (Data.UserCoutryId == "" || Data.UserCoutryId == 0) {
+            ShowModalMessage("Please Select Country");
+            return false;
+        }
+
+        Data.UserStateId = State;
+        if (Data.UserStateId == "" || Data.UserStateId == 0) {
+            ShowModalMessage("Please Select State");
+            return false;
+        }
+
+        Data.UserCityId = City;
+        if (Data.UserCityId == "" || Data.UserCityId == 0) {
+            ShowModalMessage("Please Select City");
+            return false;
+        }
+
+        Data.PinCode = PinCode;
+        if (Data.PinCode == "") {
+            ShowModalMessage("Please Insert PinCode");
+            return false;
+        }
+
+        Data.UserType = UserType;
+        if (Data.UserType == "") {
+            ShowModalMessage("Please Select User Type");
+            return false;
+        }
+
+        Data.IsKeepMeUpToDateOnNews = KeepMeUpToDateOnNews;
+
+        $.ajax({
+            type: "POST",
+            url: "/LogIn/UpdateRegisterPage",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (Response) {
+                if (Response.IsSuccess == true && Response.ResponseMessage == "Send Mail Successfully...") {
+                    $('#myModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myModal').modal('show');
+                    RegisterGeneratedOTP = Response.RegisterOTP;
+                } else if (Response.IsSuccess == false) {
+                    ShowModalMessage("Something went wrong...")
+                }
+            }
+        });
+    }
+
+    function closeModal() {
+        debugger;
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myModal').modal('hide');
+    }
+
+    function ModalMessageclose() {
+        debugger;
+        $('#myModalMessage').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myModalMessage').modal('hide');
+    }
+
+    function ShowModalMessage(message) {
+        debugger;
+        $('#myModalMessage').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: true
+        });
+        $('#myModalMessage').modal('show');
+        document.getElementById("ModalMessageId").innerHTML = "";
+        document.getElementById("ModalMessageId").innerHTML = message;
+    }
+
+    function OkModal() {
+        debugger;
+        /*document.getElementById("ConfirmPasswordErrorId").innerHTML = "";*/
+        var Data = {};
+        var Firstname = $('#FirstNameId').val();
+        var LastName = $('#LastNameId').val();
+        var Phone = $('#PhoneId').val();
+        var KeepMeUpToDateOnNews = false;
+        if ($('#IsKeepMeUpToDateOnNewsId').is(":checked")) {
+            KeepMeUpToDateOnNews = true;
+        } else {
+            KeepMeUpToDateOnNews = false;
+        }
+        var UserType = $('input[name="dostavka"]:checked').val();
+        var Email = $('#EmailId').val();
+        var Address = $('#AddressId').val();
+        var Country = $('#CountryId :selected').val();
+        var State = $('#StateId :selected').val();
+        var City = $('#CityId :selected').val();
+        var PinCode = $('#PinCodeId').val();
+        var password = $('#PasswordId').val();
+        var confirmPassword = $('#ConfirmPasswordId').val();
+        var OTP = $('#OTPId').val();
+
+        Data.OTP = OTP;
+        if (RegisterGeneratedOTP != OTP) {
+            ShowModalMessage("Please Insert Valid OTP ...");
+            return false;
+        }
+
+        Data.Firstname = Firstname;
+        if (Data.Firstname == "") {
+            ShowModalMessage("Please Insert First Name");
+            return false;
+        }
+
+        Data.LastName = LastName;
+        if (Data.LastName == "") {
+            ShowModalMessage("Please Insert Last Name Field");
+            return false;
+        }
+
+        Data.Phone = Phone;
+        alert(Data.Phone);
+        if (Data.Phone == "") {
+            ShowModalMessage("Please Insert Phone Number Field");
+            return false;
+        }
+
+        Data.Email = Email;
+        if (Data.Email == "") {
+            ShowModalMessage("Please Insert Email Field");
+            return false;
+        }
+
+        Data.password = password;
+        if (Data.password == "") {
+            ShowModalMessage("Please Insert Password Field");
+            return false;
+        }
+
+        Data.confirmPassword = confirmPassword;
+        if (Data.confirmPassword == "") {
+            ShowModalMessage("Please Insert Confirm Password Field");
+            return false;
+        }
+
+        if (password != confirmPassword) {
+            ShowModalMessage("Passwords do not match.");
+            return false;
+        }
+
+        Data.UserType = UserType;
+        if (Data.UserType == undefined) {
+            ShowModalMessage("Please Select User");
+            return false;
+        }
+        //alert(Data.UserType);
+
+        Data.Address = Address;
+        if (Data.Address == "") {
+            ShowModalMessage("Please Insert Address Field");
+            return false;
+        }
+
+        Data.UserCoutryId = Country;
+        if (Data.UserCoutryId == "" || Data.UserCoutryId == 0) {
+            ShowModalMessage("Please Select Country");
+            return false;
+        }
+
+        Data.UserStateId = State;
+        if (Data.UserStateId == "" || Data.UserStateId == 0) {
+            ShowModalMessage("Please Select State");
+            return false;
+        }
+
+        Data.UserCityId = City;
+        if (Data.UserCityId == "" || Data.UserCityId == 0) {
+            ShowModalMessage("Please Select City");
+            return false;
+        }
+
+        Data.PinCode = PinCode;
+        if (Data.PinCode == "") {
+            ShowModalMessage("Please Insert PinCode");
+            return false;
+        }
+
+        Data.UserType = UserType;
+        if (Data.UserType == "") {
+            ShowModalMessage("Please Select User Type");
+            return false;
+        }
+        Data.IsKeepMeUpToDateOnNews = KeepMeUpToDateOnNews;
+
+        Data.IsRegisterPageEdit = true;
+
+        $.ajax({
+            type: "POST",
+            url: "/LogIn/SubmitOTPForRegisterPage",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (Response) {
+                if (Response.IsSuccess == true) {
+                    window.location.href = "/LogIn/LogIn";
+                } else if (Response.IsSuccess == false) {
+                    ShowModalMessage("Something went wrong...")
+                }
+            }
+        });
+    }
+    </script>

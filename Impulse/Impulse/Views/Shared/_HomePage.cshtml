@@ -1,0 +1,124 @@
+﻿@model Impulse.DAL.SubCategoryObject
+<style>
+    body {
+        width100 %;
+        height: 100vh
+    }
+
+    .flex-center {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+@for (var v = 0; v < Model.CategoryList.Count; v++)
+{
+
+        if (Model.CategoryList[v].CategoryId == 4)
+        {
+<div class="container">
+    <header class="section-heading">
+        <h3 class="section-title">@Model.CategoryList[v].CategoryName</h3>
+    </header>
+    <div class="row">
+        @for (var i = 0; i < Model.SubCategoryList.Count; i++)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <img src="@Model.SubCategoryList[i].Sub_CategoryImagePath">
+                    </div>
+
+                    <figcaption class="info-wrap border-top">
+                        <h4>
+                            <a href='/Home/SubcategoryPage?SubcategoryId1=@Model.SubCategoryList[i].EncryptedSub_CategoryId&SubCategoryColorId1=@Model.SubCategoryList[i].EncryptedSub_Category_DefaultColorId' class='title mb-2'>@Model.SubCategoryList[i].Sub_CategoryName</a>
+                        </h4>
+                        <div class="price-wrap">
+                            <h5>
+                                <tr>
+                                    <td>
+                                        <span class="price">₹ @Model.SubCategoryList[i].Sub_Category_Price</span>
+                                    </td>
+                                    <td>
+                                        <del class="price-old">₹ @Model.SubCategoryList[i].Sub_Category_StrickOutPrice</del>
+                                    </td>
+                                    <td>
+                                        <h6 class="text-danger">(- @Model.SubCategoryList[i].Sub_Category_Discount_Percentage %)  </h6>
+                                    </td>
+                                </tr>
+                            </h5>
+                        </div>
+                        <button class="badge bg-warning btn-lg" type="button" data-bs-toggle="popover" data-bs-html="true" title="Rating" data-bs-content="<p><strong>@Model.SubCategoryList[i].AvgStar Out Of 5</strong></p>" data-bs-trigger="hover" ><i class="fa fa-star"></i>@Model.SubCategoryList[i].AvgStar</button>
+                        <i class="dot">
+                        </i>
+                        <span class="label-rating text-muted">@Model.SubCategoryList[i].ReivewCount (No Of Star & Review)</span>
+                        <br />
+                        @if (Model.SubCategoryList[i].Sub_Category_IsDeliveryFree == true)
+                        {
+                            <strong class="text-muted small mt-2">
+                                <i class="fa fa-truck"></i>
+                                Free Delivery
+                            </strong>
+                            <div>
+                                <strong>Get It By Tommorrow  </strong>
+                            </div>
+                        }
+                        else
+                        {
+                            if (Model.SubCategoryList[i].Sub_Category_DeliveryDescription != null)
+                            {
+                                <div>
+                                    <strong>Get It By Tommorrow</strong>
+                                </div>
+                            }
+                        }
+                        @{
+                            var SubCategoryId = Model.SubCategoryList[i].Sub_CategoryId;
+                            Impulse.BAL.Access.AcqCategory AcqCategoryObj = new Impulse.BAL.Access.AcqCategory();
+                            Model.Sub_CategoryImageModelList = AcqCategoryObj.GetSubCategoryColorStyleForSubCategoryPage(SubCategoryId,0);
+                        }
+
+                        @if (Model.SubCategoryList[i].Sub_Category_IsColor == true)
+                        {
+                            <div>
+                                <strong>Available Colors</strong>
+                            </div>
+                            <div class="radio-tile-group">
+                                @for (var Index = 0; Index < Model.Sub_CategoryImageModelList.Count; Index++)
+                                {
+
+                                    <div class="input-container">
+                                        <label class="radio-tile-label" style="background-color: #b60205;border-radius: 5px;">
+                                            @*<input type="radio" value="#b60205" class="radio-button uncheckall" name="@Model.Sub_CategoryImageModelList[Index].SubcategoryImageColorName">*@
+                                            <a class="radio-tile-edit" href='/Home/SubcategoryPage?SubcategoryId=@SubCategoryId&SubCategoryColorId=@Model.Sub_CategoryImageModelList[Index].SubcategoryImageColorId' data-bs-toggle="popover" data-bs-html="true" title="@Model.Sub_CategoryImageModelList[Index].SubcategoryImageColorName" data-bs-trigger="hover" style="background-color:@Model.Sub_CategoryImageModelList[Index].SubCategoryColorHexCode;"></a>
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                            @*
+                                <input type='radio' style='margin: 3px;' id='Yellow' name='colors' value='Yellow' data-bs-toggle="tooltip" title="Yellow">
+                                <input type='radio' style='margin: 3px;' id='Green' name='colors' value='Green' data-bs-toggle="tooltip" title="Green">
+                                <input type='radio' style='margin: 3px;' id='auto' name='colors' value='auto' data-bs-toggle="tooltip" title="auto">
+                                <input type='radio' style='margin: 3px;' id='Red' name='colors' value='Red' data-bs-toggle="tooltip" title="Red">
+                            *@
+                        }
+                        @*
+                            <a href='/Home/SubcategoryPage?SubcategoryId=@Model.SubCategoryList[i].Sub_CategoryId&SubCategoryColorId=@Model.SubCategoryList[i].Sub_Category_DefaultColorId' class='title mb-2'>@Model.SubCategoryList[i].Sub_CategoryName</a>
+                        *@
+                        <a class="btn btn-primary" onClick='OnClickAddToCart(@Model.SubCategoryList[i].Sub_CategoryId,@Model.SubCategoryList[i].CategoryId)'>Add to cart</a>
+                        <a class="btn btn-light btn-icon" onClick='OnClickWishList(@Model.SubCategoryList[i].Sub_CategoryId,@Model.SubCategoryList[i].CategoryId)'> <i class="fa fa-heart"></i> </a>
+                    </figcaption>
+                </figure>
+
+            </div>
+        }
+    </div>
+</div>
+    }
+}
+<script>
+    $(document).ready(function () {
+        $('[data-bs-toggle="popover"]').popover();
+    });
+</script>

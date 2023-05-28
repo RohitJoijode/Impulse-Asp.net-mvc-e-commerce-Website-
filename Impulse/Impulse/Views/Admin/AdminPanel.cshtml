@@ -1,0 +1,1614 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <style>
+        body {
+            position: relative;
+            overflow-x: hidden;
+            background-color: #CFD8DC;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .nav .open > a,
+        .nav .open > a:hover,
+        .nav .open > a:focus {
+            background-color: transparent;
+        }
+
+        /*-------------------------------*/
+        /*           Wrappers            */
+        /*-------------------------------*/
+
+        #wrapper {
+            padding-left: 0;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+            #wrapper.toggled {
+                padding-left: 220px;
+            }
+
+        #sidebar-wrapper {
+            z-index: 1000;
+            left: 220px;
+            width: 0;
+            height: 100%;
+            margin-left: -220px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #1a1a1a;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+            #sidebar-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 220px;
+        }
+
+        #page-content-wrapper {
+            width: 100%;
+            padding-top: 70px;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+            position: absolute;
+            margin-right: -220px;
+        }
+
+        /*-------------------------------*/
+        /*     Sidebar nav styles        */
+        /*-------------------------------*/
+        .navbar {
+            padding: 0;
+        }
+
+        .sidebar-nav {
+            position: absolute;
+            top: 0;
+            width: 220px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .sidebar-nav li {
+                position: relative;
+                line-height: 20px;
+                display: inline-block;
+                width: 100%;
+            }
+
+                .sidebar-nav li:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    height: 100%;
+                    width: 3px;
+                    background-color: #1c1c1c;
+                    -webkit-transition: width .2s ease-in;
+                    -moz-transition: width .2s ease-in;
+                    -ms-transition: width .2s ease-in;
+                    transition: width .2s ease-in;
+                }
+
+                .sidebar-nav li:first-child a {
+                    color: #fff;
+                    background-color: #1a1a1a;
+                }
+
+                .sidebar-nav li:nth-child(5n+1):before {
+                    background-color: #ec1b5a;
+                }
+
+                .sidebar-nav li:nth-child(5n+2):before {
+                    background-color: #79aefe;
+                }
+
+                .sidebar-nav li:nth-child(5n+3):before {
+                    background-color: #314190;
+                }
+
+                .sidebar-nav li:nth-child(5n+4):before {
+                    background-color: #279636;
+                }
+
+                .sidebar-nav li:nth-child(5n+5):before {
+                    background-color: #7d5d81;
+                }
+
+                .sidebar-nav li:hover:before,
+                .sidebar-nav li.open:hover:before {
+                    width: 100%;
+                    -webkit-transition: width .2s ease-in;
+                    -moz-transition: width .2s ease-in;
+                    -ms-transition: width .2s ease-in;
+                    transition: width .2s ease-in;
+                }
+
+                .sidebar-nav li a {
+                    display: block;
+                    color: #ddd;
+                    text-decoration: none;
+                    padding: 10px 15px 10px 30px;
+                }
+
+                    .sidebar-nav li a:hover,
+                    .sidebar-nav li a:active,
+                    .sidebar-nav li a:focus,
+                    .sidebar-nav li.open a:hover,
+                    .sidebar-nav li.open a:active,
+                    .sidebar-nav li.open a:focus {
+                        color: #fff;
+                        text-decoration: none;
+                        background-color: transparent;
+                    }
+
+        .sidebar-header {
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+            width: 100%;
+            display: inline-block;
+        }
+
+        .sidebar-brand {
+            height: 65px;
+            position: relative;
+            background: #212531;
+            background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+            padding-top: 1em;
+        }
+
+            .sidebar-brand a {
+                color: #ddd;
+            }
+
+                .sidebar-brand a:hover {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+        .dropdown-header {
+            text-align: center;
+            font-size: 1em;
+            color: #ddd;
+            background: #212531;
+            background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+        }
+
+        .sidebar-nav .dropdown-menu {
+            position: relative;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            border-radius: 0;
+            border: none;
+            background-color: #222;
+            box-shadow: none;
+        }
+
+        .dropdown-menu.show {
+            top: 0;
+        }
+        /*Fontawesome icons*/
+        .nav.sidebar-nav li a::before {
+            font-family: fontawesome;
+            content: "\f12e";
+            vertical-align: baseline;
+            display: inline-block;
+            padding-right: 5px;
+        }
+
+        a[href*="#AddCategory"]::before {
+            content: "\f015" !important;
+        }
+
+        a[href*="#AddSubCategory"]::before {
+            content: "\f129" !important;
+        }
+
+        a[href*="#events"]::before {
+            content: "\f073" !important;
+        }
+
+        a[href*="#events"]::before {
+            content: "\f073" !important;
+        }
+
+        a[href*="#team"]::before {
+            content: "\f0c0" !important;
+        }
+
+        a[href*="#works"]::before {
+            content: "\f0b1" !important;
+        }
+
+        a[href*="#pictures"]::before {
+            content: "\f03e" !important;
+        }
+
+        a[href*="#videos"]::before {
+            content: "\f03d" !important;
+        }
+
+        a[href*="#books"]::before {
+            content: "\f02d" !important;
+        }
+
+        a[href*="#art"]::before {
+            content: "\f1fc" !important;
+        }
+
+        a[href*="#awards"]::before {
+            content: "\f02e" !important;
+        }
+
+        a[href*="#services"]::before {
+            content: "\f013" !important;
+        }
+
+        a[href*="#contact"]::before {
+            content: "\f086" !important;
+        }
+
+        a[href*="#followme"]::before {
+            content: "\f099" !important;
+            color: #0084b4;
+        }
+        /*-------------------------------*/
+        /*       Hamburger-Cross         */
+        /*-------------------------------*/
+
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            z-index: 999;
+            display: block;
+            width: 32px;
+            height: 32px;
+            margin-left: 15px;
+            background: transparent;
+            border: none;
+        }
+
+            .hamburger:hover,
+            .hamburger:focus,
+            .hamburger:active {
+                outline: none;
+            }
+
+            .hamburger.is-closed:before {
+                content: '';
+                display: block;
+                width: 100px;
+                font-size: 14px;
+                color: #fff;
+                line-height: 32px;
+                text-align: center;
+                opacity: 0;
+                -webkit-transform: translate3d(0,0,0);
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-closed:hover:before {
+                opacity: 1;
+                display: block;
+                -webkit-transform: translate3d(-100px,0,0);
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-closed .hamb-top,
+            .hamburger.is-closed .hamb-middle,
+            .hamburger.is-closed .hamb-bottom,
+            .hamburger.is-open .hamb-top,
+            .hamburger.is-open .hamb-middle,
+            .hamburger.is-open .hamb-bottom {
+                position: absolute;
+                left: 0;
+                height: 4px;
+                width: 100%;
+            }
+
+            .hamburger.is-closed .hamb-top,
+            .hamburger.is-closed .hamb-middle,
+            .hamburger.is-closed .hamb-bottom {
+                background-color: #1a1a1a;
+            }
+
+            .hamburger.is-closed .hamb-top {
+                top: 5px;
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-closed .hamb-middle {
+                top: 50%;
+                margin-top: -2px;
+            }
+
+            .hamburger.is-closed .hamb-bottom {
+                bottom: 5px;
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-closed:hover .hamb-top {
+                top: 0;
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-closed:hover .hamb-bottom {
+                bottom: 0;
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-open .hamb-top,
+            .hamburger.is-open .hamb-middle,
+            .hamburger.is-open .hamb-bottom {
+                background-color: #1a1a1a;
+            }
+
+            .hamburger.is-open .hamb-top,
+            .hamburger.is-open .hamb-bottom {
+                top: 50%;
+                margin-top: -2px;
+            }
+
+            .hamburger.is-open .hamb-top {
+                -webkit-transform: rotate(45deg);
+                -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+            }
+
+            .hamburger.is-open .hamb-middle {
+                display: none;
+            }
+
+            .hamburger.is-open .hamb-bottom {
+                -webkit-transform: rotate(-45deg);
+                -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+            }
+
+            .hamburger.is-open:before {
+                content: '';
+                display: block;
+                width: 100px;
+                font-size: 14px;
+                color: #fff;
+                line-height: 32px;
+                text-align: center;
+                opacity: 0;
+                -webkit-transform: translate3d(0,0,0);
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+            .hamburger.is-open:hover:before {
+                opacity: 1;
+                display: block;
+                -webkit-transform: translate3d(-100px,0,0);
+                -webkit-transition: all .35s ease-in-out;
+            }
+
+        /*-------------------------------*/
+        /*            Overlay            */
+        /*-------------------------------*/
+
+        .overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(250,250,250,.8);
+            z-index: 1;
+        }
+    </style>
+    <!--Start E-Commerce Files -->
+    <link href="~/assets2/css/bootstrap3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/bootstrapc3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsive3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/responsivec3db.css" rel="stylesheet" />
+    <link href="~/assets2/css/ui3661.css" rel="stylesheet" />
+    <link href="~/assets2/css/uic3db.css" rel="stylesheet" />
+    <link href="~/assets2/fonts/fontawesome/css/all.min.css" rel="stylesheet" />
+    <script src="~/assets2/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets2/js/script3661.js"></script>
+    <script src="~/assets2/plugins/fslightbox.js"></script>
+    <!--End E-Commerce Files -->
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2TXFLD');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Type some info">
+    <meta name="author" content="Type name">
+
+    <title>Website layout sample </title>
+
+    <!-- Bootstrap css -->
+    <link href="css/bootstrap3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Custom css -->
+    <link href="css/ui3661.css?v=2.0" rel="stylesheet" type="text/css" />
+    <link href="css/responsive3661.css?v=2.0" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2TXFLD"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    @*<div id="mySidenav" class="sidenav">
+            <a href="#" id="about">Create Category</a>
+            <a href="#" id="blog">Create Sub Category</a>
+            <a href="#" id="projects">Projects</a>
+            <a href="#" id="contact">Contact</a>
+        </div>*@
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- ============== SECTION ============== -->
+    <!--<section class="padding-y bg-light">
+        <div class="container">
+
+            <div class="row">
+                <main class="col-xl-12 col-lg-12">-->
+    <!-- ============== COMPONENT CHECKOUT =============== -->
+    <!--<article class="card">
+            <div class="content-body">
+                <h5 class="card-title"> </h5>
+            </div>
+        </article>
+    </main>-->
+    <!-- col.// -->
+    <!--</div>--> <!-- row.// -->
+    <!--<br><br>
+    </div>-->
+    <!-- container .//  -->
+    <!--</section>-->
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <a href="/Home/HomePage">Brand</a>
+                    </div>
+                </div>
+                <li><a href="/Admin/AdminPanel">Add Category</a></li>
+                <li><a href="#AddSubCategory" onclick="AddSubCategory();">Add Sub Category</a></li>
+                <li><a href="#AddSubCategoryImage" onclick="AddSubCategoryImage();">Add Sub Category Image</a></li>
+                <li><a href="#events" onclick="AddSubCategorySizeImage();">Add Sub Category Size Details</a></li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body" id="ResultGridId" style="overflow-x: auto;overflow-y: auto;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+
+
+    <div class="container">
+        <div class="modal" id="mySubCategorySideImageListModal" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content shadow" id="ResultModalGridId1">
+                </div> <!-- modal-content.// -->
+            </div> <!-- modal-dialog.// -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="modal" id="myCategoryModal" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content shadow" id="ResultModalGridId">
+                </div> <!-- modal-content.// -->
+            </div> <!-- modal-dialog.// -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="modal" id="myMessageModal" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content shadow">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Category</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <strong id="myCommonMessageModal"></strong>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" onclick="closeMessageModal();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
+    <!-- ============== SECTION END// ============== -->
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="js/script3661.js?v=2.0"></script>
+    <!--Start Jquery UI CDN Link-->
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--End Jquery UI CDN Link-->
+</body>
+
+<!-- Mirrored from bootstrap-ecommerce.com/bootstrap5-ecommerce/page-order-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:57:02 GMT -->
+</html>
+<script>
+
+    function AddSubCategorySizeImage() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/AddSubCategorySizeImage",
+            dataType: "html",
+            success: function (response) {
+                debugger;
+                if (response != null) {
+                    $('#ResultGridId').empty();
+                    $('#ResultGridId').html(response);
+                    $('#ResultGridId').show();
+                }
+            },
+        });
+    }
+
+    function CreateSubCategorySizeDetails(SubCategoryImageId,CategoryId,SubCategoryId,SubcategoryImageColorId) {
+        debugger;
+        var data = new FormData();
+        data.append("CategoryId",CategoryId);
+        data.append("SubCategoryId",SubCategoryId);
+        data.append("SubCategoryImageId",SubCategoryImageId);
+        data.append("SubcategoryImageColorId",SubcategoryImageColorId);
+        $.ajax({
+            url: "/Admin/CreateSubCategorySizeDetails",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+
+            }
+        });
+    }
+
+    function SaveSubCategorySizeDetails(CategoryId,SubCategoryId,SubCategoryImageId,SubcategoryImageColorId) {
+        debugger;
+        var data = new FormData();
+        data.append("CategoryId",CategoryId);
+        data.append("SubCategoryId",SubCategoryId);
+        data.append("SubcategoryImageColorId",SubcategoryImageColorId);
+        data.append("SubCategoryColorImageId",SubCategoryImageId);
+        data.append("SubCategorySizeId",$('#SizeId option:selected').val());
+        data.append("SubCategory_M_Quantity",$('#SubCategory_M_QuantityId').val());
+        data.append("SubCategory_L_Quantity",$('#SubCategory_L_QuantityId').val());
+        data.append("SubCategory_XL_Quantity",$('#SubCategory_XL_QuantityId').val());
+        data.append("SubCategory_XXL_Quantity",$('#SubCategory_XXL_QuantityId').val());
+        data.append("SubCategory_XXXL_Quantity",$('#SubCategory_XXXL_QuantityId').val());
+        data.append("SubCategroy_4XL_Quantity",$('#SubCategory_4XL_QuantityId').val());
+        data.append("SubCategory_6UK_Quantity",$('#SubCategory_6UK_QuantityId').val());
+        data.append("SubCategory_7UK_Quantity",$('#SubCategory_7UK_QuantityId').val());
+        data.append("SubCategory_8UK_Quantity",$('#SubCategory_8UK_QuantityId').val());
+        data.append("SubCategory_9UK_Quantity",$('#SubCategory_9UK_QuantityId').val());
+        data.append("SubCategory_10UK_Quantity",$('#SubCategory_10UK_QuantityId').val());
+        data.append("SubCategory_11UK_Quantity",$('#SubCategory_11UK_QuantityId').val());
+        data.append("SubCategory_12UK_Quantity",$('#SubCategory_12UK_QuantityId').val());
+        data.append("SubCategoryIsColor",$('input[name="IsColorName"]:checked').val());
+        data.append("SubCategoryIsSize",$('input[name="IsSizeName"]:checked').val());
+        data.append("IsAvaliable",$('input[name="IsAvailableName"]:checked').val());
+        data.append("IsActive",$('input[name="IsActiveName"]:checked').val());
+
+       $.ajax({
+       url: "/Admin/SaveSubCategorySizeDetails",
+       type: "POST",
+       processData: false,
+       contentType: false,
+       data: data,
+       success: function (response) {
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                }
+            }
+        });
+    }
+
+    function EditSubCategorySizeDetailsModal(SizeDetailID,SubCategoryImageId,CategoryId,SubCategoryId,SubcategoryImageColorId) {
+        debugger;
+        var data = new FormData();
+        data.append("Id",SizeDetailID);
+        data.append("CategoryId",CategoryId);
+        data.append("SubCategoryId",SubCategoryId);
+        data.append("SubCategoryImageId",SubCategoryImageId);
+        data.append("SubcategoryImageColorId",SubcategoryImageColorId);
+        $.ajax({
+            url: "/Admin/EditSubCategorySizeDetailsModal",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+
+            }
+        });
+    }
+
+    function EditSubCategorySizeDetails(SizeDetailID,CategoryId,SubCategoryId,SubCategoryImageId,SubcategoryImageColorId) {
+        debugger;
+            var data = new FormData();
+            data.append("Id",SizeDetailID);
+            data.append("CategoryId", CategoryId);
+            data.append("SubCategoryId", SubCategoryId);
+            data.append("SubCategory_M_Quantity", $('#SubCategory_M_QuantityId').val());
+            data.append("SubcategoryImageColorId", SubcategoryImageColorId);
+            data.append("SubCategoryColorImageId", SubCategoryImageId);
+            data.append("SubCategorySizeId",$('#SizeId option:selected').val());
+            data.append("SubCategory_M_Quantity",$('#SubCategory_M_QuantityId').val());
+            data.append("SubCategory_L_Quantity",$('#SubCategory_L_QuantityId').val());
+            data.append("SubCategory_XL_Quantity",$('#SubCategory_XL_QuantityId').val());
+            data.append("SubCategory_XXL_Quantity",$('#SubCategory_XXL_QuantityId').val());
+            data.append("SubCategory_XXXL_Quantity",$('#SubCategory_XXXL_QuantityId').val());
+            data.append("SubCategroy_4XL_Quantity",$('#SubCategory_4XL_QuantityId').val());
+            data.append("SubCategory_6UK_Quantity",$('#SubCategory_6UK_QuantityId').val());
+            data.append("SubCategory_7UK_Quantity",$('#SubCategory_7UK_QuantityId').val());
+            data.append("SubCategory_8UK_Quantity",$('#SubCategory_8UK_QuantityId').val());
+            data.append("SubCategory_9UK_Quantity",$('#SubCategory_9UK_QuantityId').val());
+            data.append("SubCategory_10UK_Quantity",$('#SubCategory_10UK_QuantityId').val());
+            data.append("SubCategory_11UK_Quantity",$('#SubCategory_11UK_QuantityId').val());
+            data.append("SubCategory_12UK_Quantity",$('#SubCategory_12UK_QuantityId').val());
+            data.append("SubCategoryIsColor",$('input[name="IsColorName"]:checked').val());
+            data.append("SubCategoryIsSize",$('input[name="IsSizeName"]:checked').val());
+            data.append("IsAvaliable",$('input[name="IsAvailableName"]:checked').val());
+            data.append("IsActive",$('input[name="IsActiveName"]:checked').val());
+
+        $.ajax({
+            url: "/Admin/SaveSubCategorySizeDetails",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+
+            }
+        });
+    }
+
+    function EditSideSubCategoryImage(Id, CategoryId, SubCategoryId, SubCategoryImageId, SubcategoryImageColorId) {
+        debugger;
+        var data = new FormData();
+        data.append("Id",Id);
+        data.append("CategoryId",CategoryId);
+        data.append("SubCategoryId",SubCategoryId);
+        data.append("Sub_CategoryImageId",SubCategoryImageId);
+        data.append("SubcategoryImageColorId", SubcategoryImageColorId);
+        data.append("IsActive", $('input[name="IsActiveName"]:checked').val());
+
+        var files = $("#UploadImageId").get(0).files;
+        if (files.length > 0) {
+            data.append("UploadImageId", files[0]);
+        }
+
+        $.ajax({
+            url: "/Admin/SaveSideSubCategoryImage",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+
+                    $('#mySubCategorySideImageListModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#mySubCategorySideImageListModal').modal('hide');
+
+
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+
+            }
+        });
+    }
+
+    function SaveSideSubCategoryImage(CategoryId, SubCategoryId, SubCategoryImageId, SubcategoryImageColorId) {
+        debugger;
+        var data = new FormData();
+        data.append("CategoryId", CategoryId);
+        data.append("SubCategoryId", SubCategoryId);
+        data.append("Sub_CategoryImageId", SubCategoryImageId);
+        data.append("SubcategoryImageColorId", SubcategoryImageColorId);
+        data.append("SubCategoryImagePath", SubcategoryImageColorId);
+        data.append("IsActive", $('input[name="IsActiveName"]:checked').val());
+
+        var files = $("#UploadImageId").get(0).files;
+        if (files.length > 0) {
+            data.append("UploadImageId", files[0]);
+        }
+
+        $.ajax({
+            url: "/Admin/SaveSideSubCategoryImage",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+
+            }
+        });
+    }
+
+    function CreateSideSubCategoryImageModalList(ImageId,CategoryId,SubCategoryId,ColorId) {
+        debugger;
+        try {
+            var data = new FormData();
+            data.append("SubCategoryImageId", ImageId);
+            data.append("CategoryId",CategoryId);
+            data.append("SubCategoryId",SubCategoryId);
+            data.append("Sub_CategoryImageColorId",ColorId);
+
+            $.ajax({
+                url: "/Admin/CreateSideSubCategoryImageList",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    if (response != null) {
+                        $('#myCategoryModal').modal({
+                            backdrop: 'static',
+                            keyboard: true,
+                            show: true
+                        });
+                        $('#myCategoryModal').modal('show');
+                        $('#ResultModalGridId').empty();
+                        $('#ResultModalGridId').html(response);
+                    }
+                },
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    function EditSideSubCategoryImageModalList(Id,ImageId,CategoryId,SubCategoryId,ColorId) {
+        debugger;
+        try {
+            var data = new FormData();
+            data.append("ImageSideId",Id);
+            data.append("SubCategoryImageId", ImageId);
+            data.append("CategoryId", CategoryId);
+            data.append("SubCategoryId", SubCategoryId);
+            data.append("Sub_CategoryImageColorId",ColorId);
+            $.ajax({
+                url: "/Admin/EditSideSubCategoryImageModalList",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    if (response != null) {
+                        $('#myCategoryModal').modal({
+                            backdrop: 'static',
+                            keyboard: true,
+                            show: true
+                        });
+                        $('#myCategoryModal').modal('show');
+                        $('#ResultModalGridId').empty();
+                        $('#ResultModalGridId').html(response);
+                    }
+                },
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    function closemySubCategorySideImageListModal() {
+        debugger;
+        $('#mySubCategorySideImageListModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#mySubCategorySideImageListModal').modal('hide');
+    }
+
+    function closemyCategoryModal() {
+        debugger;
+        $('#myCategoryModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myCategoryModal').modal('hide');
+    }
+
+    function CreateCategory() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetCategoryModal",
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+    }
+
+    function myMessageModal(msg) {
+        $('#myMessageModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: true
+        });
+        $('#myMessageModal').modal('show');
+        $('#myCommonMessageModal').html('');
+        $('#myCommonMessageModal').html(msg);
+    }
+
+    function closeMessageModal() {
+        debugger;
+        $('#myMessageModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myMessageModal').modal('hide');
+        $('#myCommonMessageModal').html('');
+    }
+
+    function SaveCategory() {
+        debugger;
+        var Data = {};
+        Data.CategoryName = $('#CategoryNameId').val();
+        Data.CategoryTypeId = $('#CategoryTypeId option:selected').val();
+        Data.CategoryType = $('#CategoryTypeId option:selected').text();
+        Data.IsActive = $('input[name="dostavka"]:checked').val();
+    $.ajax({
+            type: "POST",
+            url: "/Admin/SaveCategory",
+            data: JSON.stringify(Data),
+            dataType: "html",
+            contentType: "application/json;charset=utf-8",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                    $('#ResultGridId').empty();
+                    $('#ResultGridId').html(response);
+                }
+            },
+        });
+    }
+
+    function EditCategoryModal(Id,CategoryId) {
+        var Data = {};
+        Data.Id = Id;
+        Data.CategoryId = CategoryId;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetEditCategoryModal",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                debugger
+                alert('response');
+                console.log(response);
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+    }
+    //function EditCategory(Id,CategoryId) {
+    //    debugger;
+    //    var Data = {};
+    //    Data.Id = Id;
+    //    Data.CategoryId = CategoryId;
+    //    Data.CategoryName = $('#CategoryNameId').val();
+    //    Data.CategoryTypeId = $('#CategoryTypeId option:selected').val();
+    //    Data.CategoryType = $('#CategoryTypeId option:selected').text();
+    //    Data.CategoryType = $('#CategoryType').val();
+    //    Data.IsActive = $('input[name="dostavka"]:checked').val();
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Admin/SaveCategory",
+    //        data: JSON.stringify(Data),
+    //        dataType: "html",
+    //        contentType: "application/json;charset=utf-8",
+    //        success: function (response) {
+    //            debugger
+    //            if (response != null) {
+    //                $('#myCategoryModal').modal({
+    //                    backdrop: 'static',
+    //                    keyboard: true,
+    //                    show: false
+    //                });
+    //                $('#myCategoryModal').modal('hide');
+    //                $('#ResultGridId').empty();
+    //                $('#ResultGridId').html(response);
+    //            }
+    //        },
+    //    });
+    //}
+    function closeCategoryModal() {
+        debugger;
+        $('#myCategoryModal').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('#myCategoryModal').modal('hide');
+    }
+    function EditCategory(Id,CategoryId) {
+        debugger;
+        var Data = {};
+        Data.Id = Id;
+        Data.CategoryId = CategoryId;
+        Data.CategoryName = $('#CategoryNameId').val();
+        Data.CategoryTypeId = $('#CategoryTypeId option:selected').val();
+        Data.CategoryType = $('#CategoryTypeId option:selected').text();
+        Data.IsActive = $('input[name="dostavka"]:checked').val();
+        $.ajax({
+            type: "POST",
+            url: "/Admin/SaveCategory",
+            data: JSON.stringify(Data),
+            dataType: "html",
+            contentType: "application/json;charset=utf-8",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                    $('#ResultGridId').empty();
+                    $('#ResultGridId').html(response);
+                }
+            },
+        });
+    }
+    function EdiSubCategoryModal(Id,SubCategoryId) {
+        debugger;
+        var Data = {};
+        Data.Id = Id;
+        Data.SubCategoryId = SubCategoryId;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetEditSubCategoryModal",
+            data: JSON.stringify(Data),
+            contentType: "application/json;charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+    }
+    function AddSubCategory() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/AddSubCategory",
+            dataType: "html",
+            success: function (response) {
+                debugger;
+                alert('response');
+                console.log(response);
+                debugger
+                if (response != null) {
+                    $('#ResultGridId').empty();
+                    $('#ResultGridId').html(response);
+                    $('#ResultGridId').show();
+                }
+            },
+        });
+    }
+    function AddSubCategoryImage() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/AddSubCategoryImage",
+            dataType: "html",
+            success: function (response) {
+                debugger;
+                if (response != null) {
+                    $('#ResultGridId').empty();
+                    $('#ResultGridId').html(response);
+                    $('#ResultGridId').show();
+                }
+            },
+        });
+    }
+    function CreateSubCategory() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetSubCategoryModal",
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+    }
+    function CreateSubCategoryImage() {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetSubCategoryImageModal",
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+    }
+    function SaveSubCategoryImage() {
+        debugger;
+        try {
+            var data = new FormData();
+            data.append("CategoryId", $('#CategoryId option:selected').val());
+            data.append("SubCategoryId", $('#SubCategoryId option:selected').val());
+            data.append("SubcategoryImageColorId", $('#SubcategoryImageColorId option:selected').val());
+            data.append("IsActive",$('input[name="IsActiveName"]:checked').val());
+            var files = $("#UploadImageId").get(0).files;
+            if (files.length > 0) {
+                data.append("UploadImageId", files[0]);
+            }
+            $.ajax({
+                url: "/Admin/SaveSubCategoryImage",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    if (response != null) {
+                        $('#myCategoryModal').modal({
+                            backdrop: 'static',
+                            keyboard: true,
+                            show: false
+                        });
+                        $('#myCategoryModal').modal('hide');
+                        $('#ResultModalGridId').empty();
+                        $('#ResultModalGridId').html(response);
+                    }
+                },
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    function EdiSubCategoryImageModal(Id,SubCategoryImageId) {
+        debugger;
+        try {
+            var data = new FormData();
+            data.append("Id", Id);
+            data.append("SubCategoryImageId",SubCategoryImageId);
+            $.ajax({
+                url: "/Admin/EditSubCategoryImageModal",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    if (response != null) {
+                        $('#myCategoryModal').modal({
+                            backdrop: 'static',
+                            keyboard: true,
+                            show: true
+                        });
+                        $('#myCategoryModal').modal('show');
+                        $('#ResultModalGridId').empty();
+                        $('#ResultModalGridId').html(response);
+                    }
+                },
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    function AddSubCategorySideImageList(Id,SubCategoryImageId,CategoryId,SubCategoryId,ColorId) {
+        debugger;
+        try {
+            var data = new FormData();
+            data.append("Id", Id);
+            data.append("SubCategoryImageId", SubCategoryImageId);
+            data.append("CategoryId",CategoryId);
+            data.append("SubCategoryId",SubCategoryId);
+            data.append("SubcategoryImageColorId",ColorId);
+
+            $.ajax({
+                url: "/Admin/AddSubCategorySideImageList",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    if (response != null) {
+                        $('#mySubCategorySideImageListModal').modal({
+                            backdrop: 'static',
+                            keyboard: true,
+                            show: true
+                        });
+                        $('#mySubCategorySideImageListModal').modal('show');
+                        $('#ResultModalGridId1').empty();
+                        $('#ResultModalGridId1').html(response);
+                    }
+                },
+            });
+        } catch (error) {
+            alert(error);
+        }
+
+    }
+
+    function SaveSubCategory() {
+        debugger;
+
+        try {
+            var data = new FormData();
+            data.append("CategoryId", $('#CategoryId option:selected').val());
+            data.append("CategoryTypeId", $('#CategoryTypeId option:selected').val());
+            data.append("Sub_CategoryName", $('#SubCategoryNameId').val());
+            data.append("Sub_Category_IsCare_Instructions",$('input[name="IsCareInstructionsName"]:checked').val());
+            data.append("Sub_Category_Care_Instructions",$('#CareInstructionsId').val());
+            data.append("Sub_Category_IsOccasionType", $('input[name="IsOccasionTypeName"]:checked').val());
+            data.append("Sub_Category_OccasionType", $('#OccasionTypeId').val());
+            data.append("Sub_Category_IsClosureType",$('input[name="IsClosureTypeName"]:checked').val());
+            data.append("Sub_Category_ClosureType", $('#ClosureTypeId').val());
+            data.append("Sub_Category_IsItemWeight",$('input[name="IsItemWeightName"]:checked').val());
+            data.append("Sub_Category_ItemWeight",$('#ItemWeightId').val());
+            data.append("Sub_Category_IsItemPackageQuantity", $('input[name="IsItemPackageQuantityName"]:checked').val());
+            data.append("Sub_Category_ItemPackageQuantity", $('#ItemPackageQuantityId').val());
+            data.append("Sub_Category_ItemWeight",$('#ItemWeightId').val());
+            data.append("Sub_Category_IsNoOfItem", $('input[name="IsNoOfItemName"]:checked').val());
+            data.append("Sub_Category_NoOfItem", $('#NoOfItemId').val());
+            data.append("Sub_Category_IsRiseStyle", $('input[name="IsRiseStyleName"]:checked').val());
+            data.append("Sub_Category_RiseStyle",$('#RiseStyleId').val());
+            data.append("Sub_Category_IsStrapType", $('input[name="IsStrapTypeName"]:checked').val());
+            data.append("Sub_Category_StrapType",$('#StrapTypeId').val());
+            data.append("Sub_Category_IsItemForm",$('input[name="IsItemFormName"]:checked').val());
+            data.append("Sub_Category_ItemFormType",$('#ItemFormType').val());
+            data.append("Sub_Category_IsPaperFinish", $('input[name="IsPaperFinishName"]:checked').val());
+            data.append("Sub_Category_PaperFinish", $('#PaperFinishId').val());
+            data.append("Sub_Category_IsNetQuantity", $('input[name="IsNetQuantityName"]:checked').val());
+            data.append("Sub_Category_NetQuantity", $('#NetQuantityId').val());
+            data.append("Sub_Category_IsNeckStyle",$('input[name="IsNeckStyleName"]:checked').val());
+            data.append("Sub_Category_NeckStyle",$('#NeckStyleId').val());
+            data.append("Sub_Category_IsStyle",$('input[name="IsStyleName"]:checked').val());
+            data.append("Sub_Category_Style",$('#StyleId').val());
+            data.append("Sub_Category_IsOrigin", $('input[name="IsOriginName"]:checked').val());
+            data.append("Sub_Category_Origin",$('#OriginId').val());
+            data.append("Sub_Category_IsSize", $('input[name="IsSizeName"]:checked').val());
+            data.append("Sub_Category_Size",$('#SizeId').val());
+            data.append("Sub_Category_IsColor",$('input[name="IsColorName"]:checked').val());
+            data.append("Sub_Category_DefaultColorId",$('#DefaultColorId').val());
+            data.append("Sub_Category_AvailableNoOfColor",$('#AvailableNoOfColorId').val());
+            data.append("Sub_Category_Quantity",$('#QuantityId').val());
+            data.append("Sub_Category_Price",$('#PriceId').val());
+            data.append("Sub_Category_IsStrickOutPrice", $('input[name="IsStrickOutPriceName"]:checked').val());
+            data.append("Sub_Category_StrickOutPrice",$('#StrickOutPriceId').val());
+            data.append("IsDisplayHomePage",$('input[name="IsDisplayHomePageName"]:checked').val());
+            data.append("Sub_Category_IsBrand",$('input[name="IsBrandName"]:checked').val());
+            //data.append("Sub_Category_Brand", $('input[name="BrandId"]:checked').val());
+            data.append("Sub_Category_IsStockStatus",$('input[name="IsStockStatusName"]:checked').val());
+            data.append("Sub_Category_StockStatus", $('StockStatusName').val());
+            data.append("Sub_Category_IsDiscount", $('input[name="IsDiscountName"]:checked').val());
+            data.append("Sub_Category_DiscountPercentage",$('#DiscountPercentageId').val());
+            data.append("Sub_Category_IsDeliveryFree",$('input[name="IsDeliveryFreeName"]:checked').val());
+            data.append("Sub_Category_DeliveryDescription",$('#DeliveryDescriptionId').val());
+            data.append("Sub_CategoryDescription", $('#SubCategoryDescriptionId').val());
+            data.append("IsActive", $('input[name="IsActiveName"]:checked').val());
+            data.append("Sub_Category_ColorName", $('#DefaultColorId option:selected').text());
+            data.append("Sub_Category_Brand",$('#BrandId').val());
+            //data.append("BrandId", $('#DefaultColorId option:selected').text());
+            var files = $("#UploadImageId").get(0).files;
+            if (files.length > 0) {
+                data.append("UploadImageId",files[0]);
+            }
+
+
+            $.ajax({
+                url: "/Admin/SaveSubCategory",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    if (response != null) {
+                        $('#myCategoryModal').modal({
+                           backdrop: 'static',
+                            keyboard: true,
+                            show: false
+                        });
+                        $('#myCategoryModal').modal('hide');
+                        $('#ResultModalGridId').empty();
+                        $('#ResultModalGridId').html(response);
+                    }
+                },
+            });
+        } catch (error) {
+            alert(error);
+        }
+
+    }
+
+    function EdiSubCategoryModal(id,SubcategoryId) {
+        debugger;
+        alert(SubcategoryId);
+        $.ajax({
+            type: "POST",
+            url: "/Admin/GetEditSubCategoryModal?Id=" + id + '&SubcategoryId=' + SubcategoryId,
+            dataType: "html",
+            success: function (response) {
+                debugger
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#myCategoryModal').modal('show');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+
+
+    }
+
+    function EditSubCategory(id,SubcategoryId) {
+        debugger;
+        var data = new FormData();
+        data.append("Id",id);
+        data.append("Sub_CategoryId",SubcategoryId);
+        data.append("CategoryId", $('#CategoryId option:selected').val());
+        data.append("CategoryTypeId", $('#CategoryTypeId option:selected').val());
+        data.append("Sub_CategoryImagePath",$('#SubCategoryImagePathId').val());
+        data.append("Sub_CategoryName",$('#SubCategoryNameId').val());
+        data.append("Sub_Category_IsCare_Instructions",$('input[name="IsCareInstructionsName"]:checked').val());
+        data.append("Sub_Category_Care_Instructions",$('#CareInstructionsId').val());
+        data.append("Sub_Category_IsOccasionType",$('input[name="IsOccasionTypeName"]:checked').val());
+        data.append("Sub_Category_OccasionType",$('#OccasionTypeId').val());
+        data.append("Sub_Category_IsClosureType",$('input[name="IsClosureTypeName"]:checked').val());
+        data.append("Sub_Category_ClosureType",$('#ClosureTypeId').val());
+        data.append("Sub_Category_IsItemWeight",$('input[name="IsItemWeightName"]:checked').val());
+        data.append("Sub_Category_ItemWeight",$('#ItemWeightId').val());
+        data.append("Sub_Category_IsItemPackageQuantity",$('input[name="IsItemPackageQuantityName"]:checked').val());
+        data.append("Sub_Category_ItemPackageQuantity",$('#ItemPackageQuantityId').val());
+        data.append("Sub_Category_ItemWeight",$('#ItemWeightId').val());
+        data.append("Sub_Category_IsNoOfItem",$('input[name="IsNoOfItemName"]:checked').val());
+        data.append("Sub_Category_NoOfItem",$('#NoOfItemId').val());
+        data.append("Sub_Category_IsRiseStyle",$('input[name="IsRiseStyleName"]:checked').val());
+        data.append("Sub_Category_RiseStyle",$('#RiseStyleId').val());
+        data.append("Sub_Category_IsStrapType",$('input[name="IsStrapTypeName"]:checked').val());
+        data.append("Sub_Category_StrapType",$('#StrapTypeId').val());
+        data.append("Sub_Category_IsItemForm",$('input[name="IsItemFormName"]:checked').val());
+        data.append("Sub_Category_ItemFormType",$('#ItemFormType').val());
+        data.append("Sub_Category_IsPaperFinish",$('input[name="IsPaperFinishName"]:checked').val());
+        data.append("Sub_Category_PaperFinish",$('#PaperFinishId').val());
+        data.append("Sub_Category_IsNetQuantity",$('input[name="IsNetQuantityName"]:checked').val());
+        data.append("Sub_Category_NetQuantity",$('#NetQuantityId').val());
+        data.append("Sub_Category_IsNeckStyle",$('input[name="IsNeckStyleName"]:checked').val());
+        data.append("Sub_Category_NeckStyle",$('#NeckStyleId').val());
+        data.append("Sub_Category_IsStyle",$('input[name="IsStyleName"]:checked').val());
+        data.append("Sub_Category_Style",$('#StyleId').val());
+        data.append("Sub_Category_IsOrigin",$('input[name="IsOriginName"]:checked').val());
+        data.append("Sub_Category_Origin",$('#OriginId').val());
+        data.append("Sub_Category_IsSize",$('input[name="IsSizeName"]:checked').val());
+        data.append("Sub_Category_Size",$('#SizeId').val());
+        data.append("Sub_Category_IsColor",$('input[name="IsColorName"]:checked').val());
+        data.append("Sub_Category_DefaultColorId",$('#DefaultColorId').val());
+        data.append("Sub_Category_AvailableNoOfColor",$('#AvailableNoOfColorId').val());
+        data.append("Sub_Category_Quantity",$('#QuantityId').val());
+        data.append("Sub_Category_Price",$('#PriceId').val());
+        data.append("Sub_Category_IsStrickOutPrice",$('input[name="IsStrickOutPriceName"]:checked').val());
+        data.append("Sub_Category_StrickOutPrice",$('#StrickOutPriceId').val());
+        data.append("IsDisplayHomePage",$('input[name="IsDisplayHomePageName"]:checked').val());
+        data.append("Sub_Category_IsBrand",$('input[name="IsBrandName"]:checked').val());
+        data.append("Sub_Category_IsStockStatus",$('input[name="IsStockStatusName"]:checked').val());
+        data.append("Sub_Category_StockStatus",$('StockStatusName').val());
+        data.append("Sub_Category_IsDiscount",$('input[name="IsDiscountName"]:checked').val());
+        data.append("Sub_Category_DiscountPercentage",$('#DiscountPercentageId').val());
+        data.append("Sub_Category_IsDeliveryFree",$('input[name="IsDeliveryFreeName"]:checked').val());
+        data.append("Sub_Category_DeliveryDescription",$('#DeliveryDescriptionId').val());
+        data.append("Sub_CategoryDescription",$('#SubCategoryDescriptionId').val());
+        data.append("IsActive",$('input[name="IsActiveName"]:checked').val());
+        data.append("Sub_Category_ColorName",$('#DefaultColorId option:selected').text());
+        data.append("Sub_Category_Brand",$('#BrandId').val());
+        var files = $("#UploadImageId").get(0).files;
+        if (files.length > 0) {
+            data.append("UploadImageId", files[0]);
+        }
+        $.ajax({
+            url: "/Admin/SaveSubCategory",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+                    $('#myCategoryModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: false
+                    });
+                    $('#myCategoryModal').modal('hide');
+                    $('#ResultModalGridId').empty();
+                    $('#ResultModalGridId').html(response);
+                }
+            },
+        });
+    }
+
+    function AddSubCategorySizeDetailsModal(Id,SubCategoryImageId,CategoryId,SubCategoryId,SubcategoryImageColorId) {
+        debugger;
+        var data = new FormData();
+        data.append("Id",Id);
+        data.append("SubCategoryImageId",SubCategoryImageId);
+        data.append("CategoryId",CategoryId);
+        data.append("SubCategoryId",SubCategoryId);
+        data.append("SubcategoryImageColorId",SubcategoryImageColorId);
+
+        $.ajax({
+            url: "/Admin/SubCategorySizeDetailsModal",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                if (response != null) {
+                    $('#mySubCategorySideImageListModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                    $('#mySubCategorySideImageListModal').modal('show');
+                    $('#ResultModalGridId1').empty();
+                    $('#ResultModalGridId1').html(response);
+                }
+            },
+        });
+
+
+    }
+
+
+        //console.log(files[0]);
+
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/Admin/SaveSubCategory",
+        //    dataType: "html",
+        //    success: function (response) {
+        //        debugger
+        //        if (response != null) {
+        //            $('#myCategoryModal').modal({
+        //                backdrop: 'static',
+        //                keyboard: true,
+        //                show: true
+        //            });
+        //            $('#myCategoryModal').modal('show');
+        //            $('#ResultModalGridId').empty();
+        //            $('#ResultModalGridId').html(response);
+        //        }
+        //    },
+        //});
+    //}
+
+    $(document).ready(function ()  {
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "/Admin/GetCategoryList",
+        dataType: "html",
+        success: function (response) {
+            debugger;
+            alert('response');
+            console.log(response);
+            debugger
+            if (response != null) {
+                $('#ResultGridId').empty();
+                $('#ResultGridId').html(response);
+                $('#ResultGridId').show();
+            }
+        },
+       });
+    });
+
+    $(document).ready(function () {
+
+        var trigger = $('.hamburger'),
+            overlay = $('.overlay'),
+            isClosed = false;
+
+        trigger.click(function () {
+            hamburger_cross();
+        });
+
+        function hamburger_cross() {
+            if (isClosed == true) {
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+            } else {
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+            }
+        }
+        $('[data-toggle="offcanvas"]').click(function () {
+            $('#wrapper').toggleClass('toggled');
+        });
+    });
+</script>
